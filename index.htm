@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aufgabe 1: Caesar-Verschlüsselung</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="src/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="src/bootstrap/icons/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Highlight.js CSS -->
+    <link rel="stylesheet" href="src/highlight/styles/vs.min.css">
+    <!-- Custom CSS -->
+    <link href="src/style.css" rel="stylesheet">
+    
+</head>
+<body id="worksheet">
+
+    <div class="container">
+
+        <header class="pb-3 mt-5 mb-5 border-bottom">
+            <div class="row">
+                <div class="col-md-6">
+                    <span class="fw-bold">Informatik</span><br>Kryptologie
+                </div>
+                <div class="col-md-6 text-end">
+                    <span class="fw-bold" id="worksheet-number">Arbeitsblatt 1</span>
+                    <!--
+                    <div class="btn-group" role="group" aria-label="Umschalten von Light- und Dark-Mode">
+                        <div class="btn-group btn-group-sm" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                            <label class="btn btn-outline-dark" for="btnradio1"><i class="bi bi-sun"></i></label>
+                          
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                            <label class="btn btn-outline-dark" for="btnradio2"><i class="bi bi-moon"></i></label>
+                          </div>
+                    </div>
+                    -->
+                </div>
+            </div>
+        </header>
+
+        <main>
+
+            <h1 class="text-body-emphasis mb-4" id="worksheet-title">Lade Arbeitsblatt...</h1>
+            <div class="row mb-4">
+                <div class="col-md-8 fs-5" id="worksheet-description">
+                    <p>Lade Arbeitsblatt...</p>
+                </div>
+                <div class="col-md-4 hide-element" id="worksheet-image-wrapper">
+                    <figure class="figure" id="worksheet-image">
+                    </figure>
+                </div>
+            </div>
+            
+        </main>
+    </div>
+
+    <div class="container-fluid bg-light pt-1 pb-3">
+        <div class="container hide-element" id="worksheet-code-container">
+            <main>
+
+                <!-- Code -->
+                <div class="row mt-5" id="worksheet-code-wrapper">
+                    <!-- Code-Ausschnitt -->
+                    <div class="col-md-8">
+                        <h6>Code</h6>
+                        <div class="card mb-3">
+                            <div class="card-body card-body-code">
+                                <div class="btn-group btn-group-sm float-end" id="worksheet-code-language-buttons">
+                                </div>
+                                <pre id="worksheet-code">Lade Code...</pre>
+                            </div>
+                        </div>
+                    </div>
+ 
+
+                    <!-- Hilfestellungen -->
+                    <div class="col-md-4">
+                        <div class="hide-element" id="code-helpers-wrapper">
+                            <h6>Hilfestellungen</h6>
+                            <div class="accordion" id="code-helpers">   
+                            </div>
+                        </div>
+
+                        <div id="code-tools-wrapper">
+                            <h6 class="mt-3">Tools</h6>
+                            <button type="button" class="btn btn-outline-primary" id="copy-code-to-clipboard"><i class="bi bi-copy"></i> Code kopieren</button>
+                            <button type="button" class="btn btn-outline-primary" id="export-code"><i class="bi bi-download"></i> Code herunterladen</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Tasks -->
+        <main id="worksheet-tasks">
+        
+        </main>
+
+        <!-- Footer -->
+        <footer class="border-top mt-5 mb-5 pt-3">
+            <button class="btn btn-secondary" id="print-worksheet">Speichern als PDF für Abgabe bei der Lehrkraft</button>
+            <button class="btn btn-light" id="export-data">Exportiere User-Daten</button>
+        </footer>
+        <footer class="border-top mt-5 mb-5 pt-3 hide-element" id="worksheet-citations-wrapper">
+            <h6>Quellen</h6>
+            <div id="worksheet-citations">
+                
+            </div>
+        </footer>
+
+        <!-- Sidebar -->
+        <button type="button" class="btn btn-dark" id="toggle-sidebar" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar"><i class="bi bi-card-checklist"></i></button>
+
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar" aria-labelledby="sidebarLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="sidebarLabel">Kryptologie</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ol id="sidebar-content">
+                    <li>Bisher keine Arbeitsblätter hinterlegt.</li>
+                </ol>
+            </div>
+        </div>
+    
+    </div>
+
+    <!-- Settings and UI functions -->
+    <script src="settings.js"></script>
+    <script src="src/scripts.js"></script>
+
+
+    <!-- Loading worksheets -->
+    <script src="src/worksheet.js"></script>
+    <!-- Add all worksheets you want to load here -->
+    <script src="content/01_caesar.js"></script>
+    <script src="content/02_vigenere.js"></script>
+
+    <!-- Bootstrap JS --> 
+    <script src="src/bootstrap/js/bootstrap.min.js"></script>
+    
+    <!-- Highlight.js JS -->
+    <script src="src/highlight/highlight.min.js"></script>
+    <script src="src/highlight/highlightjs-line-numbers.min.js"></script>
+    
+    <script>
+        loadWorksheets();
+    </script>
+
+</body>
+</html>
+
+

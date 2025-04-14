@@ -1,0 +1,30 @@
+.hljs-ln-numbers {
+    color: #6c757d!important;
+    text-align:right;
+}
+.hljs-ln-n {
+    padding-right:2em;
+}
+
+.card-body-code pre code {
+    padding:0;
+}
+.textarea-lg {
+    min-height: 250px !important;
+}
+.textarea-code {
+    font-family:var(--bs-font-monospace);
+}
+
+.hide-element {
+    display: none;
+}
+
+#toggle-sidebar {
+    position: fixed;
+    top: 20%;
+    left: 0;
+    z-index: 999;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}

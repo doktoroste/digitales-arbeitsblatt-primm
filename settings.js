@@ -1,3 +1,8 @@
+// General
+// -------------------------------------
+const subjectName = "Informatik";
+const courseName = "Kryptologie";
+
 // Feedback
 // -------------------------------------
 

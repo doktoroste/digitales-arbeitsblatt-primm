@@ -1,5 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
   saveAndLoadUserInput();
+  document.getElementById("subject-name").innerHTML = subjectName;
+  document.getElementById("course-name").innerHTML = courseName;
+  document.getElementById("sidebar-label").innerHTML = courseName;
 });
 
 // Load user inputs from LocalStorage and save them on every input
@@ -29,8 +32,9 @@ document
         button.classList.remove("active");
       });
       e.target.classList.add("active");
-      document.getElementById("worksheet-code").innerHTML =
-        `<code class="language-${currentSelectedLanguage}">${worksheets[currentIndex].code[currentSelectedLanguage]}</code>`;
+      document.getElementById(
+        "worksheet-code"
+      ).innerHTML = `<code class="language-${currentSelectedLanguage}">${worksheets[currentIndex].code[currentSelectedLanguage]}</code>`;
       hljs.highlightAll();
       hljs.initLineNumbersOnLoad({
         singleLine: true,
@@ -38,7 +42,7 @@ document
       getCodeHelpers(
         currentIndex,
         worksheets[currentIndex],
-        currentSelectedLanguage,
+        currentSelectedLanguage
       );
 
       // For each element with class "language-specific", show or hide based on currentSelectedLanguage
@@ -65,12 +69,14 @@ document
 // Export code and download
 document.getElementById("export-code").addEventListener("click", function () {
   var code = worksheets[currentIndex].code[currentSelectedLanguage];
-  const dataStr = `data:text/${currentSelectedLanguage};charset=utf-8,${encodeURIComponent(code)}`;
+  const dataStr = `data:text/${currentSelectedLanguage};charset=utf-8,${encodeURIComponent(
+    code
+  )}`;
   const downloadAnchor = document.createElement("a");
   downloadAnchor.setAttribute("href", dataStr);
   downloadAnchor.setAttribute(
     "download",
-    worksheets[currentIndex].codeFilename[currentSelectedLanguage],
+    worksheets[currentIndex].codeFilename[currentSelectedLanguage]
   );
   document.body.appendChild(downloadAnchor);
   downloadAnchor.click();

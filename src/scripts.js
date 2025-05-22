@@ -231,6 +231,15 @@ function loadUserInput(currentWorksheet) {
             );
           button.setAttribute("data-hint-opened", "true");
           button.setAttribute("disabled", "true");
+
+          // Open collapsed hint
+          const hintBody = document.querySelector(
+            `#task-${worksheet.titleTechnical}-${taskIndex}-${subtaskIndex}-hint-${hintIndex}`
+          );
+          if (hintBody) {
+            hintBody.classList.add("show");
+            hintBody.setAttribute("aria-expanded", "true");
+          }
           previousHintOpened = true;
         } else {
           if (showDebugLogs)

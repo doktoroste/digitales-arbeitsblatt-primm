@@ -282,6 +282,10 @@ worksheets.push({
         {
           task: "Beschreiben Sie, welche Ausgabe Sie beim Ausführen des Codes mit dem Parameter <code>shift = 32</code>. erwarten.",
           answerType: "text",
+          hints: [
+            "Sie müssen keinen spezifischen Ausgabewert angeben. Vermuten Sie, welche Zeichen noch auf der Unicode-Tabelle vorhanden sind.",
+            "Der Unicode-Wert von <code>A</code> ist 65. Welcher Buchstabe wird bei der Verschiebung um 32 Zeichen ausgegeben?",
+          ],
         },
         {
           task: "Setzen Sie den Parameter <code>shift = 32</code> und führen den Code aus. Vergleichen Sie das Ergebnis mit Ihrer Vorhersage.",
@@ -290,10 +294,18 @@ worksheets.push({
         {
           task: "Erklären Sie ein mögliches Problem sowie einen potenziellen Lösungsansatz.",
           answerType: "textLong",
+          hints: [
+            "Was passiert, wenn der Wert von <code>shift</code> größer ist als die Anzahl der Buchstaben im Alphabet?",
+            "Führen Sie den Code mit einem noch höheren Wert für <code>shift</code> aus. Beschreiben Sie die Ausgabe.",
+          ],
         },
         {
           task: "Verändern Sie den Code so, dass das in Teilaufgabe a beschriebene Problem behoben wird.",
           answerType: "code",
+          hints: [
+            "Überlegen Sie, wie Sie sicherstellen können, dass der Wert von <code>shift</code> immer kleiner ist als die Anzahl der Buchstaben im Alphabet.",
+            "Nutzen Sie den Modulo-Operator <code>%</code>, um einen gültigen Wert für die Verschiebung aus der Eingabe <code>shift</code> zu berechnen.",
+          ],
         },
       ],
       helpers: [
@@ -310,14 +322,28 @@ worksheets.push({
         {
           task: "Ergänzen Sie den Code um eine Funktion zum Entschlüsseln eines Strings, der vorher mit dem Caesar-Chiffre um eine bekannte Länge verschlüsselt wurde. Die Funktion sollte wie bisher die Parameter <code>text</code> und <code>shift</code> als Eingabe erhalten.",
           answerType: "code",
+          hints: [
+            "Denken Sie daran, dass die Buchstaben in die andere Richtung verschoben werden müssen.",
+            "Kopieren Sie den ursprünglichen Code bzw. Ihre Version aus Aufgabe 4. An welchen Stellen müssen Sie etwas ändern?",
+            'Ein möglicher Ansatz für die Funktion (noch mit Lücken): <code class="language-specific task-language-python"><pre>def caesar_decrypt(text, shift):\n    result = ""\n    text = text.upper()\n    for char in text:\n        if char.isalpha():\n            # TODO\n        else:\n            # TODO \n    return result</pre></code><code class="language-specific task-language-javascript hide-element"><pre>function caesar_decrypt(text, shift) {\n    let result = "";\n    text = text.toUpperCase();\n    for (let char of text) {\n        if (char.isAlpha()) {\n            // TODO\n        } else {\n            // TODO\n        }\n    }\n    return result;\n}</pre></code>',
+          ],
         },
         {
           task: '<span class="text-muted">(Zusatzaufgabe)</span> Schreiben Sie eine Funktion, die in einer Brute-Force-Methode alle möglichen Varianten für Verschiebungen ausprobiert.',
           answerType: "code",
+          hints: [
+            "Wie können Sie es schaffen, die bereits implementierte Funktion <code>caesar_decrypt()</code> mehrmals mit verschiedenen Parametern auszuführen?",
+            'Sie können mit einer <code>for-Schleife</code> arbeiten: <code class="language-specific task-language-python">for shift in range(1, 26):</code><code class="language-specific task-language-javascript hide-element">for (let shift = 1; shift < 26; shift++) {</code>',
+            'Ein möglicher Ansatz für die Funktion (noch mit Lücken): <code class="language-specific task-language-python"><pre>def caesar_bruteforce(text):\n    for shift in range(1, 26):\n        # TODO</pre></code><code class="language-specific task-language-javascript hide-element"><pre>function caesar_bruteforce(text) {\n    for (let shift = 1; shift < 26; shift++) {\n        // TODO\n    }\n}</pre></code>',
+          ],
         },
         {
           task: '<span class="text-muted">(Zusatzaufgabe)</span> Erläutern Sie sinnvolle Optimierungsmöglichkeiten einer Funktion, wie sie in Teilaufgabe b erstellt werden soll.',
           answerType: "text",
+          hints: [
+            "Lassen sich bestimmte Wörter auch im verschlüsselten Zustand erkennen? Wenn ja, wie?",
+            "Gibt es häufiger auftretende Buchstabenkombinationen, die Ihnen helfen könnten?",
+          ],
         },
       ],
     },

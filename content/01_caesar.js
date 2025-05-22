@@ -117,31 +117,35 @@ worksheets.push({
               text: "<code>text</code>: Char, <code>shift</code> Integer",
               correct: false,
               feedbackText:
-                "Der Datentyp <code>char</code> existiert nicht in Python.",
+                "Da der text aus mehreren Zeichen bestehen kann, ist der Datentyp <code>Char</code> für diesen nicht geeignet.",
             },
             {
               text: "<code>text</code>: String, <code>shift</code> Integer",
               correct: true,
               feedbackText:
-                "Der Datentyp <code>String</code> ist in Python und JavaScript vorhanden.",
+                "Der zu verschlüsselnde Text ist eine Zeichenkette und damit ein <code>String</code>. Die Anzahl, um die die Buchstaben verschoben werden, ist immer eine ganze Zahl und damit ein <code>Integer</code>.",
             },
             {
               text: "<code>text</code>: Integer, <code>shift</code> String",
               correct: false,
               feedbackText:
-                "Der Datentyp <code>Integer</code> ist in Python und JavaScript vorhanden.",
+                "Im Datentyp <code>Integer</code> werden ganze Zahlen gespeichert. Der Text ist jedoch eine Zeichenkette und damit ein <code>String</code>.",
             },
             {
               text: "<code>text</code>: String, <code>shift</code> String",
               correct: false,
               feedbackText:
-                "Der Datentyp <code>String</code> ist in Python und JavaScript vorhanden.",
+                "Obwohl es möglich ist, den <code>shift</code> als <code>String</code> zu übergeben, ist es nicht sinnvoll. Der <code>shift</code> sollte immer eine ganze Zahl und damit ein <code>Integer</code>sein.",
             },
           ],
         },
         {
           task: "Beschreiben Sie, wie häufig die for-Schleife in Zeile 4 durchlaufen wird.",
           answerType: "text",
+          hints: [
+            "Denken Sie daran, welcher Datentyp in <code>Char</code> gespeichert wird.",
+            "Welcher Wert wird in <code>text</code> gespeichert?",
+          ],
           multipleChoice: true,
           choices: [
             {
@@ -165,6 +169,10 @@ worksheets.push({
         {
           task: 'Erklären Sie die Verwendung der Funktionen <code class="language-specific task-language-python">ord()</code><code class="language-specific task-language-javascript hide-element">charCodeAt()</code> und <code class="language-specific task-language-python">chr()</code><code class="language-specific task-language-javascript hide-element">String.fromCharCode</code> im Code.',
           answerType: "text",
+          hints: [
+            "Welche Werte werden in den Parametern der Funktionen übergeben?",
+            "Wie heißen die Variablen, in denen die Ergebnisse dieser Funktionen gespeichert werden?",
+          ],
           multipleChoice: true,
           choices: [
             {
@@ -186,8 +194,12 @@ worksheets.push({
           ],
         },
         {
-          task: "Erklären Sie den Code in Zeile 6: <code>newposition = ord(char) + shift</code>",
+          task: 'Erklären Sie den Code in <code class="language-specific task-language-python">Zeile 6</code><code class="language-specific task-language-javascript hide-element">Zeile 6</code>: <code class="language-specific task-language-python">newposition = ord(char) + shift</code><code class="language-specific task-language-javascript hide-element">let newposition = char.charCodeAt(0) + shift;</code>',
           answerType: "text",
+          hints: [
+            'Welchen Wert gibt die Funktion <code class="language-specific task-language-python">ord()</code><code class="language-specific task-language-javascript hide-element">charCodeAt()</code> für den ersten Buchstaben aus <code>text</code> zurück?',
+            "Was wird mit dem Wert der Variable <code>shift</code> gemacht?",
+          ],
           multipleChoice: true,
           choices: [
             {
@@ -211,6 +223,10 @@ worksheets.push({
         {
           task: "Beschreiben Sie, was bei der Eingabe von Leer- oder Satzzeichen passieren würde. Welche Zeilen des Codes sind hier relevant?",
           answerType: "text",
+          hints: [
+            "In welchen Codezeilen wird überprüft, ob ein Zeichen ein Buchstabe ist?",
+            "Gibt es eine weitere Codezeile, die den Text unverändert übernimmt?",
+          ],
           multipleChoice: true,
           choices: [
             {
@@ -234,6 +250,10 @@ worksheets.push({
         {
           task: 'Erklären Sie, warum die Eingaben <code>"hello, world!"</code> und <code>"HELLO, WORLD!"</code> zu einer identischen Ausgabe führen.',
           answerType: "text",
+          hints: [
+            "Wird im Code zwischen Groß- und Kleinbuchstaben unterschieden?",
+            "Betrachten Sie die Zeile, in der die Variable <code>text</code> definiert wird.",
+          ],
           multipleChoice: true,
           choices: [
             {

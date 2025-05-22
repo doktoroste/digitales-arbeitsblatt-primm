@@ -1,12 +1,12 @@
 let worksheets = [];
 let currentIndex = 0;
-let currentSelectedLanguage = "";
-if (localStorage.getItem(currentSelectedLanguage)) {
-  currentSelectedLanguage = localStorage.getItem(currentSelectedLanguage);
-}
+let currentSelectedLanguage = "python";
 
 async function loadWorksheets() {
   let tocHtml = "";
+  if (localStorage.getItem("currentSelectedLanguage")) {
+    currentSelectedLanguage = localStorage.getItem("currentSelectedLanguage");
+  }
   worksheets.forEach((ws, index) => {
     const status = localStorage.getItem(ws.file) === "done" ? "✔️" : "";
     tocHtml += `<li><a href="#" onclick="loadWorksheet(${index})">${ws.title} ${status}</a></li>`;
@@ -22,21 +22,27 @@ async function loadWorksheets() {
 // Load worksheet content
 async function loadWorksheet(index) {
   localStorage.setItem("currentWorksheet", index);
+  currentIndex = index;
   data = worksheets[index];
+
+  if (showDebugLogs) console.log("Loading worksheet", index, data.title);
 
   // Worksheet header
   document.title = `Arbeitsblatt ${index + 1}: ${data.title}`;
-  document.getElementById("worksheet-number").innerHTML =
-    `Arbeitsblatt ${index + 1}`;
-  document.getElementById("worksheet-title").innerHTML =
-    `<h1>${data.title}</h1>`;
+  document.getElementById("worksheet-number").innerHTML = `Arbeitsblatt ${
+    index + 1
+  }`;
+  document.getElementById(
+    "worksheet-title"
+  ).innerHTML = `<h1>${data.title}</h1>`;
   document.getElementById("worksheet-description").innerHTML = data.description;
   if (data.image) {
     document
       .querySelector("#worksheet-image-wrapper")
       .classList.remove("hide-element");
-    document.getElementById("worksheet-image").innerHTML =
-      `<img src="${data.image}" class="figure-img img-fluid" alt="${data.imageAlt}" >
+    document.getElementById(
+      "worksheet-image"
+    ).innerHTML = `<img src="${data.image}" class="figure-img img-fluid" alt="${data.imageAlt}" >
             <figcaption class="figure-caption" id="worksheet-image-description">${data.imageDescription}</figcaption>`;
   } else {
     document
@@ -44,7 +50,51 @@ async function loadWorksheet(index) {
       .classList.add("hide-element");
   }
 
+  // Worksheet navigation
+  // If there is only one worksheet, hide the navigation
+  // Otherwise: Check if there is a next or previous worksheet and show #worksheet-link-back and/or #worksheet-link-forward
+  if (worksheets.length === 1) {
+    document
+      .querySelector("#worksheet-link-back")
+      .classList.add("hide-element");
+    document
+      .querySelector("#worksheet-link-forward")
+      .classList.add("hide-element");
+  } else {
+    if (index > 0) {
+      document
+        .querySelector("#worksheet-link-back")
+        .classList.remove("hide-element");
+      document
+        .querySelector("#worksheet-link-back")
+        .setAttribute("onclick", `loadWorksheet(${index - 1})`);
+    } else {
+      document
+        .querySelector("#worksheet-link-back")
+        .classList.add("hide-element");
+    }
+    if (index < worksheets.length - 1) {
+      document
+        .querySelector("#worksheet-link-forward")
+        .classList.remove("hide-element");
+      document
+        .querySelector("#worksheet-link-forward")
+        .setAttribute("onclick", `loadWorksheet(${index + 1})`);
+    } else {
+      document
+        .querySelector("#worksheet-link-forward")
+        .classList.add("hide-element");
+    }
+  }
+
   // Worksheet code
+  if (showDebugLogs) {
+    console.log(
+      "Available programming languages: ",
+      Object.keys(data.code).length
+    );
+    console.log("Selected programming language: ", currentSelectedLanguage);
+  }
   if (data.code) {
     document
       .querySelector("#worksheet-code-container")
@@ -52,9 +102,12 @@ async function loadWorksheet(index) {
     // Code
     if (Object.keys(data.code).length === 1) {
       // if only one language version given, disable language buttons
-      // TODO: Does not work yet
-      document.getElementById("worksheet-code-language-buttons").innerHTML =
-        `<button class="btn btn-sm btn-outline-secondary btn-disabled" disabled>${languageNames[data.primaryLanguage]}</button>`;
+      document.getElementById(
+        "worksheet-code-language-buttons"
+      ).innerHTML = `<button class="btn btn-sm btn-outline-secondary btn-disabled" disabled>${
+        languageNames[data.primaryLanguage]
+      }</button>`;
+      currentSelectedLanguage = data.primaryLanguage;
     } else {
       let languageButtonsHtml = "";
       for (const language in data.code) {
@@ -73,8 +126,9 @@ async function loadWorksheet(index) {
     if (currentSelectedLanguage === "") {
       currentSelectedLanguage = data.primaryLanguage;
     }
-    document.getElementById("worksheet-code").innerHTML =
-      `<code class="language-${data.primaryLanguage}">${data.code[currentSelectedLanguage]}</code>`;
+    document.getElementById(
+      "worksheet-code"
+    ).innerHTML = `<code class="language-${data.primaryLanguage}">${data.code[currentSelectedLanguage]}</code>`;
 
     // Code highlighting
     hljs.highlightAll();
@@ -94,28 +148,48 @@ async function loadWorksheet(index) {
   let taskHtml = "";
   if (data.tasks) {
     data.tasks.forEach((task, i) => {
-      taskHtml += `<!-- Aufgabe ${i} -->
+      taskHtml += `<!-- Task ${i} -->
                 <div class="row mt-5">
-                    <!-- Aufgabe -->
+                    <!-- Task -->
                     <div class="col-md-12 mb-3">
-                        <h4 class="border-bottom pb-3" id="aufgabe${i}">${task.title} <a href="#aufgabe${i}" class="link-secondary"><i class="bi bi-hash"></i></a></h4>
+                        <h4 class="border-bottom pb-3" id="task${i}">${task.title} <a href="#task${i}" class="link-secondary"><i class="bi bi-hash"></i></a></h4>
                     </div>
                     <div class="col-md-8">
                         <ol type="a">`;
+
+      // Subtasks
       task.subtasks.forEach((subtask, j) => {
         taskHtml += `<li class="mb-3">${subtask.task}`;
         if (subtask.answerType === "text") {
-          taskHtml += `<textarea class="form-control save-user-input" id="aufgabe-${index}-${i}-${j}"></textarea>`;
+          taskHtml += `<textarea class="form-control save-user-input" id="task-${data.titleTechnical}-${i}-${j}"></textarea>`;
         } else if (subtask.answerType === "textLong") {
-          taskHtml += `<textarea class="form-control textarea-lg save-user-input" id="aufgabe-${index}-${i}-${j}"></textarea>`;
+          taskHtml += `<textarea class="form-control textarea-lg save-user-input" id="task-${data.titleTechnical}-${i}-${j}"></textarea>`;
         } else if (subtask.answerType === "code") {
-          taskHtml += `<textarea class="form-control textarea-lg textarea-code save-user-input" id="aufgabe-${index}-${i}-${j}"></textarea>`;
+          taskHtml += `<textarea class="form-control textarea-lg textarea-code save-user-input" id="task-${data.titleTechnical}-${i}-${j}"></textarea>`;
         }
 
+        // Subtask hints
+        let multipleChoiceDisabled = "";
         if (subtask.hints) {
           subtask.hints.forEach((hint, k) => {
-            taskHtml += `<button class="btn btn-sm btn-outline-secondary mt-2" data-bs-toggle="collapse" data-bs-target="#aufgabe-${index}-${i}-${j}-hint-${k}" aria-expanded="false" aria-controls="aufgabe-${index}-${i}-${j}-hint-${k}">Hilfe aktivieren (Tipp)</button>
-                            <div class="collapse" id="aufgabe-${index}-${i}-${j}-hint-${k}">
+            multipleChoiceDisabled = "disabled";
+            let buttonDisabled = "disabled";
+            if (k === 0) buttonDisabled = "";
+
+            taskHtml += `<button class="btn btn-sm btn-outline-secondary btn-subtask-hint btn-subtask-${
+              data.titleTechnical
+            }-${i}-${j}-hint mt-2" data-bs-toggle="collapse" data-subtask-id="task-${
+              data.titleTechnical
+            }-${i}-${j}" data-hint-opened="false" data-bs-target="#task-${
+              data.titleTechnical
+            }-${i}-${j}-hint-${k}" aria-expanded="false" aria-controls="task-${
+              data.titleTechnical
+            }-${i}-${j}-hint-${k}" ${buttonDisabled}>Hilfe: Tipp ${
+              k + 1
+            }</button>
+                            <div class="collapse" id="task-${
+                              data.titleTechnical
+                            }-${i}-${j}-hint-${k}">
                                 <div class="alert alert-light mt-2">
                                     ${hint}
                                 </div>
@@ -123,39 +197,62 @@ async function loadWorksheet(index) {
           });
         }
         if (subtask.multipleChoice) {
-          taskHtml += `<button class="btn btn-sm btn-outline-secondary mt-2" data-bs-toggle="collapse" data-bs-target="#aufgabe-${index}-${i}-${j}-mc" aria-expanded="false" aria-controls="aufgabe-${index}-${i}-${j}-mc">Hilfe aktivieren (Antwortmöglichkeiten)</button>`;
-          taskHtml += `<div class="collapse" id="aufgabe-${index}-${i}-${j}-mc">
+          taskHtml += `<button class="btn btn-sm btn-outline-secondary btn-subtask-hint btn-subtask-${data.titleTechnical}-${i}-${j}-hint btn-subtask-multiple-choice mt-2" data-subtask-id="task-${data.titleTechnical}-${i}-${j}" data-hint-opened="false" data-bs-toggle="collapse" data-bs-target="#task-${data.titleTechnical}-${i}-${j}-mc" aria-expanded="false" aria-controls="task-${data.titleTechnical}-${i}-${j}-mc" ${multipleChoiceDisabled}>Hilfe: Antwortmöglichkeiten</button>`;
+          taskHtml += `<div class="collapse" id="task-${data.titleTechnical}-${i}-${j}-mc">
                         <div class="d-grid gap-2 mt-3 helpers">`;
           subtask.choices.forEach((mc, k) => {
-            taskHtml += `<button class="btn btn-outline-secondary " id="aufgabe-${index}-${i}-${j}-${k}" value="${mc.correct}">${mc.text}</button>`;
+            taskHtml += `<button class="btn btn-outline-secondary btn-subtask-multiple-choice-answer" data-subtask-id="task-${
+              data.titleTechnical
+            }-${i}-${j}" id="task-${
+              data.titleTechnical
+            }-${i}-${j}-${k}" value="${mc.correct}" data-feedback-text="${
+              mc.feedbackText || ""
+            }">${mc.text}</button>`;
           });
           taskHtml += `</div>
-                        </div>`;
+                  <div class="subtask-multiple-choice-feedback hide-element" data-subtask-id="task-${data.titleTechnical}-${i}-${j}" id="task-${data.titleTechnical}-${i}-${j}-multiple-choice-feedback">
+                    <div class="alert alert-light mt-2"></div>
+                  </div>
+                </div>`;
         }
-
         taskHtml += `</li>`;
       });
       if (askForFeedback) {
         taskHtml += `<li class="mt-5" style="list-style-type: none;">
                     <div class="alert alert-light">
-                        <div class="btn-group btn-group-sm float-end" role="group" aria-label="Basic radio toggle button group">
-                            <input type="radio" class="btn-check save-user-feedback" name="task-feedback-${index}-${i}" id="task-feedback-${index}-${i}-answer-1" autocomplete="off" value="1">
-                            <label class="btn btn-outline-dark" for="task-feedback-${index}-${i}-answer-1">--</label>
-                            
-                            <input type="radio" class="btn-check save-user-feedback" name="task-feedback-${index}-${i}" id="task-feedback-${index}-${i}-answer-2" autocomplete="off" value="2">
-                            <label class="btn btn-outline-dark" for="task-feedback-${index}-${i}-answer-2">-</label>
-                            
-                            <input type="radio" class="btn-check save-user-feedback" name="task-feedback-${index}-${i}" id="task-feedback-${index}-${i}-answer-3" autocomplete="off" value="3">
-                            <label class="btn btn-outline-dark" for="task-feedback-${index}-${i}-answer-3">o</label>
+                        <strong>Feedback zur Aufgabe</strong> 
 
-                            <input type="radio" class="btn-check save-user-feedback" name="task-feedback-${index}-${i}" id="task-feedback-${index}-${i}-answer-4" autocomplete="off" value="4">
-                            <label class="btn btn-outline-dark" for="task-feedback-${index}-${i}-answer-4">+</label>
+                        <div class="row mt-2">
+                          <div class="col-md-9">
+                            Wie sicher Sind sie sich, dass Ihre Antwort korrekt ist<br>(-- = unsicher, ++ = sicher)?
+                          </div>
+                          <div class="col-md-3">
+                            <div class="btn-group btn-group-sm btn-task-feedback float-end" role="group" aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check save-user-feedback" name="task-feedback-${data.titleTechnical}-${i}" id="task-feedback-${data.titleTechnical}-${i}-answer-1" autocomplete="off" value="1">
+                                <label class="btn btn-outline-dark" for="task-feedback-${data.titleTechnical}-${i}-answer-1">--</label>
+                                
+                                <input type="radio" class="btn-check save-user-feedback" name="task-feedback-${data.titleTechnical}-${i}" id="task-feedback-${data.titleTechnical}-${i}-answer-2" autocomplete="off" value="2">
+                                <label class="btn btn-outline-dark" for="task-feedback-${data.titleTechnical}-${i}-answer-2">-</label>
+                                
+                                <input type="radio" class="btn-check save-user-feedback" name="task-feedback-${data.titleTechnical}-${i}" id="task-feedback-${data.titleTechnical}-${i}-answer-3" autocomplete="off" value="3">
+                                <label class="btn btn-outline-dark" for="task-feedback-${data.titleTechnical}-${i}-answer-3">o</label>
 
-                            <input type="radio" class="btn-check save-user-feedback" name="task-feedback-${index}-${i}" id="task-feedback-${index}-${i}-answer-5" autocomplete="off" value="5">
-                            <label class="btn btn-outline-dark" for="task-feedback-${index}-${i}-answer-5">++</label>
+                                <input type="radio" class="btn-check save-user-feedback" name="task-feedback-${data.titleTechnical}-${i}" id="task-feedback-${data.titleTechnical}-${i}-answer-4" autocomplete="off" value="4">
+                                <label class="btn btn-outline-dark" for="task-feedback-${data.titleTechnical}-${i}-answer-4">+</label>
+
+                                <input type="radio" class="btn-check save-user-feedback" name="task-feedback-${data.titleTechnical}-${i}" id="task-feedback-${data.titleTechnical}-${i}-answer-5" autocomplete="off" value="5">
+                                <label class="btn btn-outline-dark" for="task-feedback-${data.titleTechnical}-${i}-answer-5">++</label>
                             </div>
-                        <strong>Feedback zur Aufgabe</strong><br>
-                        Wie sicher Sind sie sich, dass Ihre Antwort korrekt ist (-- = unsicher, ++ = sicher)?
+                          </div>
+                        </div>
+
+                        <div class="row mt-4">
+                          <div class="col-md-12">
+                            Gab es Probleme beim Bearbeiten der Aufgabe? War Ihnen eine Aufgabenstellung unklar?
+                            <textarea class="form-control save-user-feedback" name="task-feedback-text-${data.titleTechnical}-${i}" id="task-feedback-${data.titleTechnical}-${i}-answer-text" placeholder="Hier können Sie Feedback zur Aufgabe hinterlassen."></textarea>
+                          </div>
+                        </div>
+                          
                     </div>
                 </li>`;
       }
@@ -166,15 +263,15 @@ async function loadWorksheet(index) {
       if (task.helpers) {
         taskHtml += `<div class="col-md-4">
                         <h6>Hilfestellungen</h6>
-                        <div class="accordion" id="task${index}-${i}-helpers">`;
+                        <div class="accordion accordion-helpers" id="task-${data.titleTechnical}-${i}-helpers">`;
         task.helpers.forEach((helper, j) => {
-          taskHtml += `<div class="accordion-item">
+          taskHtml += `<div class="accordion-item" id="task-${data.titleTechnical}-${i}-helper-${j}">
                         <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#task${index}-${i}-helper${j}" aria-expanded="false" aria-controls="helper2-1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#task-${data.titleTechnical}-${i}-helper-${j}-body" aria-expanded="false" aria-controls="helper2-1">
                                 ${helper.title}
                             </button>
                         </h2>
-                        <div id="task${index}-${i}-helper${j}" class="accordion-collapse collapse">
+                        <div id="task-${data.titleTechnical}-${i}-helper-${j}-body" class="accordion-collapse collapse">
                             <div class="accordion-body">
                                 ${helper.content}
                             </div>
@@ -188,7 +285,6 @@ async function loadWorksheet(index) {
     });
   }
   document.getElementById("worksheet-tasks").innerHTML = taskHtml;
-  saveAndLoadUserInput();
 
   // Citations
   let citationsHtml = "";
@@ -205,6 +301,8 @@ async function loadWorksheet(index) {
       .querySelector("#worksheet-citations-wrapper")
       .classList.add("hide-element");
   }
+  loadUserInput(index);
+  initialiseWorksheet();
 }
 
 function getCodeHelpers(index, data, language) {
@@ -214,13 +312,17 @@ function getCodeHelpers(index, data, language) {
       .classList.remove("hide-element");
     let codeHelpersHtml = "";
     data.codeHelpers[language].forEach((helper, i) => {
-      codeHelpersHtml += `<div class="accordion-item">
+      let codeHelpersId = `helper${index}-${language}-${i}`;
+      let codeHelpersBodyShow = "";
+      let codeHelpersButtonCollapse = "collapsed";
+      let codeHelpersButtonAriaExpanded = "false";
+      codeHelpersHtml += `<div class="accordion-item" id="${codeHelpersId}" >
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#helper${index}-${language}-${i}" aria-expanded="false" aria-controls="helper${index}-${language}-${i}">
+                        <button class="accordion-button ${codeHelpersButtonCollapse}" type="button" data-bs-toggle="collapse" data-bs-target="#${codeHelpersId}-body" aria-expanded="${codeHelpersButtonAriaExpanded}" aria-controls="${codeHelpersId}-body">
                             ${helper.title}
                         </button>
                     </h2>
-                    <div id="helper${index}-${language}-${i}" class="accordion-collapse collapse">
+                    <div id="${codeHelpersId}-body" class="accordion-collapse collapse ${codeHelpersBodyShow}">
                         <div class="accordion-body">
                             ${helper.content}
                         </div>
@@ -229,6 +331,7 @@ function getCodeHelpers(index, data, language) {
       i++;
     });
     document.getElementById("code-helpers").innerHTML = codeHelpersHtml;
+    // loadUserInput(index);
   } else {
     document
       .querySelector("#code-helpers-wrapper")

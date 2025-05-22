@@ -1,8 +1,9 @@
 worksheets.push({
   titleShort: "Vigenère",
+  titleTechnical: "vigenere",
   title: 'Lässt sich die "unentzifferbare Chiffre" doch entziffern?',
   description:
-    '<p>Es dauerte nicht lange, bis das Caesar-Verfahren einer breiteren Masse bekannt war und nicht mehr als sicher galt. Im 16. Jahrhundert begannen Mönche, das Verfahren um eine weitere Dimension zu erweitern: Statt einer einfachen Verschiebung des Alphabets wurde nun für jeden Buchstaben eine unterschiedliche Verschiebung genutzt. Wegen dieser für damalige Verhältnisse komplexe Methode galt sie lange Zeit als die "unentzifferbare Chiffre\“ <a class="link-secondary" href="#schroedel2008">(Schrödel, 2008)</a></p><p>Später entwickelte Blaise de Vigenère das Verfahren weiter, weshalb es nach ihm benannt wurde.</p><p>Die verschiedenen Caesar-Verschiebungen im Vigenère-Chiffre werden durch ein Schlüsselwort bestimmt. Dieser Schlüssel wird wiederholt, um die Länge des Klartextes zu erreichen. Der Vigenère-Chiffre ist deutlich sicherer als der Caesar-Chiffre, da die Verschiebung für jeden Buchstaben unterschiedlich ist. Macht ihn das wirklich unentzifferbar?</p>',
+    '<p>Es dauerte nicht lange, bis das Caesar-Verfahren einer breiteren Masse bekannt war und nicht mehr als sicher galt. Im 16. Jahrhundert begannen Mönche, das Verfahren um eine weitere Dimension zu erweitern: Statt einer einfachen Verschiebung des Alphabets wurde nun für jeden Buchstaben eine unterschiedliche Verschiebung genutzt. Wegen dieser für damalige Verhältnisse komplexe Methode galt sie lange Zeit als die "unentzifferbare Chiffre“ <a class="link-secondary" href="#schroedel2008">(Schrödel, 2008)</a></p><p>Später entwickelte Blaise de Vigenère das Verfahren weiter, weshalb es nach ihm benannt wurde.</p><p>Die verschiedenen Caesar-Verschiebungen im Vigenère-Chiffre werden durch ein Schlüsselwort bestimmt. Dieser Schlüssel wird wiederholt, um die Länge des Klartextes zu erreichen. Der Vigenère-Chiffre ist deutlich sicherer als der Caesar-Chiffre, da die Verschiebung für jeden Buchstaben unterschiedlich ist. Macht ihn das wirklich unentzifferbar?</p>',
   citations: [
     {
       short: "schroedel2008",

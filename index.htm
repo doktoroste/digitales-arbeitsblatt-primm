@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aufgabe 1: Caesar-Verschlüsselung</title>
+    <title>Digitales Arbeitsblatt</title>
 
     <!-- Bootstrap CSS -->
     <link href="lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -26,7 +26,16 @@
             <span id="course-name">Thema</span>
           </div>
           <div class="col-md-6 text-end">
-            <span class="fw-bold" id="worksheet-number">Arbeitsblatt 1</span>
+            <span class="fw-bold" id="worksheet-number">Arbeitsblatt 1</span
+            ><br />
+            <span id="worksheet-links" class="d-flex justify-content-end">
+              <a href="#" id="worksheet-link-back" class="me-2 hide-element">
+                <i class="bi bi-arrow-left"></i> Vorheriges
+              </a>
+              <a href="#" id="worksheet-link-forward" class="hide-element">
+                Nächstes <i class="bi bi-arrow-right"></i>
+              </a>
+            </span>
           </div>
         </div>
       </header>
@@ -69,21 +78,24 @@
             <div class="col-md-4">
               <div class="hide-element" id="code-helpers-wrapper">
                 <h6>Hilfestellungen</h6>
-                <div class="accordion" id="code-helpers"></div>
+                <div
+                  class="accordion accordion-code-helpers"
+                  id="code-helpers"
+                ></div>
               </div>
 
               <div id="code-tools-wrapper">
                 <h6 class="mt-3">Tools</h6>
                 <button
                   type="button"
-                  class="btn btn-outline-primary"
+                  class="btn btn-outline-primary mb-1"
                   id="copy-code-to-clipboard"
                 >
                   <i class="bi bi-copy"></i> Code kopieren
                 </button>
                 <button
                   type="button"
-                  class="btn btn-outline-primary"
+                  class="btn btn-outline-primary mb-1"
                   id="export-code"
                 >
                   <i class="bi bi-download"></i> Code herunterladen
@@ -101,11 +113,12 @@
 
       <!-- Footer -->
       <footer class="border-top mt-5 mb-5 pt-3">
-        <button class="btn btn-secondary" id="print-worksheet">
-          Speichern als PDF für Abgabe bei der Lehrkraft
+        <button class="btn btn-secondary" id="export-data">
+          <i class="bi bi-download"></i> Daten herunterladen
         </button>
-        <button class="btn btn-light" id="export-data">
-          Exportiere User-Daten
+        <button class="btn btn-light" id="print-worksheet">
+          <i class="bi bi-printer"></i> Arbeitsblatt drucken oder als PDF
+          speichern
         </button>
       </footer>
       <footer

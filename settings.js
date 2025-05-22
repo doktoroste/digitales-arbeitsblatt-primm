@@ -2,6 +2,7 @@
 // -------------------------------------
 const subjectName = "Informatik";
 const courseName = "Kryptologie";
+const showDebugLogs = true;
 
 // Feedback
 // -------------------------------------

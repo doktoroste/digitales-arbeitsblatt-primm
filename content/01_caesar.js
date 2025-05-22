@@ -1,5 +1,6 @@
 worksheets.push({
   titleShort: "Caesar",
+  titleTechnical: "caesar",
   title: "Wie schaffte es schon Caesar, geheime Botschaften zu übermitteln?",
   description:
     "<p>Beim Schreiben von Nachrichten in Messenger-Apps wie WhatsApp oder Signal stellt sich die Frage, wie sicher diese eigentlich sind. Was passiert, wenn eine Nachricht abgefangen wird? Moderne Apps verwenden komplexe Verschlüsselungsverfahren, doch die Idee dahinter ist keineswegs neu.</p><p>Bereits in der Antike entwickelten Menschen Methoden, um geheime Botschaften zu schützen. Eine der bekanntesten stammt von Julius Caesar: Er nutzte eine einfache Technik, um seine Nachrichten vor unbefugtem Zugriff zu sichern.</p><p>Wie ist Caesar vorgegangen? Und wie sicher waren seine Nachrichten verschlüsselt?</p>",
@@ -115,18 +116,26 @@ worksheets.push({
             {
               text: "<code>text</code>: Char, <code>shift</code> Integer",
               correct: false,
+              feedbackText:
+                "Der Datentyp <code>char</code> existiert nicht in Python.",
             },
             {
               text: "<code>text</code>: String, <code>shift</code> Integer",
               correct: true,
+              feedbackText:
+                "Der Datentyp <code>String</code> ist in Python und JavaScript vorhanden.",
             },
             {
               text: "<code>text</code>: Integer, <code>shift</code> String",
               correct: false,
+              feedbackText:
+                "Der Datentyp <code>Integer</code> ist in Python und JavaScript vorhanden.",
             },
             {
               text: "<code>text</code>: String, <code>shift</code> String",
               correct: false,
+              feedbackText:
+                "Der Datentyp <code>String</code> ist in Python und JavaScript vorhanden.",
             },
           ],
         },

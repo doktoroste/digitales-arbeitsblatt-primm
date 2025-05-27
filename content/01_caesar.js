@@ -3,7 +3,7 @@ worksheets.push({
   titleTechnical: "caesar",
   title: "Wie schaffte es schon Caesar, geheime Botschaften zu übermitteln?",
   description:
-    "<p>Beim Schreiben von Nachrichten in Messenger-Apps wie WhatsApp oder Signal stellt sich die Frage, wie sicher diese eigentlich sind. Was passiert, wenn eine Nachricht abgefangen wird? Moderne Apps verwenden komplexe Verschlüsselungsverfahren, doch die Idee dahinter ist keineswegs neu.</p><p>Bereits in der Antike entwickelten Menschen Methoden, um geheime Botschaften zu schützen. Eine der bekanntesten stammt von Julius Caesar: Er nutzte eine einfache Technik, um seine Nachrichten vor unbefugtem Zugriff zu sichern.</p><p>Wie ist Caesar vorgegangen? Und wie sicher waren seine Nachrichten verschlüsselt?</p>",
+    "<p>Beim Schreiben von Nachrichten in Messenger-Apps wie WhatsApp oder Signal stellt sich die Frage, wie sicher diese eigentlich sind. Was passiert, wenn eine Nachricht abgefangen wird? Moderne Apps verwenden komplexe Verschlüsselungsverfahren, um Nachrichten geheim zu halten. Doch die Idee, Nachrichten zu verschlüsseln, ist keineswegs neu.</p><p>Bereits in der Antike entwickelten Menschen Methoden, um geheime Botschaften zu schützen. Eine der bekanntesten nutzte bereits Julius Caesar: Er griff auf eine einfache Technik zurück, um seine Nachrichten vor unbefugtem Zugriff zu sichern.</p><p>Wie ist Caesar vorgegangen? Und wie sicher waren seine Nachrichten verschlüsselt?</p>",
   image: "img/caesar-chatgpt.jpg",
   imageDescription: "Bild: Generiert mit ChatGPT, eigene Bearbeitung.",
   imageAlt: "Kaiser Caesar übergibt einem Boten eine verschlüsselte Nachricht.",

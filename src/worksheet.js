@@ -166,6 +166,21 @@ async function loadWorksheet(index) {
           taskHtml += `<textarea class="form-control textarea-lg save-user-input" id="task-${data.titleTechnical}-${i}-${j}"></textarea>`;
         } else if (subtask.answerType === "code") {
           taskHtml += `<textarea class="form-control textarea-lg textarea-code save-user-input" id="task-${data.titleTechnical}-${i}-${j}"></textarea>`;
+        } else if (subtask.answerType === "multipleChoice") {
+          taskHtml += `<div class="row gap-2 mt-3">`;
+          subtask.choices.forEach((mc, k) => {
+            taskHtml += `<div class="col d-grid"><button class="btn btn-outline-secondary btn-subtask-multiple-choice-answer" data-subtask-id="task-${
+              data.titleTechnical
+            }-${i}-${j}" id="task-${
+              data.titleTechnical
+            }-${i}-${j}-${k}" value="${mc.correct}" data-feedback-text="${
+              mc.feedbackText || ""
+            }">${mc.text}</button></div>`;
+          });
+          taskHtml += `<div class="subtask-multiple-choice-feedback hide-element" data-subtask-id="task-${data.titleTechnical}-${i}-${j}" id="task-${data.titleTechnical}-${i}-${j}-multiple-choice-feedback">
+                    <div class="alert alert-light mt-2"></div>
+                  </div>
+                  </div>`;
         }
 
         // Subtask phrasingHelpers
@@ -247,7 +262,7 @@ async function loadWorksheet(index) {
 
                         <div class="row mt-2">
                           <div class="col-md-9">
-                            Wie sicher Sind sie sich, dass Ihre Antwort korrekt ist<br>(-- = unsicher, ++ = sicher)?
+                            Wie hat Ihnen die Aufgabe gefallen?<br>(-- = unsicher, ++ = sicher)?
                           </div>
                           <div class="col-md-3">
                             <div class="btn-group btn-group-sm btn-task-feedback float-end" role="group" aria-label="Basic radio toggle button group">
@@ -269,9 +284,33 @@ async function loadWorksheet(index) {
                           </div>
                         </div>
 
+                        <div class="row mt-2">
+                          <div class="col-md-9">
+                            Wie sicher Sind sie sich, dass Ihre Antwort korrekt ist<br>(-- = unsicher, ++ = sicher)?
+                          </div>
+                          <div class="col-md-3">
+                            <div class="btn-group btn-group-sm btn-task-feedback float-end" role="group" aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check save-user-feedback" name="task-feedback-correct-${data.titleTechnical}-${i}" id="task-feedback-correct-${data.titleTechnical}-${i}-answer-1" autocomplete="off" value="1">
+                                <label class="btn btn-outline-dark" for="task-feedback-correct-${data.titleTechnical}-${i}-answer-1">--</label>
+                                
+                                <input type="radio" class="btn-check save-user-feedback" name="task-feedback-correct-${data.titleTechnical}-${i}" id="task-feedback-correct-${data.titleTechnical}-${i}-answer-2" autocomplete="off" value="2">
+                                <label class="btn btn-outline-dark" for="task-feedback-correct-${data.titleTechnical}-${i}-answer-2">-</label>
+                                
+                                <input type="radio" class="btn-check save-user-feedback" name="task-feedback-correct-${data.titleTechnical}-${i}" id="task-feedback-correct-${data.titleTechnical}-${i}-answer-3" autocomplete="off" value="3">
+                                <label class="btn btn-outline-dark" for="task-feedback-correct-${data.titleTechnical}-${i}-answer-3">o</label>
+
+                                <input type="radio" class="btn-check save-user-feedback" name="task-feedback-correct-${data.titleTechnical}-${i}" id="task-feedback-correct-${data.titleTechnical}-${i}-answer-4" autocomplete="off" value="4">
+                                <label class="btn btn-outline-dark" for="task-feedback-correct-${data.titleTechnical}-${i}-answer-4">+</label>
+
+                                <input type="radio" class="btn-check save-user-feedback" name="task-feedback-correct-${data.titleTechnical}-${i}" id="task-feedback-correct-${data.titleTechnical}-${i}-answer-5" autocomplete="off" value="5">
+                                <label class="btn btn-outline-dark" for="task-feedback-correct-${data.titleTechnical}-${i}-answer-5">++</label>
+                            </div>
+                          </div>
+                        </div>
+
                         <div class="row mt-4">
                           <div class="col-md-12">
-                            Gab es Probleme beim Bearbeiten der Aufgabe? War Ihnen eine Aufgabenstellung unklar?
+                            Gab es Probleme beim Bearbeiten der Aufgabe?
                             <textarea class="form-control save-user-feedback" name="task-feedback-text-${data.titleTechnical}-${i}" id="task-feedback-${data.titleTechnical}-${i}-answer-text" placeholder="Hier können Sie Feedback zur Aufgabe hinterlassen."></textarea>
                           </div>
                         </div>

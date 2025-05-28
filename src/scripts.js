@@ -163,6 +163,17 @@ function loadUserInput(currentWorksheet) {
         );
     }
 
+    if (taskData.feedbackCorrect) {
+      const feedbackInputCorrect = document.getElementById(
+        `task-feedback-correct-${worksheet.titleTechnical}-${taskIndex}-answer-${taskData.feedbackCorrect}`
+      );
+      if (feedbackInputCorrect) feedbackInputCorrect.checked = true;
+      if (showDebugLogs)
+        console.log(
+          `- Task has feedback-correct, load it into #task-feedback-correct-${worksheet.titleTechnical}-${taskIndex}-answer-${taskData.feedbackCorrect}`
+        );
+    }
+
     // Load feedback text
     if (taskData.feedbackText) {
       const feedbackTextInput = document.getElementById(
@@ -419,6 +430,12 @@ function saveUserInput(currentWorksheet) {
     worksheetData[currentWorksheet].tasks[taskIndex].feedback = feedbackInput
       ? feedbackInput.value
       : null;
+
+    const feedbackCorrectInput = document.querySelector(
+      `input[name="task-feedback-correct-${worksheet.titleTechnical}-${taskIndex}"]:checked`
+    );
+    worksheetData[currentWorksheet].tasks[taskIndex].feedbackCorrect =
+      feedbackCorrectInput ? feedbackCorrectInput.value : null;
 
     const feedbackText = document.getElementById(
       `task-feedback-${worksheet.titleTechnical}-${taskIndex}-answer-text`

@@ -75,6 +75,11 @@ worksheets.push({
         {
           task: 'Beschreiben Sie, was die Funktion <code class="language-specific task-language-python">shift_character()</code><code class="language-specific task-language-javascript hide-element">shiftCharacter()</code> macht.',
           answerType: "text",
+          phrasingHelpers: [
+            "Die Funktion <code class='language-specific task-language-python'>shift_character()</code><code class='language-specific task-language-javascript hide-element'>shiftCharacter()</code> erhält als Parameter ... übergeben.",
+            "Es wird zuerst überprüft, ob...",
+            "In der Variable ... wird ... gespeichert.",
+          ],
         },
         {
           task: 'Nennen Sie die erwartete Ausgabe der Funktion <code class="language-specific task-language-python">shift_character()</code><code class="language-specific task-language-javascript hide-element">shiftCharacter()</code> mit den Eingabewerten <code>char = "H"</code> und <code>shift = 3</code>.',
@@ -120,11 +125,6 @@ worksheets.push({
           title: "Alphabet-Tabelle",
           content:
             '<table class="table text-center"><thead><tr><th>Position</th><th>Buchstabe</th><th>Unicode</th></tr></thead><tbody><tr><td>1</td><td>A</td><td>65</td></tr><tr><td>2</td><td>B</td><td>66</td></tr><tr><td>3</td><td>C</td><td>67</td></tr><tr><td>4</td><td>D</td><td>68</td></tr><tr><td>5</td><td>E</td><td>69</td></tr><tr><td>6</td><td>F</td><td>70</td></tr><tr><td>7</td><td>G</td><td>71</td></tr><tr><td>8</td><td>H</td><td>72</td></tr><tr><td>9</td><td>I</td><td>73</td></tr><tr><td>10</td><td>J</td><td>74</td></tr><tr><td>11</td><td>K</td><td>75</td></tr><tr><td>12</td><td>L</td><td>76</td></tr><tr><td>13</td><td>M</td><td>77</td></tr><tr><td>14</td><td>N</td><td>78</td></tr><tr><td>15</td><td>O</td><td>79</td></tr><tr><td>16</td><td>P</td><td>80</td></tr><tr><td>17</td><td>Q</td><td>81</td></tr><tr><td>18</td><td>R</td><td>82</td></tr><tr><td>19</td><td>S</td><td>83</td></tr><tr><td>20</td><td>T</td><td>84</td></tr><tr><td>21</td><td>U</td><td>85</td></tr><tr><td>22</td><td>V</td><td>86</td></tr><tr><td>23</td><td>W</td><td>87</td></tr><tr><td>24</td><td>X</td><td>88</td></tr><tr><td>25</td><td>Y</td><td>89</td></tr><tr><td>26</td><td>Z</td><td>90</td></tr></tbody></table>',
-        },
-        {
-          title: "Formulierungshilfen",
-          content:
-            "<ul><li>Die Funktion <code>caesar_encrypt()</code> wird verwendet, um...</li><li>Die Funktion nimmt zwei Parameter entgegen: ...</li><li>Der Parameter <code>text</code> ist der Eingabetext, der...</li><li>Die Variable <code>result</code> wird erstellt, um...</li><li>Falls das Zeichen ein Buchstabe ist, wird...</li></ul>",
         },
       ],
     },
@@ -440,6 +440,10 @@ worksheets.push({
             "Vermuten Sie, welche Zeichen noch auf der Unicode-Tabelle vorhanden sind. Großbuchstaben sind nur den Werten 65 und 90 zu finden.",
             "Der Unicode-Wert von <code>A</code> ist 65. Welcher Buchstabe wird bei der Verschiebung um 27 Zeichen ausgegeben?",
           ],
+          phrasingHelpers: [
+            "Bei einer Verschiebung um 27 Zeichen wird der Buchstabe ...",
+            "Das Unicode-Zeichen an der Stelle ... wird ausgegeben.",
+          ],
         },
         {
           task: 'Setzen Sie die Parameter <code>text = "A"</code> und <code>shift = 27</code> und führen den Code aus. Vergleichen Sie das Ergebnis mit Ihrer Vorhersage.',
@@ -482,13 +486,6 @@ worksheets.push({
             "Um das Verschieben auch für Werte größer als 25 zu ermöglichen, sollten Sie einen sogenannten <i>Wraparound</i> implementieren. Für einen solchen benötigen Sie:<ol><li>Die Position des Buchstabens im Alphabet (z. B. A = 0, B = 1, ..., Z = 25),</li><li>Eine Addition des Shift-Werts zu dieser Position,</li><li>Einen Modulo 26 auf das Ergebnis – damit Sie bei Z wieder auf A springen können.</li><li>Am Ende müssen Sie diesen neuen Wert wieder in einen Buchstaben umwandeln.</li></ol>",
             "Die zuvor genannten Schritte können Sie mit folgendem Code umsetzen:<ol><li><code class='language-specific task-language-python'>position = ord(char) - ord('A')</code><code class='language-specific task-language-javascript hide-element'>let position = char.charCodeAt(0) - 'A'.charCodeAt(0)</code></li><li><code class='language-specific task-language-python'>position = position + shift</code><code class='language-specific task-language-javascript hide-element'>position = position + shift</code></li><li><code class='language-specific task-language-python'>position = position % 26</code><code class='language-specific task-language-javascript hide-element'>position = position % 26</code></li></ul>.",
           ],
-        },
-      ],
-      helpers: [
-        {
-          title: "Formulierungshilfen",
-          content:
-            "<ul><li>Bei einer Verschiebung um 32 Zeichen wird der Buchstabe...</li><li>...wird das Unicode-Zeichen an der Stelle ... ausgegeben.</li><li>Ein Problem könnte entstehen, wenn...</li><li>Um das Problem zu lösen, müsste der Code...</li></ul>",
         },
       ],
     },

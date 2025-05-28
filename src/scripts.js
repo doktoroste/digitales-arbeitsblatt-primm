@@ -9,7 +9,7 @@ function initialiseWorksheet() {
 
   document
     .querySelectorAll(
-      ".btn-subtask-multiple-choice-answer, .change-code-language, .btn-subtask-hint"
+      ".btn-subtask-multiple-choice-answer, .change-code-language, .btn-subtask-hint .btn-subtask-phrasing-helper"
     )
     .forEach((button) => {
       button.addEventListener("click", () => saveUserInput(currentIndex));

@@ -168,6 +168,29 @@ async function loadWorksheet(index) {
           taskHtml += `<textarea class="form-control textarea-lg textarea-code save-user-input" id="task-${data.titleTechnical}-${i}-${j}"></textarea>`;
         }
 
+        // Subtask phrasingHelpers
+        if (subtask.phrasingHelpers) {
+          taskHtml += `<button class="btn btn-sm btn-outline-secondary btn-subtask-phrasing-helper btn-subtask-${
+            data.titleTechnical
+          }-${i}-${j}-hint mt-2" data-bs-toggle="collapse" data-subtask-id="task-${
+            data.titleTechnical
+          }-${i}-${j}" data-hint-opened="false" data-bs-target="#task-${
+            data.titleTechnical
+          }-${i}-${j}-phrasingHelper" aria-expanded="false" aria-controls="task-${
+            data.titleTechnical
+          }-${i}-${j}-phrasingHelper">Hilfe: Formulierungen</button>
+                          <div class="collapse" id="task-${
+                            data.titleTechnical
+                          }-${i}-${j}-phrasingHelper">
+                              <div class="alert alert-light mt-2"><ul>
+                                  ${subtask.phrasingHelpers
+                                    .map((phrase) => `<li>${phrase}</li>`)
+                                    .join("")}
+                                  </ul>
+                              </div>
+                          </div>`;
+        }
+
         // Subtask hints
         let multipleChoiceDisabled = "";
         if (subtask.hints) {
@@ -262,7 +285,7 @@ async function loadWorksheet(index) {
       // Task helpers
       if (task.helpers) {
         taskHtml += `<div class="col-md-4">
-                        <h6>Hilfestellungen</h6>
+                        <h6>Weitere Erklärungen</h6>
                         <div class="accordion accordion-helpers" id="task-${data.titleTechnical}-${i}-helpers">`;
         task.helpers.forEach((helper, j) => {
           taskHtml += `<div class="accordion-item" id="task-${data.titleTechnical}-${i}-helper-${j}">

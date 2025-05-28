@@ -9,9 +9,9 @@ worksheets.push({
   imageAlt: "Kaiser Caesar übergibt einem Boten eine verschlüsselte Nachricht.",
   code: {
     javascript:
-      'function caesar_encrypt(text, shift) {\n    let result = "";\n    text = text.toUpperCase();\n    for (let char of text) {\n        if (char.isAlpha()) {\n            let newposition = char.charCodeAt(0) + shift;\n            let newchar = String.fromCharCode(newposition);\n            result = result + newchar;\n        } else {\n            result = result + char;\n        }\n    }\n    return result;\n}\n\nlet message = "Hello, World!";\nlet shift = 3;\nlet encrypted_message = caesar_encrypt(message, shift);\nconsole.log(encrypted_message);',
+      'function shiftCharacter(char, shift) {\n    if (/[A-Z]/.test(char)) {\n        let newPosition = char.charCodeAt(0) + shift;\n        return String.fromCharCode(newPosition);\n    } else {\n        return char;\n    }\n}\n\nfunction caesarEncrypt(text, shift) {\n    let result = "";\n    text = text.toUpperCase();\n    for (let char of text) {\n        result += shiftCharacter(char, shift);\n    }\n    return result;\n}\n\nfunction main() {\n    let message = "Hello, World!";\n    let shift = 3;\n    let encrypted = caesarEncrypt(message, shift);\n    console.log(encrypted);\n}\n\nmain();',
     python:
-      'def caesar_encrypt(text, shift):\n    result = ""\n    text = text.upper()\n    for char in text:\n        if char.isalpha():\n            newposition = ord(char) + shift\n            newchar = chr(newposition)\n            result = result + newchar\n        else:\n            result = result + char\n    return result\n\nmessage = "Hello, World!"\nshift = 3\nencrypted_message = caesar_encrypt(message, shift)\nprint(encrypted_message)',
+      'def shift_character(char, shift):\n    if char.isalpha():\n        char = char.upper()\n        new_position = ord(char) + shift\n        return chr(new_position)\n    else:\n        return char\n\ndef caesar_encrypt(text, shift):\n    result = ""\n    for char in text:\n        result += shift_character(char, shift)\n    return result\n\ndef main():\n    message = "Hello, World!"\n    shift = 3\n    encrypted = caesar_encrypt(message, shift)\n    print(encrypted)\n\nmain()',
   },
   codeFilename: {
     python: "caesar.py",
@@ -26,6 +26,11 @@ worksheets.push({
           "Diese Funktion prüft, ob der gegebene String nur Charaktere aus dem Alphabet, also Buchstaben, enthält.",
       },
       {
+        title: "<code>upper()</code>",
+        content:
+          'Diese Funktion wandelt den String in Großbuchstaben um. Beispiel: <code>"hallo".upper()</code> gibt <code>"HALLO"</code> zurück.',
+      },
+      {
         title: "<code>ord()</code>",
         content:
           'Diese Funktion gibt die Zahl des Unicode-Codes eines Zeichens zurück. Beispiel: <code>ord("h")</code> gibt <code>104</code> zurück.',
@@ -38,9 +43,9 @@ worksheets.push({
     ],
     javascript: [
       {
-        title: "<code>String.prototype.isAlpha()</code>",
+        title: "<code>/[A-Z]/.test(char)</code>",
         content:
-          "Diese Methode prüft, ob der gegebene String nur Charaktere aus dem Alphabet, also Buchstaben, enthält.",
+          "Hierbei handelt es sich um einen regulären Ausdruck, mit dem geprüft wird, ob der eingegebene Parameter <code>char</code> ein Buchstaben ist.",
       },
       {
         title: "<code>String.prototype.charCodeAt()</code>",
@@ -53,6 +58,11 @@ worksheets.push({
           'Diese Funktion gibt das Unicode-Zeichen zurück, das durch diese Nummer repräsentiert wird. Beispiel: <code>String.fromCharCode(104)</code> gibt <code>"h"</code> zurück.',
       },
       {
+        title: "<code>String.toUpperCase()</code>",
+        content:
+          'Diese Funktion wandelt den String in Großbuchstaben um. Beispiel: <code>"hallo".toUpperCase()</code> gibt <code>"HALLO"</code> zurück.',
+      },
+      {
         title: "<code>console.log()</code>",
         content: "Diese Funktion gibt den übergebenen Wert in der Konsole aus.",
       },
@@ -63,7 +73,41 @@ worksheets.push({
       title: "Aufgabe 1: Den Code beschreiben",
       subtasks: [
         {
-          task: "Beschreiben Sie, was der gezeigte Code macht.",
+          task: 'Beschreiben Sie, was die Funktion <code class="language-specific task-language-python">shift_character()</code><code class="language-specific task-language-javascript hide-element">shiftCharacter()</code> macht.',
+          answerType: "text",
+        },
+        {
+          task: 'Nennen Sie die erwartete Ausgabe der Funktion <code class="language-specific task-language-python">shift_character()</code><code class="language-specific task-language-javascript hide-element">shiftCharacter()</code> mit den Eingabewerten <code>char = "H"</code> und <code>shift = 3</code>.',
+          answerType: "multipleChoice",
+          choices: [
+            {
+              text: "D",
+              correct: false,
+              feedbackText:
+                "Die Verschiebung <code>shift</code> wird auf den Unicode-Wert des Zeichens <code>char</code> addiert, so dass <code>H</code> (Unicode 72) um 3 verschoben wird und <code>K</code> (Unicode 75) ergibt.",
+            },
+            {
+              text: "E",
+              correct: false,
+              feedbackText:
+                "Die Verschiebung <code>shift</code> wird auf den Unicode-Wert des Zeichens <code>char</code> addiert, so dass <code>H</code> (Unicode 72) um 3 verschoben wird und <code>K</code> (Unicode 75) ergibt.",
+            },
+            {
+              text: "J",
+              correct: false,
+              feedbackText:
+                "Die Verschiebung <code>shift</code> wird auf den Unicode-Wert des Zeichens <code>char</code> addiert, so dass <code>H</code> (Unicode 72) um 3 verschoben wird und <code>K</code> (Unicode 75) ergibt.",
+            },
+            {
+              text: "K",
+              correct: true,
+              feedbackText:
+                "Die Verschiebung <code>shift</code> wird auf den Unicode-Wert des Zeichens <code>char</code> addiert, so dass <code>H</code> (Unicode 72) um 3 verschoben wird und <code>K</code> (Unicode 75) ergibt.",
+            },
+          ],
+        },
+        {
+          task: "Beschreiben Sie, was der gezeigte Code beim Aufruf der Funktion <code>main()</code> macht.",
           answerType: "textLong",
         },
         {
@@ -105,123 +149,217 @@ worksheets.push({
       title: "Aufgabe 3: Den Code analysieren",
       subtasks: [
         {
-          task: "Beschreiben Sie, welche Datentypen in den Parametern <code>text</code> und <code>shift</code> übergeben werden.",
+          task: 'Nennen Sie den Datentyp, der in der Funktion <code class="language-specific task-language-python">caesar_encrypt()</code><code class="language-specific task-language-javascript hide-element">caesarEncrypt()</code> im Parameter <code>text</code> übergeben wird.',
           answerType: "text",
           hints: [
-            "Denken Sie an die möglichen Datentypen von Variablen in Python oder JavaScript.",
-            '<table class="table text-center"><thead><tr><th>Datentyp</th><th>Beispiel</th></tr></thead><tbody><tr><td>String</td><td><code>"Hallo Welt"</code></td></tr><tr><td>char</td><td><code>\'H\'<code></td></tr><tr><td>integer</td><td><code>42<code></td></tr><tr><td>Float</td><td><code>3.1415<code></td></tr></tbody></table>',
+            "Gibt es in Programmiersprachen wie Python oder JavaScript einen spezifischen Datentypen für Textketten?",
+            '<table class="table text-center"><thead><tr><th>Datentyp</th><th>Beispiel</th></tr></thead><tbody><tr><td>String</td><td><code>"Hallo Welt"</code></td></tr><tr><td>Char</td><td><code>\'H\'<code></td></tr><tr><td>Integer</td><td><code>42<code></td></tr><tr><td>Float</td><td><code>3.1415<code></td></tr></tbody></table>',
           ],
           multipleChoice: true,
           choices: [
             {
-              text: "<code>text</code>: Char, <code>shift</code> Integer",
+              text: "Char",
               correct: false,
               feedbackText:
                 "Da der text aus mehreren Zeichen bestehen kann, ist der Datentyp <code>Char</code> für diesen nicht geeignet.",
             },
             {
-              text: "<code>text</code>: String, <code>shift</code> Integer",
+              text: "String",
               correct: true,
               feedbackText:
-                "Der zu verschlüsselnde Text ist eine Zeichenkette und damit ein <code>String</code>. Die Anzahl, um die die Buchstaben verschoben werden, ist immer eine ganze Zahl und damit ein <code>Integer</code>.",
+                "Der zu verschlüsselnde Text ist eine Zeichenkette und damit ein <code>String</code>.",
             },
             {
-              text: "<code>text</code>: Integer, <code>shift</code> String",
+              text: "Integer",
               correct: false,
               feedbackText:
                 "Im Datentyp <code>Integer</code> werden ganze Zahlen gespeichert. Der Text ist jedoch eine Zeichenkette und damit ein <code>String</code>.",
             },
             {
-              text: "<code>text</code>: String, <code>shift</code> String",
+              text: "Boolean",
               correct: false,
               feedbackText:
-                "Obwohl es möglich ist, den <code>shift</code> als <code>String</code> zu übergeben, ist es nicht sinnvoll. Der <code>shift</code> sollte immer eine ganze Zahl und damit ein <code>Integer</code>sein.",
+                "Der Datentyp <code>Boolean</code> speichert nur zwei Werte: <code>True</code> oder <code>False</code>. Der Text ist jedoch eine Zeichenkette und damit ein <code>String</code>.",
             },
           ],
         },
         {
-          task: "Beschreiben Sie, wie häufig die for-Schleife in Zeile 4 durchlaufen wird.",
+          task: "Nennen Sie den Datentyp, der im Parameter <code>shift</code> übergeben wird.",
           answerType: "text",
           hints: [
-            "Denken Sie daran, welcher Datentyp in <code>Char</code> gespeichert wird.",
+            "Welcher Datentyp wird in Programmiersprachen wie Python oder JavaScript für ganze Zahlen verwendet?",
+            '<table class="table text-center"><thead><tr><th>Datentyp</th><th>Beispiel</th></tr></thead><tbody><tr><td>String</td><td><code>"Hallo Welt"</code></td></tr><tr><td>Char</td><td><code>\'H\'<code></td></tr><tr><td>Integer</td><td><code>42<code></td></tr><tr><td>Float</td><td><code>3.1415<code></td></tr></tbody></table>',
+          ],
+          multipleChoice: true,
+          choices: [
+            {
+              text: "Integer",
+              correct: true,
+              feedbackText:
+                "Die Anzahl, um die die Buchstaben verschoben werden, ist immer eine ganze Zahl und damit ein <code>Integer</code>.",
+            },
+            {
+              text: "Float",
+              correct: false,
+              feedbackText:
+                "Obwohl es möglich ist, den <code>shift</code> als <code>Float</code> zu übergeben, ist es nicht sinnvoll. Der Code verschiebt Buchstaben, es gibt allerdings keine 'halben' Buchstaben. Der <code>shift</code> sollte entsprechend immer eine ganze Zahl und damit ein <code>Integer</code> sein.",
+            },
+            {
+              text: "String",
+              correct: false,
+              feedbackText:
+                "Obwohl es möglich ist, den <code>shift</code> als <code>String</code> zu übergeben, ist es nicht sinnvoll. Bestimmte Rechenoperationen sind in vielen Programmiersprachen erst möglich oder korrekt, wenn Werte als ganze Zahl gespeichert werden. Der <code>shift</code> sollte immer eine ganze Zahl und damit ein <code>Integer</code> sein.",
+            },
+            {
+              text: "Char",
+              correct: false,
+              feedbackText:
+                "Obwohl es möglich ist, den <code>shift</code> als <code>Char</code> zu übergeben, ist es nicht sinnvoll. Der <code>shift</code> ist eine Zahl, die angibt, um wie viele Stellen die Buchstaben verschoben werden sollen. Der <code>shift</code> sollte entsprechend immer eine ganze Zahl und damit ein <code>Integer</code> sein.",
+            },
+          ],
+        },
+        {
+          task: 'Beschreiben Sie, wie häufig die for-Schleife in Zeile <span class="language-specific task-language-python">11</span><span class="language-specific task-language-javascript">13</span> durchlaufen wird.',
+          answerType: "text",
+          hints: [
             "Welcher Wert wird in <code>text</code> gespeichert?",
+            "Wie viele Zeichen hat der Text <code>text</code>?",
           ],
           multipleChoice: true,
           choices: [
             {
               text: "Genau 10 Mal",
               correct: false,
+              feedbackText:
+                "Die Schleife wird nicht nur 10 Mal durchlaufen, sondern so oft, wie der Text <code>text</code> Zeichen enthält. Der Text <code>text</code> hat 13 Zeichen, daher wird die Schleife in diesem Fall 13 Mal durchlaufen.",
             },
             {
               text: "Genau 13 Mal",
               correct: true,
+              feedbackText:
+                "Die Schleife wird nicht nur 10 Mal durchlaufen, sondern so oft, wie der Text <code>text</code> Zeichen enthält. Der Text <code>text</code> hat 13 Zeichen, daher wird die Schleife in diesem Fall 13 Mal durchlaufen.",
             },
             {
               text: "So oft, wie der Text Zeichen enthält",
               correct: true,
+              feedbackText:
+                "Die Schleife wird so oft durchlaufen, wie der Text <code>text</code> Zeichen enthält. In diesem Fall sind es 13 Zeichen.",
             },
             {
               text: "Genau 3 Mal",
               correct: false,
+              feedbackText:
+                "Die Schleife wird nicht nur 3 Mal durchlaufen, sondern so oft, wie der Text <code>text</code> Zeichen enthält. In diesem Fall sind es 13 Zeichen.",
             },
           ],
         },
         {
-          task: 'Erklären Sie die Verwendung der Funktionen <code class="language-specific task-language-python">ord()</code><code class="language-specific task-language-javascript hide-element">charCodeAt()</code> und <code class="language-specific task-language-python">chr()</code><code class="language-specific task-language-javascript hide-element">String.fromCharCode</code> im Code.',
+          task: 'Begründe, warum die Funktion <code class="language-specific task-language-python">ord()</code><code class="language-specific task-language-javascript hide-element">charCodeAt()</code> im Code nicht weggelassen werden kann.',
           answerType: "text",
           hints: [
-            "Welche Werte werden in den Parametern der Funktionen übergeben?",
-            "Wie heißen die Variablen, in denen die Ergebnisse dieser Funktionen gespeichert werden?",
+            "Welcher Wert wird im Parameter der Funktionen übergeben?",
+            "Wie heißt die Variable, in der das Ergebnis dieser Funktionen gespeichert werden?",
           ],
           multipleChoice: true,
           choices: [
             {
-              text: "Mit den Funktionen werden die Zeichen des Textes in Großbuchstaben umgewandelt.",
+              text: "Da mit dieser Funktion die Zeichen des Textes erst in Großbuchstaben umgewandelt werden.",
               correct: false,
+              feedbackText:
+                "Die Funktion wird verwendet, um den Unicode-Wert des Zeichens zu ermitteln, nicht um es in Großbuchstaben umzuwandeln. Wird sie weggelassen, kann der Code nicht korrekt funktionieren, da Buchstaben nicht einfach addiert werden können.",
             },
             {
-              text: "Die Funktionen verändern den Text, um ihn zu verschlüsseln.",
-              correct: true,
-            },
-            {
-              text: "Die Funktionen sind nicht relevant für den Code.",
+              text: "Die Funktion gibt das Zeichen eines Unicode-Wertes zurück. Ohne sie würden nur Zahlen zurückgegeben werden.",
               correct: false,
+              feedbackText:
+                "Die Funktion wird verwendet, um den Unicode-Wert des Zeichens zu ermitteln. Wird sie weggelassen, kann der Code nicht korrekt funktionieren, da Buchstaben nicht einfach addiert werden können.",
             },
             {
-              text: "Mit den Funktionen werden die Unicode-Werte der Zeichen ermittelt und wieder in Zeichen umgewandelt.",
+              text: "Die Funktion ist nicht relevant für den Code, sie kann weggelassen werden.",
+              correct: false,
+              feedbackText:
+                "Die Funktion wird verwendet, um den Unicode-Wert des Zeichens zu ermitteln. Wird sie weggelassen, kann der Code nicht korrekt funktionieren, da Buchstaben nicht einfach addiert werden können.",
+            },
+            {
+              text: "Mit der Funktion wird der Unicode-Wert eines Zeichens ermittelt. Ohne sie würde der Code nicht funktionieren, da Buchstaben nicht einfach addiert werden können.",
               correct: true,
+              feedbackText:
+                "Die Funktion gibt beispielsweise den Unicode-Wert des Zeichens <code>H</code> zurück, der 72 ist. Mit dieser Zahl kann dann die Verschiebung um den Wert von <code>shift</code> erfolgen.",
             },
           ],
         },
         {
-          task: 'Erklären Sie den Code in <code class="language-specific task-language-python">Zeile 6</code><code class="language-specific task-language-javascript hide-element">Zeile 6</code>: <code class="language-specific task-language-python">newposition = ord(char) + shift</code><code class="language-specific task-language-javascript hide-element">let newposition = char.charCodeAt(0) + shift;</code>',
+          task: 'Begründe, warum die Funktion <code class="language-specific task-language-python">chr()</code><code class="language-specific task-language-javascript hide-element">String.fromCharCode</code> im Code nicht weggelassen werden kann.',
           answerType: "text",
           hints: [
-            'Welchen Wert gibt die Funktion <code class="language-specific task-language-python">ord()</code><code class="language-specific task-language-javascript hide-element">charCodeAt()</code> für den ersten Buchstaben aus <code>text</code> zurück?',
+            "Welcher Wert wird im Parameter der Funktion übergeben?",
+            "Welcher Wert würde ohne diese Funktion zurückgegeben?",
+          ],
+          multipleChoice: true,
+          choices: [
+            {
+              text: "Die Funktion ist nicht relevant für den Code, sie kann weggelassen werden.",
+              correct: false,
+              feedbackText:
+                "Die Funktion gibt das Zeichen zurück, das dem Unicode-Code zugeordnet ist. Ohne sie würden nur Zahlen zurückgegeben werden.",
+            },
+            {
+              text: "Die Funktion gibt das Zeichen zurück, das dem Unicode-Code zugeordnet ist. Ohne sie würden nur Zahlen zurückgegeben werden.",
+              correct: true,
+              feedbackText:
+                "Die Funktion gibt beispielsweise das Zeichen zurück, das dem Unicode-Code 72 zugeordnet ist, also <code>H</code>.",
+            },
+            {
+              text: "Mit der Funktion wird der Unicode-Wert eines Zeichens ermittelt. Ohne sie würde der Code nicht funktionieren, da Buchstaben nicht einfach addiert werden können.",
+              correct: false,
+              feedbackText:
+                "Die Funktion gibt das Zeichen zurück, das dem Unicode-Code zugeordnet ist. Ohne sie würden nur Zahlen zurückgegeben werden.",
+            },
+            {
+              text: "Da mit dieser Funktion die Zeichen des Textes erst in Großbuchstaben umgewandelt werden.",
+              correct: false,
+              feedbackText:
+                "Die Funktion gibt das Zeichen zurück, das dem Unicode-Code zugeordnet ist. Ohne sie würden nur Zahlen zurückgegeben werden.",
+            },
+          ],
+        },
+        {
+          task: 'Erklären Sie den Code in <span class="language-specific task-language-python">Zeile 4</span><span class="language-specific task-language-javascript hide-element">Zeile 3</span>: <code class="language-specific task-language-python">new_position = ord(char) + shift</code><code class="language-specific task-language-javascript hide-element">let newPosition = char.charCodeAt(0) + shift;</code>',
+          answerType: "text",
+          hints: [
+            "Welchen Wert gibt die Funktion <code class='language-specific task-language-python'>ord()</code><code class='language-specific task-language-javascript hide-element'>charCodeAt()</code> für den Buchstaben <code>H</code> zurück?",
             "Was wird mit dem Wert der Variable <code>shift</code> gemacht?",
           ],
           multipleChoice: true,
           choices: [
             {
-              text: "Der Unicode-Wert des Zeichens wird um den Wert von <code>shift</code> erhöht.",
+              text: "Der Unicode-Wert des Zeichens <code>char</code> wird um den Wert von <code>shift</code> erhöht.",
               correct: true,
+              feedbackText:
+                "Wird beispielsweise <code>H</code> (Unicode 72) um 3 erhöht, ergibt sich <code>K</code> (Unicode 75).",
             },
             {
-              text: "Der Unicode-Wert des Zeichens wird um den Wert von <code>shift</code> verringert.",
+              text: "Der Unicode-Wert des Zeichens <code>char</code> wird um den Wert von <code>shift</code> verringert.",
               correct: false,
+              feedbackText:
+                "Mit dem Operator <code>+</code> wird der Wert von <code>shift</code> addiert, nicht subtrahiert.",
             },
             {
-              text: "An der neuen Position wird das Zeichen <code>shift</code> eingefügt.",
+              text: "An der neuen Position im <code>text</code> wird das Zeichen <code>shift</code> eingefügt.",
               correct: false,
+              feedbackText:
+                "Die Variable <code>shift</code> ist eine Zahl, die angibt, um wie viele Stellen die Buchstaben verschoben werden sollen. Sie wird nicht als Zeichen in den Text eingefügt.",
             },
             {
-              text: "Die neue Position wird berechnet, indem das Zeichen <code>shift</code> hinzugefügt wird.",
+              text: "Das bisherige Schlüsselwort wird um den neu verschobenen Buchstaben <code>shift</code> erweitert.",
               correct: false,
+              feedbackText:
+                "Die Variable <code>shift</code> ist eine Zahl, die angibt, um wie viele Stellen die Buchstaben verschoben werden sollen. Sie wird nicht als Zeichen in den Text eingefügt.",
             },
           ],
         },
         {
-          task: "Beschreiben Sie, was bei der Eingabe von Leer- oder Satzzeichen passieren würde. Welche Zeilen des Codes sind hier relevant?",
+          task: "Beschreiben Sie, was bei der Eingabe von Leer- oder Satzzeichen passieren würde. Nennen Sie auch die Zeilen des Codes, die hier relevant sind.",
           answerType: "text",
           hints: [
             "In welchen Codezeilen wird überprüft, ob ein Zeichen ein Buchstabe ist?",
@@ -230,20 +368,28 @@ worksheets.push({
           multipleChoice: true,
           choices: [
             {
-              text: "Leer- und Satzzeichen werden ebenfalls um den Wert von <code>shift</code> verschoben (Zeile 6).",
+              text: 'Leer- und Satzzeichen werden ebenfalls um den Wert von <code>shift</code> verschoben (Zeile <span class="language-specific task-language-python">4</span><span class="language-specific task-language-javascript hide-element">3</span>.',
               correct: false,
+              feedbackText:
+                "Da eine Verschiebung von Leer- und Satzzeichen keinen Sinn ergeben würde, wird in der <code>if</code>-Abfrage in Zeile <span class='language-specific task-language-python'>4</span><span class='language-specific task-language-javascript hide-element'>3</span> überprüft, ob das Zeichen ein Buchstabe ist. Wenn nicht (<code>else</code>), wird es in Zeile <span class='language-specific task-language-python'>7</span><span class='language-specific task-language-javascript hide-element'>6</span> unverändert übernommen.",
             },
             {
-              text: "Leer- und Satzzeichen werden unverändert übernommen (Zeilen 5 und 10).",
+              text: 'Leer- und Satzzeichen werden unverändert übernommen (Zeile <span class="language-specific task-language-python">7</span><span class="language-specific task-language-javascript hide-element">6</span>).',
               correct: true,
+              feedbackText:
+                "In der <code>if</code>-Abfrage in Zeile <span class='language-specific task-language-python'>4</span><span class='language-specific task-language-javascript hide-element'>3</span> wird überprüft, ob das Zeichen ein Buchstabe ist. Wenn nicht (<code>else</code>), wird es in Zeile <span class='language-specific task-language-python'>7</span><span class='language-specific task-language-javascript hide-element'>6</span> unverändert übernommen.",
             },
             {
-              text: "Es wird eine Fehlermeldung ausgegeben (Zeile 13).",
+              text: 'Es wird eine Fehlermeldung ausgegeben (Zeile <span class="language-specific task-language-python">7</span><span class="language-specific task-language-javascript hide-element">6</span>).',
               correct: false,
+              feedbackText:
+                "Eine Fehlermeldung wird im Code nicht ausgegeben. In der <code>if</code>-Abfrage in Zeile <span class='language-specific task-language-python'>4</span><span class='language-specific task-language-javascript hide-element'>3</span> wird überprüft, ob das Zeichen ein Buchstabe ist. Wenn nicht (<code>else</code>), wird es in Zeile <span class='language-specific task-language-python'>7</span><span class='language-specific task-language-javascript hide-element'>6</span> unverändert übernommen.",
             },
             {
-              text: "Leer- und Satzzeichen werden aus dem Text entfernt (Zeile 9).",
+              text: 'Leer- und Satzzeichen werden aus dem Text entfernt (Zeile <span class="language-specific task-language-python">3</span><span class="language-specific task-language-javascript hide-element">12</span>).',
               correct: false,
+              feedbackText:
+                "Es werden keine Zeichen aus dem eingebenen Text entfernt. In der <code>if</code>-Abfrage in Zeile <span class='language-specific task-language-python'>4</span><span class='language-specific task-language-javascript hide-element'>3</span> wird überprüft, ob das Zeichen ein Buchstabe ist. Wenn nicht (<code>else</code>), wird es in Zeile <span class='language-specific task-language-python'>7</span><span class='language-specific task-language-javascript hide-element'>6</span> unverändert übernommen.",
             },
           ],
         },
@@ -252,25 +398,33 @@ worksheets.push({
           answerType: "text",
           hints: [
             "Wird im Code zwischen Groß- und Kleinbuchstaben unterschieden?",
-            "Betrachten Sie die Zeile, in der die Variable <code>text</code> definiert wird.",
+            "Betrachten Sie Zeile <span class='language-specific task-language-python'>3</span><span class='language-specific task-language-javascript hide-element'>12</span>, in der der Wert der Variable <code class='language-specific task-language-python'>char</code><code class='language-specific task-language-javascript hide-element'>text</code> verändert wird.",
           ],
           multipleChoice: true,
           choices: [
             {
               text: "Der Code ist fehlerhaft und sollte unterschiedliche Ausgaben liefern.",
               correct: false,
+              feedbackText:
+                "Der Code ist nicht fehlerhaft. Er wandelt mit der Funktion <code class='language-specific task-language-python'>upper()</code><code class='language-specific task-language-javascript hide-element'>toUpperCase()</code> in Zeile <span class='language-specific task-language-python'>3</span><span class='language-specific task-language-javascript hide-element'>12</span>alle Zeichen in Großbuchstaben um, bevor sie verschlüsselt werden. Daher ist die Ausgabe für beide Eingaben identisch.",
             },
             {
               text: "Da Klein- und Großbuchstaben immer um genau 26 Zeichen verschoben sind, ist die Ausgabe gleich.",
               correct: false,
+              feedbackText:
+                "Die Unicode-Werte von Groß- und Kleinbuchstaben sind unterschiedlich, daher ist diese Aussage nicht korrekt. Der Code wandelt entsprechend in Zeile <span class='language-specific task-language-python'>3</span><span class='language-specific task-language-javascript hide-element'>12</span> alle Zeichen in Großbuchstaben um, bevor sie verschlüsselt werden.",
             },
             {
               text: "Der Unicode-Code von Groß- und Kleinbuchstaben ist identisch, daher ist die Ausgabe gleich.",
               correct: false,
+              feedbackText:
+                "Die Unicode-Werte von Groß- und Kleinbuchstaben sind unterschiedlich. Der Code wandelt daher in Zeile <span class='language-specific task-language-python'>3</span><span class='language-specific task-language-javascript hide-element'>12</span> alle Zeichen in Großbuchstaben um, bevor sie verschlüsselt werden.",
             },
             {
-              text: "Der Code konvertiert in Zeile 3 alle Zeichen in Großbuchstaben, bevor er sie verschlüsselt.",
+              text: "Der Code konvertiert alle Zeichen in Großbuchstaben, bevor er sie verschlüsselt.",
               correct: true,
+              feedbackText:
+                "Der Code wandelt mit der Funktion <code class='language-specific task-language-python'>upper()</code><code class='language-specific task-language-javascript hide-element'>toUpperCase()</code> in Zeile <span class='language-specific task-language-python'>3</span><span class='language-specific task-language-javascript hide-element'>12</span>alle Zeichen in Großbuchstaben um, bevor sie verschlüsselt werden.",
             },
           ],
         },
@@ -280,31 +434,53 @@ worksheets.push({
       title: "Aufgabe 4: Den Code verbessern",
       subtasks: [
         {
-          task: "Beschreiben Sie, welche Ausgabe Sie beim Ausführen des Codes mit dem Parameter <code>shift = 32</code>. erwarten.",
+          task: 'Beschreiben Sie, welche Ausgabe Sie beim Ausführen des Codes mit dem Parametern <code>text = "A"</code> und <code>shift = 27</code>. erwarten. Sie müssen keinen spezifischen Ausgabewert angeben.',
           answerType: "text",
           hints: [
-            "Sie müssen keinen spezifischen Ausgabewert angeben. Vermuten Sie, welche Zeichen noch auf der Unicode-Tabelle vorhanden sind.",
-            "Der Unicode-Wert von <code>A</code> ist 65. Welcher Buchstabe wird bei der Verschiebung um 32 Zeichen ausgegeben?",
+            "Vermuten Sie, welche Zeichen noch auf der Unicode-Tabelle vorhanden sind. Großbuchstaben sind nur den Werten 65 und 90 zu finden.",
+            "Der Unicode-Wert von <code>A</code> ist 65. Welcher Buchstabe wird bei der Verschiebung um 27 Zeichen ausgegeben?",
           ],
         },
         {
-          task: "Setzen Sie den Parameter <code>shift = 32</code> und führen den Code aus. Vergleichen Sie das Ergebnis mit Ihrer Vorhersage.",
+          task: 'Setzen Sie die Parameter <code>text = "A"</code> und <code>shift = 27</code> und führen den Code aus. Vergleichen Sie das Ergebnis mit Ihrer Vorhersage.',
           answerType: "text",
         },
         {
-          task: "Erklären Sie ein mögliches Problem sowie einen potenziellen Lösungsansatz.",
+          task: "Erklären Sie das hier aufgezeigte Problem mit dem aktuellen Code. Beschreiben Sie, um was der Code ergänzt oder verändert werden müsste, damit der Code auch mit dem aufgezeigten Problem umgehen kann.",
           answerType: "textLong",
           hints: [
             "Was passiert, wenn der Wert von <code>shift</code> größer ist als die Anzahl der Buchstaben im Alphabet?",
-            "Führen Sie den Code mit einem noch höheren Wert für <code>shift</code> aus. Beschreiben Sie die Ausgabe.",
+            "Wie kann sichergestellt werden, dass <code>shift</code> immer kleiner ist als die Anzahl der Buchstaben im Alphabet?",
+            "Es könnte in einer <code>if</code>-Verzweigung geprüft werden, ob der <code>shift</code> größer als 25 ist.",
           ],
         },
         {
-          task: "Verändern Sie den Code so, dass das in Teilaufgabe a beschriebene Problem behoben wird.",
+          task: "Verändern Sie den Code in der Funktion <code class='language-specific task-language-python'>shift_character</code><code class='language-specific task-language-javascript hide-element'>shiftCharacter</code> so, dass das in Teilaufgabe a beschriebene Problem behoben wird.",
           answerType: "code",
           hints: [
             "Überlegen Sie, wie Sie sicherstellen können, dass der Wert von <code>shift</code> immer kleiner ist als die Anzahl der Buchstaben im Alphabet.",
-            "Nutzen Sie den Modulo-Operator <code>%</code>, um einen gültigen Wert für die Verschiebung aus der Eingabe <code>shift</code> zu berechnen.",
+            "Wäre es sinnvoll, mit einer if-Abfrage überprüfen, ob der Wert von <code>shift</code> größer ist als 25?",
+          ],
+        },
+        {
+          task: 'Beschreiben Sie, welche Ausgabe Sie beim Ausführen des veränderten Codes mit dem Parametern <code>text = "A"</code> und <code>shift = 104</code>. erwarten. Sie müssen keinen spezifischen Ausgabewert angeben.',
+          answerType: "text",
+          hints: [
+            "Wie haben Sie den Code verändert? Gibt es jetzt eine Begrenzung für den Wert von <code>shift</code>?",
+            "Deckt Ihr neuer Code auch Fälle ab, in denen <code>shift</code> deutlich größer als 25 ist?",
+          ],
+        },
+        {
+          task: 'Setzen Sie die Parameter <code>text = "A"</code> und <code>shift = 104</code> und führen den Code aus. Vergleichen Sie das Ergebnis mit Ihrer Vorhersage.',
+          answerType: "text",
+        },
+        {
+          task: "Falls die Ausgabe nicht Ihrer Vorhersage entsprach: Verändern Sie den Code so, dass auch ein Fall wie in der letzten Teilaufgabe ohne Probleme ausgeführt werden kann.",
+          answerType: "code",
+          hints: [
+            "Der Modulo-Operator <code>%</code> gibt den Rest einer Division zurück.<br>Beispiel: <code>31 % 26</code> ergibt <code>5</code>, weil 26 genau einmal in 31 passt, mit einem Rest von 5.<br>So können Werte wie 27, 52 oder 86 in einen Bereich zwischen 0 und 25 gebracht werden.",
+            "Um das Verschieben auch für Werte größer als 25 zu ermöglichen, sollten Sie einen sogenannten <i>Wraparound</i> implementieren. Für einen solchen benötigen Sie:<ol><li>Die Position des Buchstabens im Alphabet (z. B. A = 0, B = 1, ..., Z = 25),</li><li>Eine Addition des Shift-Werts zu dieser Position,</li><li>Einen Modulo 26 auf das Ergebnis – damit Sie bei Z wieder auf A springen können.</li><li>Am Ende müssen Sie diesen neuen Wert wieder in einen Buchstaben umwandeln.</li></ol>",
+            "Die zuvor genannten Schritte können Sie mit folgendem Code umsetzen:<ol><li><code class='language-specific task-language-python'>position = ord(char) - ord('A')</code><code class='language-specific task-language-javascript hide-element'>let position = char.charCodeAt(0) - 'A'.charCodeAt(0)</code></li><li><code class='language-specific task-language-python'>position = position + shift</code><code class='language-specific task-language-javascript hide-element'>position = position + shift</code></li><li><code class='language-specific task-language-python'>position = position % 26</code><code class='language-specific task-language-javascript hide-element'>position = position % 26</code></li></ul>.",
           ],
         },
       ],
@@ -320,7 +496,7 @@ worksheets.push({
       title: "Aufgabe 5: Den Code erweitern",
       subtasks: [
         {
-          task: "Ergänzen Sie den Code um eine Funktion zum Entschlüsseln eines Strings, der vorher mit dem Caesar-Chiffre um eine bekannte Länge verschlüsselt wurde. Die Funktion sollte wie bisher die Parameter <code>text</code> und <code>shift</code> als Eingabe erhalten.",
+          task: "Ergänzen Sie den Code um eine Funktion <code class='language-specific task-language-python'>caesar_decrypt</code><code class='language-specific task-language-javascript hide-element'>caesarDecrypt</code> zum Entschlüsseln eines Strings, der vorher mit dem Caesar-Chiffre um eine bekannte Länge verschlüsselt wurde. Die Funktion sollte wie bisher die Parameter <code>text</code> und <code>shift</code> als Eingabe erhalten.",
           answerType: "code",
           hints: [
             "Denken Sie daran, dass die Buchstaben in die andere Richtung verschoben werden müssen.",
@@ -329,20 +505,22 @@ worksheets.push({
           ],
         },
         {
-          task: '<span class="text-muted">(Zusatzaufgabe)</span> Schreiben Sie eine Funktion, die in einer Brute-Force-Methode alle möglichen Varianten für Verschiebungen ausprobiert.',
+          task: '<span class="text-muted">(Zusatzaufgabe)</span> Schreiben Sie eine Funktion, die alle möglichen Varianten für Verschiebungen ausprobiert.',
           answerType: "code",
           hints: [
             "Wie können Sie es schaffen, die bereits implementierte Funktion <code>caesar_decrypt()</code> mehrmals mit verschiedenen Parametern auszuführen?",
-            'Sie können mit einer <code>for-Schleife</code> arbeiten: <code class="language-specific task-language-python">for shift in range(1, 26):</code><code class="language-specific task-language-javascript hide-element">for (let shift = 1; shift < 26; shift++) {</code>',
-            'Ein möglicher Ansatz für die Funktion (noch mit Lücken): <code class="language-specific task-language-python"><pre>def caesar_bruteforce(text):\n    for shift in range(1, 26):\n        # TODO</pre></code><code class="language-specific task-language-javascript hide-element"><pre>function caesar_bruteforce(text) {\n    for (let shift = 1; shift < 26; shift++) {\n        // TODO\n    }\n}</pre></code>',
+            "Sie können mit einer <code>for-Schleife</code> arbeiten.",
+            '<code class="language-specific task-language-python">for shift in range(1, 26):</code><code class="language-specific task-language-javascript hide-element">for (let shift = 1; shift < 26; shift++) {</code>',
+            'Ein möglicher Ansatz für die Funktion (noch mit Lücken): <code class="language-specific task-language-python"><pre>def caesar_all_variants(text):\n    for shift in range(1, 26):\n        # TODO</pre></code><code class="language-specific task-language-javascript hide-element"><pre>function caesar_bruteforce(text) {\n    for (let shift = 1; shift < 26; shift++) {\n        // TODO\n    }\n}</pre></code>',
           ],
         },
         {
-          task: '<span class="text-muted">(Zusatzaufgabe)</span> Erläutern Sie sinnvolle Optimierungsmöglichkeiten einer Funktion, wie sie in Teilaufgabe b erstellt werden soll.',
+          task: '<span class="text-muted">(Zusatzaufgabe)</span> Erläutern Sie mögliche Wege, wie die Anzahl der Prüfung auf mögliche Verschiebungen reduziert werden kann. Geben Sie auch an, welche Informationen Sie dafür benötigen würden.',
           answerType: "text",
           hints: [
             "Lassen sich bestimmte Wörter auch im verschlüsselten Zustand erkennen? Wenn ja, wie?",
-            "Gibt es häufiger auftretende Buchstabenkombinationen, die Ihnen helfen könnten?",
+            "Wäre es möglich, den entschlüsselten Text auf bekannte und lesbare Wörter zu überprüfen?",
+            "Wäre es sinnvoll, die Häufigkeit von Buchstaben im Text zu analysieren?",
           ],
         },
       ],

@@ -42,8 +42,25 @@ function initialiseWorksheet() {
       }
       this.disabled = true;
       this.setAttribute("data-hint-opened", "true");
+      saveUserInput(currentIndex);
     });
   });
+
+  // Disabling and enabling phraseHelper buttons
+  document
+    .querySelectorAll(".btn-subtask-phrasing-helper")
+    .forEach((button) => {
+      button.addEventListener("click", function (e) {
+        if (showDebugLogs)
+          console.log(
+            "Disabling phrasing helper for subtask: ",
+            e.target.getAttribute("data-subtask-id")
+          );
+        this.disabled = true;
+        this.setAttribute("data-hint-opened", "true");
+        saveUserInput(currentIndex);
+      });
+    });
 
   // Setting multiple choice buttons to active
   document
@@ -295,6 +312,34 @@ function loadUserInput(currentWorksheet) {
           if (showDebugLogs)
             console.log(
               `- - - Loading student solution into #task-${worksheet.titleTechnical}-${taskIndex}-${subtaskIndex}`
+            );
+        }
+      }
+
+      // Load phraseHelper state
+      const phrasingHelper = document.querySelector(
+        `.btn-subtask-phrasing-helper[data-subtask-id="task-${worksheet.titleTechnical}-${taskIndex}-${subtaskIndex}"]`
+      );
+      if (phrasingHelper) {
+        if (subtaskData.phrasingHelperOpened) {
+          phrasingHelper.setAttribute("data-hint-opened", "true");
+          phrasingHelper.setAttribute("disabled", "true");
+          const phrasingHelperBody = document.querySelector(
+            `#task-${worksheet.titleTechnical}-${taskIndex}-${subtaskIndex}-phrasingHelper`
+          );
+          if (phrasingHelperBody) {
+            phrasingHelperBody.classList.add("show");
+            phrasingHelperBody.setAttribute("aria-expanded", "true");
+          }
+          if (showDebugLogs)
+            console.log(
+              `- - - Loading phrasing helper state for task ${taskIndex} subtask ${subtaskIndex}: opened`
+            );
+        } else {
+          phrasingHelper.setAttribute("data-hint-opened", "false");
+          if (showDebugLogs)
+            console.log(
+              `- - - Loading phrasing helper state for task ${taskIndex} subtask ${subtaskIndex}: not opened`
             );
         }
       }
@@ -622,6 +667,30 @@ function saveUserInput(currentWorksheet) {
           if (showDebugLogs)
             console.log(
               `- - - Saving student answer for task ${taskIndex} subtask ${subtaskIndex}`
+            );
+        }
+      }
+
+      // Save subtask phrasing helper state
+      const phrasingHelper = document.querySelector(
+        `.btn-subtask-phrasing-helper[data-subtask-id="task-${worksheet.titleTechnical}-${taskIndex}-${subtaskIndex}"]`
+      );
+      if (phrasingHelper) {
+        if (phrasingHelper.getAttribute("data-hint-opened") === "true") {
+          worksheetData[currentWorksheet].tasks[taskIndex].subtasks[
+            subtaskIndex
+          ].phrasingHelperOpened = true;
+          if (showDebugLogs)
+            console.log(
+              `- - - Saving phrasing helper state for task ${taskIndex} subtask ${subtaskIndex}: opened`
+            );
+        } else {
+          worksheetData[currentWorksheet].tasks[taskIndex].subtasks[
+            subtaskIndex
+          ].phrasingHelperOpened = false;
+          if (showDebugLogs)
+            console.log(
+              `- - - Saving phrasing helper state for task ${taskIndex} subtask ${subtaskIndex}: not opened`
             );
         }
       }

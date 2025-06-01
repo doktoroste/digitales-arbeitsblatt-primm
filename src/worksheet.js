@@ -159,15 +159,15 @@ async function loadWorksheet(index) {
 
       // Subtasks
       task.subtasks.forEach((subtask, j) => {
-        taskHtml += `<li class="mb-3">${subtask.task}`;
+        taskHtml += `<li class="mb-3" data-subtask-type="${subtask.answerType}" data-subtask-id="${data.titleTechnical}-${i}-${j}">${subtask.task}`;
         if (subtask.answerType === "text") {
-          taskHtml += `<textarea class="form-control save-user-input" id="task-${data.titleTechnical}-${i}-${j}"></textarea>`;
+          taskHtml += `<textarea class="form-control save-user-input" id="task-${data.titleTechnical}-${i}-${j}" data-answer-type="${subtask.answerType}"></textarea>`;
         } else if (subtask.answerType === "textLong") {
-          taskHtml += `<textarea class="form-control textarea-lg save-user-input" id="task-${data.titleTechnical}-${i}-${j}"></textarea>`;
+          taskHtml += `<textarea class="form-control textarea-lg save-user-input" id="task-${data.titleTechnical}-${i}-${j}" data-answer-type="${subtask.answerType}"></textarea>`;
         } else if (subtask.answerType === "code") {
-          taskHtml += `<textarea class="form-control textarea-lg textarea-code save-user-input" id="task-${data.titleTechnical}-${i}-${j}"></textarea>`;
+          taskHtml += `<textarea class="form-control textarea-lg textarea-code save-user-input" id="task-${subtask.titleTechnical}-${i}-${j}" data-answer-type="${subtask.answerType}"></textarea>`;
         } else if (subtask.answerType === "multipleChoice") {
-          taskHtml += `<div class="row gap-2 mt-3">`;
+          taskHtml += `<div class="row gap-2 mt-3 btn-subtask-multiple-choice" id="task-${data.titleTechnical}-${i}-${j}" data-answer-type="${subtask.answerType}">`;
           subtask.choices.forEach((mc, k) => {
             taskHtml += `<div class="col d-grid"><button class="btn btn-outline-secondary btn-subtask-multiple-choice-answer" data-subtask-id="task-${
               data.titleTechnical

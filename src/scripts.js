@@ -220,11 +220,83 @@ function loadUserInput(currentWorksheet) {
         `task-${worksheet.titleTechnical}-${taskIndex}-${subtaskIndex}`
       );
       if (subtaskInput) {
-        subtaskInput.value = subtaskData.studentSolution;
-        if (showDebugLogs)
-          console.log(
-            `- - - Loading student solution into #task-${worksheet.titleTechnical}-${taskIndex}-${subtaskIndex}`
-          );
+        // If the subtask has data-answer-type="multiple-choice", load the multiple choice state
+        if (
+          subtaskInput.getAttribute("data-answer-type") === "multipleChoice"
+        ) {
+          // If the subtask has a multiple answer state, load it
+          if (subtaskData.multipleChoice.selectedAnswer) {
+            // Disable all multiple choice buttons
+            if (showDebugLogs)
+              console.log(
+                `Search for buttons with following selector: .btn-subtask-multiple-choice-answer[data-subtask-id="task-${worksheet.titleTechnical}-${taskIndex}-${subtaskIndex}"]`
+              );
+            const mcButtons = document.querySelectorAll(
+              `.btn-subtask-multiple-choice-answer[data-subtask-id="task-${worksheet.titleTechnical}-${taskIndex}-${subtaskIndex}"]`
+            );
+            let = correctAnswer = "";
+            mcButtons.forEach((btn) => {
+              btn.setAttribute("disabled", true);
+              btn.classList.remove("active");
+              btn.classList.remove("btn-outline-secondary");
+              if (btn.value === "true") {
+                correctAnswer = btn.innerHTML;
+              }
+            });
+
+            // Display selected answer
+            const selectedAnswer = document.getElementById(
+              subtaskData.multipleChoice.selectedAnswer
+            );
+            if (selectedAnswer) {
+              if (selectedAnswer.getAttribute("value") === "true") {
+                selectedAnswer.classList.remove("btn-outline-secondary");
+                selectedAnswer.classList.add("btn-outline-success");
+                selectedAnswer.classList.add("active");
+              } else {
+                selectedAnswer.classList.remove("btn-outline-secondary");
+                selectedAnswer.classList.add("btn-outline-danger");
+                selectedAnswer.classList.add("active");
+              }
+              if (showDebugLogs)
+                console.log(
+                  `- - - Loading selected answer into ${subtaskData.multipleChoice.selectedAnswer}`
+                );
+
+              // Show feedback for selected answer
+              const feedback = document.querySelector(
+                `#task-${worksheet.titleTechnical}-${taskIndex}-${subtaskIndex}-multiple-choice-feedback`
+              );
+              if (feedback) {
+                feedback.classList.remove("hide-element");
+                feedback.classList.add("show");
+                if (selectedAnswer.getAttribute("value") === "true") {
+                  feedback.querySelector(".alert").innerHTML =
+                    `<span class="badge text-bg-success">Die Antwort ist korrekt.</span>` +
+                    "<br>" +
+                    selectedAnswer.getAttribute("data-feedback-text");
+                } else {
+                  feedback.querySelector(".alert").innerHTML =
+                    `<span class="badge text-bg-danger">Die Antwort ist falsch.</span>` +
+                    "<br>" +
+                    selectedAnswer.getAttribute("data-feedback-text") +
+                    `<div class="mt-2"><span class="text-muted">Die richtige Antwort ist:</span><br>${correctAnswer}</div>`;
+                }
+              }
+              if (showDebugLogs)
+                console.log(
+                  `- - - Loading multiple choice feedback into #task-${worksheet.titleTechnical}-${taskIndex}-${subtaskIndex}-multiple-choice-feedback`
+                );
+            }
+          }
+        } else {
+          // If the subtask is not a multiple choice, load the student solution
+          subtaskInput.value = subtaskData.studentSolution;
+          if (showDebugLogs)
+            console.log(
+              `- - - Loading student solution into #task-${worksheet.titleTechnical}-${taskIndex}-${subtaskIndex}`
+            );
+        }
       }
 
       // Load subtask hints states:
@@ -253,7 +325,7 @@ function loadUserInput(currentWorksheet) {
           }
           previousHintOpened = true;
         } else {
-          if (showDebugLogs)
+          if (showDebugLogs) {
             if (previousHintOpened) {
               console.log(
                 "- - - - hint with index has not been opened yet and is the next to be opened:",
@@ -267,6 +339,7 @@ function loadUserInput(currentWorksheet) {
                 hintIndex
               );
             }
+          }
         }
         if (showDebugLogs)
           console.log(
@@ -276,8 +349,8 @@ function loadUserInput(currentWorksheet) {
       });
 
       // Load multiple choice state
-      if (subtaskData.multipleChoice) {
-        if (subtaskData.multipleChoice.opened) {
+      if (subtaskData.hintMultipleChoice) {
+        if (subtaskData.hintMultipleChoice.opened) {
           const mcContainer = document.getElementById(
             `task-${worksheet.titleTechnical}-${taskIndex}-${subtaskIndex}-mc`
           );
@@ -288,7 +361,7 @@ function loadUserInput(currentWorksheet) {
             );
         }
 
-        if (subtaskData.multipleChoice.selectedAnswer) {
+        if (subtaskData.hintMultipleChoice.selectedAnswer) {
           // Disable all multiple choice buttons
           if (showDebugLogs)
             console.log(
@@ -309,7 +382,7 @@ function loadUserInput(currentWorksheet) {
 
           // Display selected answer
           const selectedAnswer = document.getElementById(
-            subtaskData.multipleChoice.selectedAnswer
+            subtaskData.hintMultipleChoice.selectedAnswer
           );
           if (selectedAnswer) {
             if (selectedAnswer.getAttribute("value") === "true") {
@@ -323,7 +396,7 @@ function loadUserInput(currentWorksheet) {
             }
             if (showDebugLogs)
               console.log(
-                `- - - Loading selected answer into ${subtaskData.multipleChoice.selectedAnswer}`
+                `- - - Loading selected answer into ${subtaskData.hintMultipleChoice.selectedAnswer}`
               );
 
             // Show feedback for selected answer
@@ -481,6 +554,10 @@ function saveUserInput(currentWorksheet) {
           task: subtask.task,
           studentSolution: null,
           multipleChoice: {
+            selectedAnswer: null,
+            correct: null,
+          },
+          hintMultipleChoice: {
             opened: false,
             selectedAnswer: null,
             correct: null,
@@ -493,10 +570,60 @@ function saveUserInput(currentWorksheet) {
       const subtaskInput = document.getElementById(
         `task-${worksheet.titleTechnical}-${taskIndex}-${subtaskIndex}`
       );
+      // If the subtask has data-answer-type="multiple-choice", save the multiple choice state and the selected answer
       if (subtaskInput) {
-        worksheetData[currentWorksheet].tasks[taskIndex].subtasks[
-          subtaskIndex
-        ].studentSolution = subtaskInput.value;
+        if (
+          subtaskInput.getAttribute("data-answer-type") === "multipleChoice"
+        ) {
+          // Check all multiple choice buttons (.btn-subtask-multiple-choice-answer) if they are active
+          // If they are active, save the selected answer and if it was correct
+          const selectedAnswer = Array.from(
+            document.querySelectorAll(
+              `.btn-subtask-multiple-choice-answer[data-subtask-id="task-${worksheet.titleTechnical}-${taskIndex}-${subtaskIndex}"]`
+            )
+          ).find((btn) => btn.classList.contains("active"));
+          if (selectedAnswer) {
+            worksheetData[currentWorksheet].tasks[taskIndex].subtasks[
+              subtaskIndex
+            ].multipleChoice.selectedAnswer = selectedAnswer.id;
+            worksheetData[currentWorksheet].tasks[taskIndex].subtasks[
+              subtaskIndex
+            ].multipleChoice.correct =
+              selectedAnswer.getAttribute("value") === "true";
+            worksheetData[currentWorksheet].tasks[taskIndex].subtasks[
+              subtaskIndex
+            ].multipleChoice.opened = true;
+            if (showDebugLogs)
+              console.log(
+                `- - - Saving multiple choice answer for task ${taskIndex} subtask ${subtaskIndex}:`,
+                worksheetData[currentWorksheet].tasks[taskIndex].subtasks[
+                  subtaskIndex
+                ].multipleChoice.selectedAnswer,
+                worksheetData[currentWorksheet].tasks[taskIndex].subtasks[
+                  subtaskIndex
+                ].multipleChoice.correct
+              );
+          } else {
+            worksheetData[currentWorksheet].tasks[taskIndex].subtasks[
+              subtaskIndex
+            ].multipleChoice.selectedAnswer = null;
+            worksheetData[currentWorksheet].tasks[taskIndex].subtasks[
+              subtaskIndex
+            ].multipleChoice.correct = null;
+            worksheetData[currentWorksheet].tasks[taskIndex].subtasks[
+              subtaskIndex
+            ].multipleChoice.opened = false;
+          }
+        } else {
+          // If the subtask is not a multiple choice, save the student solution
+          worksheetData[currentWorksheet].tasks[taskIndex].subtasks[
+            subtaskIndex
+          ].studentSolution = subtaskInput.value;
+          if (showDebugLogs)
+            console.log(
+              `- - - Saving student answer for task ${taskIndex} subtask ${subtaskIndex}`
+            );
+        }
       }
 
       // Save subtask hints state (open or closed), check for data-hint-opened
@@ -548,16 +675,16 @@ function saveUserInput(currentWorksheet) {
         if (
           worksheetData[currentWorksheet].tasks[taskIndex].subtasks[
             subtaskIndex
-          ].multipleChoice
+          ].hintMultipleChoice
         ) {
           worksheetData[currentWorksheet].tasks[taskIndex].subtasks[
             subtaskIndex
-          ].multipleChoice.opened = mcContainer.classList.contains("show");
+          ].hintMultipleChoice.opened = mcContainer.classList.contains("show");
           console.log(
-            `- - - Saved multipleChoice.open for task ${taskIndex} subtask ${subtaskIndex}:`,
+            `- - - Saved hintMultipleChoice.open for task ${taskIndex} subtask ${subtaskIndex}:`,
             worksheetData[currentWorksheet].tasks[taskIndex].subtasks[
               subtaskIndex
-            ].multipleChoice.opened
+            ].hintMultipleChoice.opened
           );
 
           // If an answer was selected, save which one and if it was correct
@@ -566,29 +693,29 @@ function saveUserInput(currentWorksheet) {
           ).find((btn) => btn.classList.contains("active"));
           worksheetData[currentWorksheet].tasks[taskIndex].subtasks[
             subtaskIndex
-          ].multipleChoice.selectedAnswer = selectedAnswer
+          ].hintMultipleChoice.selectedAnswer = selectedAnswer
             ? selectedAnswer.innerHTML
             : null;
           worksheetData[currentWorksheet].tasks[taskIndex].subtasks[
             subtaskIndex
-          ].multipleChoice.correct = selectedAnswer
+          ].hintMultipleChoice.correct = selectedAnswer
             ? selectedAnswer.value === "true"
               ? true
               : false
             : null;
           if (showDebugLogs)
             console.log(
-              `- - - Saved multipleChoice.selectedAnswer for task ${taskIndex} subtask ${subtaskIndex}:`,
+              `- - - Saved hintMultipleChoice.selectedAnswer for task ${taskIndex} subtask ${subtaskIndex}:`,
               worksheetData[currentWorksheet].tasks[taskIndex].subtasks[
                 subtaskIndex
-              ].multipleChoice.selectedAnswer
+              ].hintMultipleChoice.selectedAnswer
             );
           if (showDebugLogs)
             console.log(
-              `- - - Saved multipleChoice.correct for task ${taskIndex} subtask ${subtaskIndex}:`,
+              `- - - Saved hintMultipleChoice.correct for task ${taskIndex} subtask ${subtaskIndex}:`,
               worksheetData[currentWorksheet].tasks[taskIndex].subtasks[
                 subtaskIndex
-              ].multipleChoice.correct
+              ].hintMultipleChoice.correct
             );
         }
 
@@ -598,7 +725,7 @@ function saveUserInput(currentWorksheet) {
           ).find((btn) => btn.classList.contains("active"));
           worksheetData[currentWorksheet].tasks[taskIndex].subtasks[
             subtaskIndex
-          ].multipleChoice.selectedAnswer = selectedAnswer
+          ].hintMultipleChoice.selectedAnswer = selectedAnswer
             ? selectedAnswer.id
             : null;
         }

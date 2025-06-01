@@ -193,7 +193,7 @@ async function loadWorksheet(index) {
             data.titleTechnical
           }-${i}-${j}-phrasingHelper" aria-expanded="false" aria-controls="task-${
             data.titleTechnical
-          }-${i}-${j}-phrasingHelper">Hilfe: Formulierungen</button>
+          }-${i}-${j}-phrasingHelper">Hilfe: Formulierungen <i class="bi bi-chevron-down"></i></button>
                           <div class="collapse" id="task-${
                             data.titleTechnical
                           }-${i}-${j}-phrasingHelper">
@@ -224,7 +224,7 @@ async function loadWorksheet(index) {
               data.titleTechnical
             }-${i}-${j}-hint-${k}" ${buttonDisabled}>Hilfe: Tipp ${
               k + 1
-            }</button>
+            } <i class="bi bi-chevron-down"></i></button>
                             <div class="collapse" id="task-${
                               data.titleTechnical
                             }-${i}-${j}-hint-${k}">
@@ -235,7 +235,7 @@ async function loadWorksheet(index) {
           });
         }
         if (subtask.multipleChoice) {
-          taskHtml += `<button class="btn btn-sm btn-outline-secondary btn-subtask-hint btn-subtask-${data.titleTechnical}-${i}-${j}-hint btn-subtask-multiple-choice mt-2" data-subtask-id="task-${data.titleTechnical}-${i}-${j}" data-hint-opened="false" data-bs-toggle="collapse" data-bs-target="#task-${data.titleTechnical}-${i}-${j}-mc" aria-expanded="false" aria-controls="task-${data.titleTechnical}-${i}-${j}-mc" ${multipleChoiceDisabled}>Hilfe: Antwortmöglichkeiten</button>`;
+          taskHtml += `<button class="btn btn-sm btn-outline-secondary btn-subtask-hint btn-subtask-${data.titleTechnical}-${i}-${j}-hint btn-subtask-multiple-choice mt-2" data-subtask-id="task-${data.titleTechnical}-${i}-${j}" data-hint-opened="false" data-bs-toggle="collapse" data-bs-target="#task-${data.titleTechnical}-${i}-${j}-mc" aria-expanded="false" aria-controls="task-${data.titleTechnical}-${i}-${j}-mc" ${multipleChoiceDisabled}>Hilfe: Antwortmöglichkeiten <i class="bi bi-chevron-down"></i></button>`;
           taskHtml += `<div class="collapse" id="task-${data.titleTechnical}-${i}-${j}-mc">
                         <div class="d-grid gap-2 mt-3 helpers">`;
           subtask.choices.forEach((mc, k) => {

@@ -260,9 +260,9 @@ async function loadWorksheet(index) {
                     <div class="alert alert-light">
                         <strong>Feedback zur Aufgabe</strong> 
 
-                        <div class="row mt-2">
+                        <div class="row mt-2 pb-2 border-bottom">
                           <div class="col-md-9">
-                            Wie hat Ihnen die Aufgabe gefallen?<br>(-- = unsicher, ++ = sicher)?
+                            Wie hat Ihnen die Aufgabe gefallen?<br>(-- = gar nicht gut, ++ = sehr gut)
                           </div>
                           <div class="col-md-3">
                             <div class="btn-group btn-group-sm btn-task-feedback float-end" role="group" aria-label="Basic radio toggle button group">
@@ -284,9 +284,9 @@ async function loadWorksheet(index) {
                           </div>
                         </div>
 
-                        <div class="row mt-2">
+                        <div class="row mt-2 pb-2 border-bottom">
                           <div class="col-md-9">
-                            Wie sicher Sind sie sich, dass Ihre Antwort korrekt ist<br>(-- = unsicher, ++ = sicher)?
+                            Wie sicher Sind sie sich, dass Ihre Antwort korrekt ist?<br>(-- = unsicher, ++ = sicher)
                           </div>
                           <div class="col-md-3">
                             <div class="btn-group btn-group-sm btn-task-feedback float-end" role="group" aria-label="Basic radio toggle button group">
@@ -308,7 +308,7 @@ async function loadWorksheet(index) {
                           </div>
                         </div>
 
-                        <div class="row mt-4">
+                        <div class="row mt-2">
                           <div class="col-md-12">
                             Gab es Probleme beim Bearbeiten der Aufgabe?
                             <textarea class="form-control save-user-feedback" name="task-feedback-text-${data.titleTechnical}-${i}" id="task-feedback-${data.titleTechnical}-${i}-answer-text" placeholder="Hier können Sie Feedback zur Aufgabe hinterlassen."></textarea>

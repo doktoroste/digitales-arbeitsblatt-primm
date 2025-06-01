@@ -265,11 +265,11 @@ worksheets.push({
           ],
         },
         {
-          task: 'Begründe, warum die Funktion <code class="language-specific task-language-python">ord()</code><code class="language-specific task-language-javascript hide-element">charCodeAt()</code> im Code nicht weggelassen werden kann.',
+          task: 'Begründen Sie, warum die Funktion <code class="language-specific task-language-python">ord()</code><code class="language-specific task-language-javascript hide-element">charCodeAt()</code> im Code nicht weggelassen werden kann.',
           answerType: "text",
           hints: [
-            "Welcher Wert wird im Parameter der Funktionen übergeben?",
-            "Wie heißt die Variable, in der das Ergebnis dieser Funktionen gespeichert werden?",
+            '<span class="language-specific task-language-python">Welcher Wert wird im Parameter der Funktionen übergeben?</span><span class="language-specific task-language-javascript hide-element">Auf was für ein Element wird die Funktion angewandt? Was enthält dieses Element?</span>',
+            "Wie heißt die Variable, in der das Ergebnis dieser Funktion gespeichert wird?",
           ],
           multipleChoice: true,
           choices: [
@@ -292,7 +292,7 @@ worksheets.push({
                 "Die Funktion wird verwendet, um den Unicode-Wert des Zeichens zu ermitteln. Wird sie weggelassen, kann der Code nicht korrekt funktionieren, da Buchstaben nicht einfach addiert werden können.",
             },
             {
-              text: "Mit der Funktion wird der Unicode-Wert eines Zeichens ermittelt. Ohne sie würde der Code nicht funktionieren, da Buchstaben nicht einfach addiert werden können.",
+              text: "Mit der Funktion wird der Unicode-Wert eines Zeichens ermittelt. Ohne sie würde der Code nicht funktionieren, da Chars nicht einfach addiert werden können.",
               correct: true,
               feedbackText:
                 "Die Funktion gibt beispielsweise den Unicode-Wert des Zeichens <code>H</code> zurück, der 72 ist. Mit dieser Zahl kann dann die Verschiebung um den Wert von <code>shift</code> erfolgen.",
@@ -300,7 +300,7 @@ worksheets.push({
           ],
         },
         {
-          task: 'Begründe, warum die Funktion <code class="language-specific task-language-python">chr()</code><code class="language-specific task-language-javascript hide-element">String.fromCharCode</code> im Code nicht weggelassen werden kann.',
+          task: 'Begründen Sie, warum die Funktion <code class="language-specific task-language-python">chr()</code><code class="language-specific task-language-javascript hide-element">String.fromCharCode</code> im Code nicht weggelassen werden kann.',
           answerType: "text",
           hints: [
             "Welcher Wert wird im Parameter der Funktion übergeben?",
@@ -321,7 +321,7 @@ worksheets.push({
                 "Die Funktion gibt beispielsweise das Zeichen zurück, das dem Unicode-Code 72 zugeordnet ist, also <code>H</code>.",
             },
             {
-              text: "Mit der Funktion wird der Unicode-Wert eines Zeichens ermittelt. Ohne sie würde der Code nicht funktionieren, da Buchstaben nicht einfach addiert werden können.",
+              text: "Mit der Funktion wird der Unicode-Wert eines Zeichens ermittelt. Ohne sie würde der Code nicht funktionieren, da Chars nicht einfach addiert werden können.",
               correct: false,
               feedbackText:
                 "Die Funktion gibt das Zeichen zurück, das dem Unicode-Code zugeordnet ist. Ohne sie würden nur Zahlen zurückgegeben werden.",
@@ -374,12 +374,12 @@ worksheets.push({
           answerType: "text",
           hints: [
             "In welchen Codezeilen wird überprüft, ob ein Zeichen ein Buchstabe ist?",
-            "Gibt es eine weitere Codezeile, die den Text unverändert übernimmt?",
+            "Gibt es eine weitere Codezeile, die das Zeichen unverändert übernimmt?",
           ],
           multipleChoice: true,
           choices: [
             {
-              text: 'Leer- und Satzzeichen werden ebenfalls um den Wert von <code>shift</code> verschoben (Zeile <span class="language-specific task-language-python">4</span><span class="language-specific task-language-javascript hide-element">3</span>.',
+              text: 'Leer- und Satzzeichen werden ebenfalls um den Wert von <code>shift</code> verschoben (Zeile <span class="language-specific task-language-python">4</span><span class="language-specific task-language-javascript hide-element">3</span>).',
               correct: false,
               feedbackText:
                 "Da eine Verschiebung von Leer- und Satzzeichen keinen Sinn ergeben würde, wird in der <code>if</code>-Abfrage in Zeile <span class='language-specific task-language-python'>4</span><span class='language-specific task-language-javascript hide-element'>3</span> überprüft, ob das Zeichen ein Buchstabe ist. Wenn nicht (<code>else</code>), wird es in Zeile <span class='language-specific task-language-python'>7</span><span class='language-specific task-language-javascript hide-element'>6</span> unverändert übernommen.",
@@ -388,19 +388,19 @@ worksheets.push({
               text: 'Leer- und Satzzeichen werden unverändert übernommen (Zeile <span class="language-specific task-language-python">7</span><span class="language-specific task-language-javascript hide-element">6</span>).',
               correct: true,
               feedbackText:
-                "In der <code>if</code>-Abfrage in Zeile <span class='language-specific task-language-python'>4</span><span class='language-specific task-language-javascript hide-element'>3</span> wird überprüft, ob das Zeichen ein Buchstabe ist. Wenn nicht (<code>else</code>), wird es in Zeile <span class='language-specific task-language-python'>7</span><span class='language-specific task-language-javascript hide-element'>6</span> unverändert übernommen.",
+                "In der <code>if</code>-Abfrage in Zeile 2 wird überprüft, ob das Zeichen ein Buchstabe ist. Wenn nicht (<code>else</code>), wird es in Zeile <span class='language-specific task-language-python'>7</span><span class='language-specific task-language-javascript hide-element'>6</span> unverändert übernommen.",
             },
             {
               text: 'Es wird eine Fehlermeldung ausgegeben (Zeile <span class="language-specific task-language-python">7</span><span class="language-specific task-language-javascript hide-element">6</span>).',
               correct: false,
               feedbackText:
-                "Eine Fehlermeldung wird im Code nicht ausgegeben. In der <code>if</code>-Abfrage in Zeile <span class='language-specific task-language-python'>4</span><span class='language-specific task-language-javascript hide-element'>3</span> wird überprüft, ob das Zeichen ein Buchstabe ist. Wenn nicht (<code>else</code>), wird es in Zeile <span class='language-specific task-language-python'>7</span><span class='language-specific task-language-javascript hide-element'>6</span> unverändert übernommen.",
+                "Eine Fehlermeldung wird im Code nicht ausgegeben. In der <code>if</code>-Abfrage in Zeile 2 wird überprüft, ob das Zeichen ein Buchstabe ist. Wenn nicht (<code>else</code>), wird es in Zeile <span class='language-specific task-language-python'>7</span><span class='language-specific task-language-javascript hide-element'>6</span> unverändert übernommen.",
             },
             {
               text: 'Leer- und Satzzeichen werden aus dem Text entfernt (Zeile <span class="language-specific task-language-python">3</span><span class="language-specific task-language-javascript hide-element">12</span>).',
               correct: false,
               feedbackText:
-                "Es werden keine Zeichen aus dem eingebenen Text entfernt. In der <code>if</code>-Abfrage in Zeile <span class='language-specific task-language-python'>4</span><span class='language-specific task-language-javascript hide-element'>3</span> wird überprüft, ob das Zeichen ein Buchstabe ist. Wenn nicht (<code>else</code>), wird es in Zeile <span class='language-specific task-language-python'>7</span><span class='language-specific task-language-javascript hide-element'>6</span> unverändert übernommen.",
+                "Es werden keine Zeichen aus dem eingebenen Text entfernt. In der <code>if</code>-Abfrage in Zeile 2 wird überprüft, ob das Zeichen ein Buchstabe ist. Wenn nicht (<code>else</code>), wird es in Zeile <span class='language-specific task-language-python'>7</span><span class='language-specific task-language-javascript hide-element'>6</span> unverändert übernommen.",
             },
           ],
         },
@@ -417,7 +417,7 @@ worksheets.push({
               text: "Der Code ist fehlerhaft und sollte unterschiedliche Ausgaben liefern.",
               correct: false,
               feedbackText:
-                "Der Code ist nicht fehlerhaft. Er wandelt mit der Funktion <code class='language-specific task-language-python'>upper()</code><code class='language-specific task-language-javascript hide-element'>toUpperCase()</code> in Zeile <span class='language-specific task-language-python'>3</span><span class='language-specific task-language-javascript hide-element'>12</span>alle Zeichen in Großbuchstaben um, bevor sie verschlüsselt werden. Daher ist die Ausgabe für beide Eingaben identisch.",
+                "Der Code ist nicht fehlerhaft. Er wandelt mit der Funktion <code class='language-specific task-language-python'>upper()</code><code class='language-specific task-language-javascript hide-element'>toUpperCase()</code> in Zeile <span class='language-specific task-language-python'>3</span><span class='language-specific task-language-javascript hide-element'>12</span> alle Zeichen in Großbuchstaben um, bevor sie verschlüsselt werden. Daher ist die Ausgabe für beide Eingaben identisch.",
             },
             {
               text: "Da Klein- und Großbuchstaben immer um genau 26 Zeichen verschoben sind, ist die Ausgabe gleich.",
@@ -435,7 +435,7 @@ worksheets.push({
               text: "Der Code konvertiert alle Zeichen in Großbuchstaben, bevor er sie verschlüsselt.",
               correct: true,
               feedbackText:
-                "Der Code wandelt mit der Funktion <code class='language-specific task-language-python'>upper()</code><code class='language-specific task-language-javascript hide-element'>toUpperCase()</code> in Zeile <span class='language-specific task-language-python'>3</span><span class='language-specific task-language-javascript hide-element'>12</span>alle Zeichen in Großbuchstaben um, bevor sie verschlüsselt werden.",
+                "Der Code wandelt mit der Funktion <code class='language-specific task-language-python'>upper()</code><code class='language-specific task-language-javascript hide-element'>toUpperCase()</code> in Zeile <span class='language-specific task-language-python'>3</span><span class='language-specific task-language-javascript hide-element'>12</span> alle Zeichen in Großbuchstaben um, bevor sie verschlüsselt werden.",
             },
           ],
         },
@@ -443,21 +443,28 @@ worksheets.push({
     },
     {
       title: "Aufgabe 4: Den Code verbessern",
+      helpers: [
+        {
+          title: "Unicode-Tabelle (Zeichen 91 bis 102)",
+          content:
+            '<table class="table text-center"><thead><tr><th>Position</th><th>Zeichen</th><th>Unicode</th></tr></thead><tbody><tr><td>27</td><td>[</td><td>91</td></tr><tr><td>28</td><td>\\</td><td>92</td></tr><tr><td>29</td><td>]</td><td>93</td></tr><tr><td>30</td><td>^</td><td>94</td></tr><tr><td>31</td><td>_</td><td>95</td></tr><tr><td>32</td><td>`</td><td>96</td></tr><tr><td>33</td><td>a</td><td>97</td></tr><tr><td>34</td><td>b</td><td>98</td></tr><tr><td>35</td><td>c</td><td>99</td></tr><tr><td>36</td><td>d</td><td>100</td></tr><tr><td>37</td><td>e</td><td>101</td></tr><tr><td>38</td><td>f</td><td>102</td></tr><tr><td colspan="3">...</td></tr></tbody></table>',
+        },
+      ],
       subtasks: [
         {
-          task: 'Beschreiben Sie, welche Ausgabe Sie beim Ausführen des Codes mit dem Parametern <code>text = "A"</code> und <code>shift = 27</code>. erwarten. Sie müssen keinen spezifischen Ausgabewert angeben.',
+          task: "Beschreiben Sie, welche Ausgabe Sie beim Ausführen des Codes mit dem Parametern <code>message = 'A'</code> und <code>shift = 26</code> (Zeilen <span class='language-specific task-language-python'>16 und 17</span><span class='language-specific task-language-javascript hide-element'>20 und 21</span>) erwarten. Sie müssen keinen spezifischen Ausgabewert angeben.",
           answerType: "text",
           hints: [
             "Vermuten Sie, welche Zeichen noch auf der Unicode-Tabelle vorhanden sind. Großbuchstaben sind nur den Werten 65 und 90 zu finden.",
-            "Der Unicode-Wert von <code>A</code> ist 65. Welcher Buchstabe wird bei der Verschiebung um 27 Zeichen ausgegeben?",
+            "Der Unicode-Wert von <code>A</code> ist 65. Welcher Buchstabe wird bei der Verschiebung um 26 Zeichen ausgegeben?",
           ],
           phrasingHelpers: [
-            "Bei einer Verschiebung um 27 Zeichen wird der Buchstabe ...",
+            "Bei einer Verschiebung um 26 Zeichen wird der Buchstabe ...",
             "Das Unicode-Zeichen an der Stelle ... wird ausgegeben.",
           ],
         },
         {
-          task: 'Setzen Sie die Parameter <code>text = "A"</code> und <code>shift = 27</code> und führen den Code aus. Vergleichen Sie das Ergebnis mit Ihrer Vorhersage.',
+          task: 'Setzen Sie die Parameter <code>message = "A"</code> und <code>shift = 26</code> und führen den Code aus. Vergleichen Sie das Ergebnis mit Ihrer Vorhersage.',
           answerType: "text",
         },
         {
@@ -470,7 +477,7 @@ worksheets.push({
           ],
         },
         {
-          task: "Verändern Sie den Code in der Funktion <code class='language-specific task-language-python'>shift_character</code><code class='language-specific task-language-javascript hide-element'>shiftCharacter</code> so, dass das in Teilaufgabe a beschriebene Problem behoben wird.",
+          task: "Verändern Sie den Code so, dass das in Teilaufgabe a beschriebene Problem behoben wird.",
           answerType: "code",
           hints: [
             "Überlegen Sie, wie Sie sicherstellen können, dass der Wert von <code>shift</code> immer kleiner ist als die Anzahl der Buchstaben im Alphabet.",

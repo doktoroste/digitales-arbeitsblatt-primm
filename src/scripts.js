@@ -492,6 +492,17 @@ function loadUserInput(currentWorksheet) {
         console.log(`- Loading code helper into ${helperId} (open)`);
     }
   });
+
+  // Show and hide elements based on the current selected programming language
+  document.querySelectorAll(".language-specific").forEach((element) => {
+    if (
+      element.classList.contains("task-language-" + currentSelectedLanguage)
+    ) {
+      element.classList.remove("hide-element");
+    } else {
+      element.classList.add("hide-element");
+    }
+  });
 }
 
 function saveUserInput(currentWorksheet) {

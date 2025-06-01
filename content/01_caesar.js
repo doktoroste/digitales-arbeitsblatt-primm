@@ -9,9 +9,9 @@ worksheets.push({
   imageAlt: "Kaiser Caesar übergibt einem Boten eine verschlüsselte Nachricht.",
   code: {
     javascript:
-      'function shiftCharacter(char, shift) {\n    if (/[A-Z]/.test(char)) {\n        let newPosition = char.charCodeAt(0) + shift;\n        return String.fromCharCode(newPosition);\n    } else {\n        return char;\n    }\n}\n\nfunction caesarEncrypt(text, shift) {\n    let result = "";\n    text = text.toUpperCase();\n    for (let char of text) {\n        result += shiftCharacter(char, shift);\n    }\n    return result;\n}\n\nfunction main() {\n    let message = "Hello, World!";\n    let shift = 3;\n    let encrypted = caesarEncrypt(message, shift);\n    console.log(encrypted);\n}\n\nmain();',
+      'function shiftCharacter(char, shift) {\n    if (/[A-Z]/.test(char)) {\n        let newPosition = char.charCodeAt() + shift;\n        return String.fromCharCode(newPosition);\n    } else {\n        return char;\n    }\n}\n\nfunction caesarEncrypt(text, shift) {\n    let result = "";\n    text = text.toUpperCase();\n    for (let char of text) {\n        result = result + shiftCharacter(char, shift);\n    }\n    return result;\n}\n\nfunction main() {\n    let message = "Hello, World!";\n    let shift = 3;\n    let encrypted = caesarEncrypt(message, shift);\n    console.log(encrypted);\n}\n\nmain();',
     python:
-      'def shift_character(char, shift):\n    if char.isalpha():\n        char = char.upper()\n        new_position = ord(char) + shift\n        return chr(new_position)\n    else:\n        return char\n\ndef caesar_encrypt(text, shift):\n    result = ""\n    for char in text:\n        result += shift_character(char, shift)\n    return result\n\ndef main():\n    message = "Hello, World!"\n    shift = 3\n    encrypted = caesar_encrypt(message, shift)\n    print(encrypted)\n\nmain()',
+      'def shift_character(char, shift):\n    if char.isalpha():\n        char = char.upper()\n        new_position = ord(char) + shift\n        return chr(new_position)\n    else:\n        return char\n\ndef caesar_encrypt(text, shift):\n    result = ""\n    for char in text:\n        result = result + shift_character(char, shift)\n    return result\n\ndef main():\n    message = "Hello, World!"\n    shift = 3\n    encrypted = caesar_encrypt(message, shift)\n    print(encrypted)\n\nmain()',
   },
   codeFilename: {
     python: "caesar.py",
@@ -28,34 +28,39 @@ worksheets.push({
       {
         title: "<code>upper()</code>",
         content:
-          'Diese Funktion wandelt den String in Großbuchstaben um. Beispiel: <code>"hallo".upper()</code> gibt <code>"HALLO"</code> zurück.',
+          'Diese Funktion wandelt den String in Großbuchstaben um. Beispiel: <code>"Hallo".upper()</code> gibt <code>"HALLO"</code> zurück.',
       },
       {
         title: "<code>ord()</code>",
         content:
-          'Diese Funktion gibt die Zahl des Unicode-Codes eines Zeichens zurück. Beispiel: <code>ord("h")</code> gibt <code>104</code> zurück.',
+          "Diese Funktion gibt die Zahl des Unicode-Codes eines Zeichens zurück. Beispiel: <code>ord('H')</code> gibt <code>72</code> zurück.",
       },
       {
         title: "<code>chr()</code>",
         content:
-          'Diese Funktion gibt das Unicode-Zeichen zurück, das durch diese Nummer repräsentiert wird. Beispiel: <code>chr(104)</code> gibt <code>"h"</code> zurück.',
+          "Diese Funktion gibt das Unicode-Zeichen zurück, das durch diese Nummer repräsentiert wird. Beispiel: <code>chr(72)</code> gibt <code>'H'</code> zurück.",
+      },
+      {
+        title: "<code>Unicode-Tabelle</code>",
+        content:
+          "Die Unicode-Tabelle ist eine standardisierte Zuordnung von Zeichen zu Zahlen. Sie stellt sicher, dass die als Zahl gespeicherten Zeichen auf jedem digitalen Gerät das gleiche Zeichen darstellen. In diesem Fall werden Buchstaben durch ihre Unicode-Werte dargestellt. Ein Ausschnitt der Unicode-Tabelle für Großbuchstaben ist unten zu finden.",
       },
     ],
     javascript: [
       {
         title: "<code>/[A-Z]/.test(char)</code>",
         content:
-          "Hierbei handelt es sich um einen regulären Ausdruck, mit dem geprüft wird, ob der eingegebene Parameter <code>char</code> ein Buchstaben ist.",
+          "Hierbei handelt es sich um einen regulären Ausdruck, mit dem geprüft wird, ob der eingegebene Parameter <code>char</code> ein Buchstaben ist.<br><br>Ein regulärer Ausdruck ist ein Muster an Zeichen, das verwendet wird, um in einer Zeichenkette bestimmte Folgen von Zeichen zu suchen. In diesem Fall wird geprüft, ob <code>char</code> ein Großbuchstabe zwischen <code>'A'</code> und <code>'Z'</code> ist.",
       },
       {
         title: "<code>String.prototype.charCodeAt()</code>",
         content:
-          'Diese Methode gibt den Unicode-Wert des Zeichens an der angegebenen Position zurück. Beispiel: <code>"h".charCodeAt(0)</code> gibt <code>104</code> zurück.',
+          "Diese Methode gibt den Unicode-Wert des Zeichens an der ersten Position zurück. Beispiel: <code>'H'.charCodeAt()</code> gibt <code>72</code> zurück.",
       },
       {
         title: "<code>String.fromCharCode()</code>",
         content:
-          'Diese Funktion gibt das Unicode-Zeichen zurück, das durch diese Nummer repräsentiert wird. Beispiel: <code>String.fromCharCode(104)</code> gibt <code>"h"</code> zurück.',
+          "Diese Funktion gibt das Unicode-Zeichen zurück, das durch diese Nummer repräsentiert wird. Beispiel: <code>String.fromCharCode(72)</code> gibt <code>'H'</code> zurück.",
       },
       {
         title: "<code>String.toUpperCase()</code>",
@@ -65,6 +70,11 @@ worksheets.push({
       {
         title: "<code>console.log()</code>",
         content: "Diese Funktion gibt den übergebenen Wert in der Konsole aus.",
+      },
+      {
+        title: "<code>Unicode-Tabelle</code>",
+        content:
+          "Die Unicode-Tabelle ist eine standardisierte Zuordnung von Zeichen zu Zahlen. Sie stellt sicher, dass die als Zahl gespeicherten Zeichen auf jedem digitalen Gerät das gleiche Zeichen darstellen. In diesem Fall werden Buchstaben durch ihre Unicode-Werte dargestellt. Ein Ausschnitt der Unicode-Tabelle für Großbuchstaben ist unten zu finden.",
       },
     ],
   },

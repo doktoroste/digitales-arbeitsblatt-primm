@@ -509,6 +509,8 @@ worksheets.push({
     },
     {
       title: "Aufgabe 5: Den Code erweitern",
+      description:
+        "Sie konnten den verschlüsselten Text <code>EVZE, ZTY YRSV DVZE VJJVE MVIXVJJVE. VJ XZSK JGRVKVI ELUVCE LEU VZJ ZE UVI TRWVKVIZR!</code>, der zwischen zwei Mitschüler*innen ausgetauscht wurde, abfangen. Wie können Sie nun möglichst schnell erfahren, worum es in der Nachricht geht?",
       subtasks: [
         {
           task: "Ergänzen Sie den Code um eine Funktion <code class='language-specific task-language-python'>caesar_decrypt</code><code class='language-specific task-language-javascript hide-element'>caesarDecrypt</code> zum Entschlüsseln eines Strings, der vorher mit dem Caesar-Chiffre um eine bekannte Länge verschlüsselt wurde. Die Funktion sollte wie bisher die Parameter <code>text</code> und <code>shift</code> als Eingabe erhalten.",

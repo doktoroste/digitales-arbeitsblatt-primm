@@ -153,8 +153,14 @@ async function loadWorksheet(index) {
                     <!-- Task -->
                     <div class="col-md-12 mb-3">
                         <h4 class="border-bottom pb-3" id="task${i}">${task.title} <a href="#task${i}" class="link-secondary"><i class="bi bi-hash"></i></a></h4>
-                    </div>
-                    <div class="col-md-8">
+                    </div>`;
+      if (task.description) {
+        taskHtml += `<div class="col-md-12 mb-3">
+                        <p>${task.description}</p>
+                    </div>`;
+      }
+
+      taskHtml += `<div class="col-md-8">
                         <ol type="a">`;
 
       // Subtasks

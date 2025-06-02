@@ -1,6 +1,7 @@
 function initialiseWorksheet() {
   loadUserInput(currentIndex);
 
+  // EventListeners for changing inputs and saving current states and sudent solutions
   document
     .querySelectorAll(".save-user-input, .save-user-feedback")
     .forEach((input) => {
@@ -21,6 +22,24 @@ function initialiseWorksheet() {
         saveUserInput(currentIndex);
       }, 1000)
     );
+  });
+
+  // Highlighting currently active subtask
+  // Remove class .current-subtask of all other subtasks and only give it to the currently active one
+  document.querySelectorAll(".subtask").forEach((input) => {
+    input.addEventListener("click", function () {
+      currentSubtaskId = this.getAttribute("data-subtask-id");
+      if (showDebugLogs)
+        console.log(
+          "Setting current subtask to: ",
+          this.getAttribute("data-subtask-id")
+        );
+      document
+        .querySelectorAll(".subtask")
+        .forEach((el) => el.classList.remove("current-subtask"));
+      this.classList.add("current-subtask");
+      saveUserInput(currentIndex);
+    });
   });
 
   // Disabling and enabling subtask hint buttons
@@ -231,6 +250,24 @@ function loadUserInput(currentWorksheet) {
         console.log(
           `- - Loading subtask data for task ${taskIndex} subtask ${subtaskIndex}: ${subtaskData.studentSolution}`
         );
+
+      // Add class .current-subtask to worksheetData.currentSubtaskId
+      if (
+        `${worksheet.titleTechnical}-${taskIndex}-${subtaskIndex}` ===
+        sheetData.currentSubtaskId
+      ) {
+        const subtaskElement = document.querySelector(
+          `.subtask[data-subtask-id="${worksheet.titleTechnical}-${taskIndex}-${subtaskIndex}"]`
+        );
+        if (subtaskElement) {
+          currentSubtaskId = `${worksheet.titleTechnical}-${taskIndex}-${subtaskIndex}`;
+          subtaskElement.classList.add("current-subtask");
+          if (showDebugLogs)
+            console.log(
+              `- - - Setting current subtask to: ${worksheet.titleTechnical}-${taskIndex}-${subtaskIndex}`
+            );
+        }
+      }
 
       // Load student solution
       const subtaskInput = document.getElementById(
@@ -519,10 +556,14 @@ function saveUserInput(currentWorksheet) {
       title: worksheet.title,
       titleTechnical: worksheet.titleTechnical,
       selectedProgrammingLanguage: currentSelectedLanguage,
+      currentSubtaskId: currentSubtaskId,
       codeHelpers: [],
       tasks: {},
     };
   }
+
+  // Save current subtask
+  worksheetData[currentWorksheet].currentSubtaskId = currentSubtaskId;
 
   // Save code helper state
   codeHelpers = Array.from(

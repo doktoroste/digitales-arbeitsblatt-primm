@@ -1,6 +1,7 @@
 let worksheets = [];
 let currentIndex = 0;
 let currentSelectedLanguage = "python";
+let currentSubtaskId = "";
 
 async function loadWorksheets() {
   let tocHtml = "";
@@ -9,7 +10,11 @@ async function loadWorksheets() {
   }
   worksheets.forEach((ws, index) => {
     const status = localStorage.getItem(ws.file) === "done" ? "✔️" : "";
-    tocHtml += `<li><a href="#" onclick="loadWorksheet(${index})">${ws.title} ${status}</a></li>`;
+    tocHtml += `<li class="mb-2"><strong><a href="#" onclick="loadWorksheet(${index})">${ws.title} ${status}</a></strong><ul>`;
+    ws.tasks.forEach((task, taskIndex) => {
+      tocHtml += `<li><a class="link-secondary" href="#task${taskIndex}" onclick="loadWorksheet(${index})">${task.title}</a></li>`;
+    });
+    tocHtml += `</ul></li>`;
   });
   document.getElementById("sidebar-content").innerHTML = tocHtml;
   if (localStorage.getItem("currentWorksheet")) {
@@ -165,7 +170,7 @@ async function loadWorksheet(index) {
 
       // Subtasks
       task.subtasks.forEach((subtask, j) => {
-        taskHtml += `<li class="mb-3" data-subtask-type="${subtask.answerType}" data-subtask-id="${data.titleTechnical}-${i}-${j}">${subtask.task}`;
+        taskHtml += `<li class="mb-3 subtask" data-subtask-type="${subtask.answerType}" data-subtask-id="${data.titleTechnical}-${i}-${j}">${subtask.task}`;
         if (subtask.answerType === "text") {
           taskHtml += `<textarea class="form-control save-user-input" id="task-${data.titleTechnical}-${i}-${j}" data-answer-type="${subtask.answerType}"></textarea>`;
         } else if (subtask.answerType === "textLong") {

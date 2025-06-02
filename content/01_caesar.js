@@ -468,7 +468,7 @@ worksheets.push({
           answerType: "text",
         },
         {
-          task: "Erklären Sie das hier aufgezeigte Problem mit dem aktuellen Code. Beschreiben Sie, um was der Code ergänzt oder verändert werden müsste, damit der Code auch mit dem aufgezeigten Problem umgehen kann.",
+          task: "Im verschlüsselten Text sollen weiterhin nur Buchstaben angezeigt werden. Erklären Sie das entsprechende Problem mit dem aktuellen Code. Beschreiben Sie, um was der Code ergänzt oder verändert werden müsste, damit der Code auch mit dem aufgezeigten Problem umgehen kann.",
           answerType: "textLong",
           hints: [
             "Was passiert, wenn der Wert von <code>shift</code> größer ist als die Anzahl der Buchstaben im Alphabet?",
@@ -502,7 +502,7 @@ worksheets.push({
           hints: [
             "Der Modulo-Operator <code>%</code> gibt den Rest einer Division zurück.<br>Beispiel: <code>31 % 26</code> ergibt <code>5</code>, weil 26 genau einmal in 31 passt, mit einem Rest von 5.<br>So können Werte wie 27, 52 oder 86 in einen Bereich zwischen 0 und 25 gebracht werden.",
             "Um das Verschieben auch für Werte größer als 25 zu ermöglichen, sollten Sie einen sogenannten <i>Wraparound</i> implementieren. Für einen solchen benötigen Sie:<ol><li>Die Position des Buchstabens im Alphabet (z. B. A = 0, B = 1, ..., Z = 25),</li><li>Eine Addition des Shift-Werts zu dieser Position,</li><li>Einen Modulo 26 auf das Ergebnis – damit Sie bei Z wieder auf A springen können.</li><li>Am Ende müssen Sie diesen neuen Wert wieder in einen Buchstaben umwandeln.</li></ol>",
-            "Die zuvor genannten Schritte können Sie mit folgendem Code umsetzen:<ol><li><code class='language-specific task-language-python'>position = ord(char) - ord('A')</code><code class='language-specific task-language-javascript hide-element'>let position = char.charCodeAt(0) - 'A'.charCodeAt(0)</code></li><li><code class='language-specific task-language-python'>position = position + shift</code><code class='language-specific task-language-javascript hide-element'>position = position + shift</code></li><li><code class='language-specific task-language-python'>position = position % 26</code><code class='language-specific task-language-javascript hide-element'>position = position % 26</code></li></ul>.",
+            "Die zuvor genannten Schritte können Sie mit folgendem Code umsetzen:<ol><li><code class='language-specific task-language-python'>position = ord(char) - ord('A')</code><code class='language-specific task-language-javascript hide-element'>let position = char.charCodeAt() - 'A'.charCodeAt()</code></li><li><code class='language-specific task-language-python'>position = position + shift</code><code class='language-specific task-language-javascript hide-element'>position = position + shift</code></li><li><code class='language-specific task-language-python'>position = position % 26</code><code class='language-specific task-language-javascript hide-element'>position = position % 26</code></li></ul>.",
           ],
         },
       ],
@@ -522,6 +522,14 @@ worksheets.push({
           ],
         },
         {
+          task: "Erklären Sie, wie häufig Sie nun den Code ausführen müssten, um den verschlüsselten Text lesen zu können und was das für die Sicherheit des Caesar-Chiffres bedeuten. Handelt es sich um ein sicheres Verfahren?",
+          answerType: "text",
+          hints: [
+            "Wie viele Verschiebungen müssen ausprobiert werden, um den Text zu entschlüsseln?",
+            "Ist es sinnvoll, ein Verfahren zu verwenden, bei dem nur 25 mögliche Schlüssel ausprobiert werden müssen?",
+          ],
+        },
+        {
           task: '<span class="text-muted">(Zusatzaufgabe)</span> Schreiben Sie eine Funktion, die alle möglichen Varianten für Verschiebungen ausprobiert.',
           answerType: "code",
           hints: [
@@ -535,9 +543,9 @@ worksheets.push({
           task: '<span class="text-muted">(Zusatzaufgabe)</span> Erläutern Sie mögliche Wege, wie die Anzahl der Prüfung auf mögliche Verschiebungen reduziert werden kann. Geben Sie auch an, welche Informationen Sie dafür benötigen würden.',
           answerType: "text",
           hints: [
-            "Lassen sich bestimmte Wörter auch im verschlüsselten Zustand erkennen? Wenn ja, wie?",
-            "Wäre es möglich, den entschlüsselten Text auf bekannte und lesbare Wörter zu überprüfen?",
+            '<figure class="figure"><img src="img/caesar-buchstabenhaeufigkeit.png" alt="Durchschnittliche Buchstabenhäufigkeit in deutschen Texten. Die Buchstaben E, N, I, R und S kommen am häufigsten vor." class="figure-img img-fluid"><figcaption class="figure-caption">Die häufigsten Buchstaben in deutschen Wörtern (Quelle: <a href="https://www.duden.de/sprachwissen/sprachratgeber/Die-haufigsten-Buchstaben-deutschen-Wortern" target="_blank" title="Die häufigsten Buchstaben in deutschen Wörtern auf duden.de">DUDEN</a>)</figcaption></figure>',
             "Wäre es sinnvoll, die Häufigkeit von Buchstaben im Text zu analysieren?",
+            "Wäre es möglich, den entschlüsselten Text auf bekannte und lesbare Wörter zu überprüfen?",
           ],
         },
       ],

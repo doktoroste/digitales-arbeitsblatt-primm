@@ -171,7 +171,7 @@ async function loadWorksheet(index) {
         } else if (subtask.answerType === "textLong") {
           taskHtml += `<textarea class="form-control textarea-lg save-user-input" id="task-${data.titleTechnical}-${i}-${j}" data-answer-type="${subtask.answerType}"></textarea>`;
         } else if (subtask.answerType === "code") {
-          taskHtml += `<textarea class="form-control textarea-lg textarea-code save-user-input" id="task-${subtask.titleTechnical}-${i}-${j}" data-answer-type="${subtask.answerType}"></textarea>`;
+          taskHtml += `<textarea class="form-control textarea-lg textarea-code save-user-input" id="task-${data.titleTechnical}-${i}-${j}" data-answer-type="${subtask.answerType}"></textarea>`;
         } else if (subtask.answerType === "multipleChoice") {
           taskHtml += `<div class="row gap-2 mt-3 btn-subtask-multiple-choice" id="task-${data.titleTechnical}-${i}-${j}" data-answer-type="${subtask.answerType}">`;
           subtask.choices.forEach((mc, k) => {

@@ -300,7 +300,7 @@ worksheets.push({
           ],
         },
         {
-          task: 'Begründen Sie, warum die Funktion <code class="language-specific task-language-python">chr()</code><code class="language-specific task-language-javascript hide-element">String.fromCharCode</code> im Code nicht weggelassen werden kann.',
+          task: 'Begründen Sie, warum die Funktion <code class="language-specific task-language-python">chr()</code><code class="language-specific task-language-javascript hide-element">String.fromCharCode()</code> im Code nicht weggelassen werden kann.',
           answerType: "text",
           hints: [
             "Welcher Wert wird im Parameter der Funktion übergeben?",
@@ -513,12 +513,12 @@ worksheets.push({
         "Sie konnten den verschlüsselten Text <code>EVZE, ZTY YRSV DVZE VJJVE MVIXVJJVE. VJ XZSK JGRVKVI ELUVCE LEU VZJ ZE UVI TRWVKVIZR!</code>, der zwischen zwei Mitschüler*innen ausgetauscht wurde, abfangen. Wie können Sie nun möglichst schnell erfahren, worum es in der Nachricht geht?",
       subtasks: [
         {
-          task: "Ergänzen Sie den Code um eine Funktion <code class='language-specific task-language-python'>caesar_decrypt</code><code class='language-specific task-language-javascript hide-element'>caesarDecrypt</code> zum Entschlüsseln eines Strings, der vorher mit dem Caesar-Chiffre um eine bekannte Länge verschlüsselt wurde. Die Funktion sollte wie bisher die Parameter <code>text</code> und <code>shift</code> als Eingabe erhalten.",
+          task: "Ergänzen Sie den Code um eine Funktion <code class='language-specific task-language-python'>caesar_decrypt</code><code class='language-specific task-language-javascript hide-element'>caesarDecrypt</code> zum Entschlüsseln eines Strings, der vorher mit dem Caesar-Chiffre um eine bekannte Länge verschlüsselt wurde. Die Funktion sollte wie bisher die Parameter <code>text</code> und <code>shift</code> als Eingabe erhalten. Nutzen Sie die bestehende Funktion <code class='language-specific task-language-python'>shift_character()</code><code class='language-specific task-language-javascript hide-element'>shiftCharakter()</code>, ohne diese zu verändern.",
           answerType: "code",
           hints: [
-            "Denken Sie daran, dass die Buchstaben in die andere Richtung verschoben werden müssen.",
-            "Kopieren Sie den ursprünglichen Code bzw. Ihre Version aus Aufgabe 4. An welchen Stellen müssen Sie etwas ändern?",
-            'Ein möglicher Ansatz für die Funktion (noch mit Lücken): <code class="language-specific task-language-python"><pre>def caesar_decrypt(text, shift):\n    result = ""\n    text = text.upper()\n    for char in text:\n        if char.isalpha():\n            # TODO\n        else:\n            # TODO \n    return result</pre></code><code class="language-specific task-language-javascript hide-element"><pre>function caesar_decrypt(text, shift) {\n    let result = "";\n    text = text.toUpperCase();\n    for (let char of text) {\n        if (char.isAlpha()) {\n            // TODO\n        } else {\n            // TODO\n        }\n    }\n    return result;\n}</pre></code>',
+            "Denken Sie darüber nach, wie Sie die Richtung der Verschiebung umkehren können.",
+            "Kopieren Sie den ursprünglichen Code bzw. Ihre Version aus Aufgabe 4. An welcher Stelle können Sie die Richtung umkehren?",
+            'Ein möglicher Ansatz für die Funktion (noch mit Lücken): <code class="language-specific task-language-python"><pre>def caesar_decrypt(text, shift):\n    result = ""\n    for char in text:\n        # TODO\n    return result</pre></code><code class="language-specific task-language-javascript hide-element"><pre>function caesarDecrypt(text, shift) {\n    let result = "";\n    text = text.toUpperCase();\n    for (let char of text) {\n        // TODO\n    }\n    return result;\n}</pre></code>',
           ],
         },
         {

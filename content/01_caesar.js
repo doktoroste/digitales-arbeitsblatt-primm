@@ -171,7 +171,7 @@ worksheets.push({
       subtasks: [
         {
           task: 'Nennen Sie den Datentyp, der in der Funktion <code class="language-specific task-language-python">caesar_encrypt()</code><code class="language-specific task-language-javascript hide-element">caesarEncrypt()</code> im Parameter <code>text</code> übergeben wird.',
-          answerType: "text",
+          answerType: "textShort",
           hints: [
             "Gibt es in Programmiersprachen wie Python oder JavaScript einen spezifischen Datentypen für Textketten?",
             '<table class="table text-center"><thead><tr><th>Datentyp</th><th>Beispiel</th></tr></thead><tbody><tr><td>String</td><td><code>"Hallo Welt"</code></td></tr><tr><td>Char</td><td><code>\'H\'<code></td></tr><tr><td>Integer</td><td><code>42<code></td></tr><tr><td>Float</td><td><code>3.1415<code></td></tr></tbody></table>',
@@ -206,7 +206,7 @@ worksheets.push({
         },
         {
           task: "Nennen Sie den Datentyp, der im Parameter <code>shift</code> übergeben wird.",
-          answerType: "text",
+          answerType: "textShort",
           hints: [
             "Welcher Datentyp wird in Programmiersprachen wie Python oder JavaScript für ganze Zahlen verwendet?",
             '<table class="table text-center"><thead><tr><th>Datentyp</th><th>Beispiel</th></tr></thead><tbody><tr><td>String</td><td><code>"Hallo Welt"</code></td></tr><tr><td>Char</td><td><code>\'H\'<code></td></tr><tr><td>Integer</td><td><code>42<code></td></tr><tr><td>Float</td><td><code>3.1415<code></td></tr></tbody></table>',
@@ -345,7 +345,7 @@ worksheets.push({
           ],
         },
         {
-          task: 'Erklären Sie den Code in <span class="language-specific task-language-python">Zeile 4</span><span class="language-specific task-language-javascript hide-element">Zeile 3</span>: <code class="language-specific task-language-python">new_position = ord(char) + shift</code><code class="language-specific task-language-javascript hide-element">let newPosition = char.charCodeAt(0) + shift;</code>',
+          task: 'Erklären Sie den Code in <span class="language-specific task-language-python">Zeile 4</span><span class="language-specific task-language-javascript hide-element">Zeile 3</span>: <code class="language-specific task-language-python">new_position = ord(char) + shift</code><code class="language-specific task-language-javascript hide-element">let newPosition = char.charCodeAt() + shift;</code>',
           answerType: "text",
           hints: [
             "Welchen Wert gibt die Funktion <code class='language-specific task-language-python'>ord()</code><code class='language-specific task-language-javascript hide-element'>charCodeAt()</code> für den Buchstaben <code>H</code> zurück?",
@@ -354,25 +354,25 @@ worksheets.push({
           multipleChoice: true,
           choices: [
             {
-              text: "Der Unicode-Wert des Zeichens <code>char</code> wird um den Wert von <code>shift</code> erhöht.",
-              correct: true,
-              feedbackText:
-                "Wird beispielsweise <code>H</code> (Unicode 72) um 3 erhöht, ergibt sich <code>K</code> (Unicode 75).",
-            },
-            {
-              text: "Der Unicode-Wert des Zeichens <code>char</code> wird um den Wert von <code>shift</code> verringert.",
+              text: 'Über die Funktion <code class="language-specific task-language-python">ord(char)</code><code class="language-specific task-language-javascript hide-element">char.charCodeAt()</code> wird der Unicode-Wert des Zeichens <code>char</code>ermittelt. Der Unicode-Wert des Zeichens <code>char</code> wird anschließend um den Wert von <code>shift</code> verringert.',
               correct: false,
               feedbackText:
                 "Mit dem Operator <code>+</code> wird der Wert von <code>shift</code> addiert, nicht subtrahiert.",
             },
             {
-              text: "An der neuen Position im <code>text</code> wird das Zeichen <code>shift</code> eingefügt.",
+              text: 'Über die Funktion <code class="language-specific task-language-python">ord(char)</code><code class="language-specific task-language-javascript hide-element">char.charCodeAt()</code> wird der Unicode-Wert des Zeichens <code>char</code>ermittelt. Der Unicode-Wert des Zeichens <code>char</code> wird anschließend um den Wert von <code>shift</code> erhöht.',
+              correct: true,
+              feedbackText:
+                "Wird beispielsweise <code>H</code> (Unicode 72) um 3 erhöht, ergibt sich <code>K</code> (Unicode 75).",
+            },
+            {
+              text: 'Über die Funktion <code class="language-specific task-language-python">ord(char)</code><code class="language-specific task-language-javascript hide-element">char.charCodeAt()</code> wird das Zeichen mit dem Unicode-Wert <code>char</code>ermittelt. An der neuen Position im <code>text</code> wird das Zeichen <code>shift</code> anschließend eingefügt.',
               correct: false,
               feedbackText:
                 "Die Variable <code>shift</code> ist eine Zahl, die angibt, um wie viele Stellen die Buchstaben verschoben werden sollen. Sie wird nicht als Zeichen in den Text eingefügt.",
             },
             {
-              text: "Das bisherige Schlüsselwort wird um den neu verschobenen Buchstaben <code>shift</code> erweitert.",
+              text: 'Über die Funktion <code class="language-specific task-language-python">ord(char)</code><code class="language-specific task-language-javascript hide-element">char.charCodeAt()</code> wird das Zeichen mit dem Unicode-Wert <code>char</code>ermittelt. Das bisherige Schlüsselwort wird anschließend um den neu verschobenen Buchstaben <code>shift</code> erweitert.',
               correct: false,
               feedbackText:
                 "Die Variable <code>shift</code> ist eine Zahl, die angibt, um wie viele Stellen die Buchstaben verschoben werden sollen. Sie wird nicht als Zeichen in den Text eingefügt.",
@@ -462,7 +462,7 @@ worksheets.push({
       ],
       subtasks: [
         {
-          task: "Beschreiben Sie, welche Ausgabe Sie beim Ausführen des Codes mit dem Parametern <code>message = 'A'</code> und <code>shift = 26</code> (Zeilen <span class='language-specific task-language-python'>16 und 17</span><span class='language-specific task-language-javascript hide-element'>20 und 21</span>) erwarten. Sie müssen keinen spezifischen Ausgabewert angeben.",
+          task: "Nennen und begründen Sie, welche Ausgabe Sie beim Ausführen des Codes mit dem Parametern <code>message = 'A'</code> und <code>shift = 26</code> (Zeilen <span class='language-specific task-language-python'>16 und 17</span><span class='language-specific task-language-javascript hide-element'>20 und 21</span>) erwarten. Sie müssen keinen spezifischen Ausgabewert angeben. Führen Sie den Code noch nicht aus.",
           answerType: "text",
           hints: [
             "Vermuten Sie, welche Zeichen noch auf der Unicode-Tabelle vorhanden sind. Großbuchstaben sind nur den Werten 65 und 90 zu finden.",
@@ -481,7 +481,7 @@ worksheets.push({
           task: "Im verschlüsselten Text sollen weiterhin nur Buchstaben angezeigt werden. Erklären Sie das entsprechende Problem mit dem aktuellen Code. Beschreiben Sie, um was der Code ergänzt oder verändert werden müsste, damit der Code auch mit dem aufgezeigten Problem umgehen kann.",
           answerType: "textLong",
           hints: [
-            "Was passiert, wenn der Wert von <code>shift</code> größer ist als die Anzahl der Buchstaben im Alphabet?",
+            "Welches Zeichen würde ausgegeben werden, wenn die neu errechnete Position eines verschobenen Buchstaben größer ist als die Position des Buchstabens <code>Z</code>?",
             "Wie kann sichergestellt werden, dass <code>shift</code> immer kleiner ist als die Anzahl der Buchstaben im Alphabet?",
             "Es könnte in einer <code>if</code>-Verzweigung geprüft werden, ob der <code>shift</code> größer als 25 ist.",
           ],
@@ -492,6 +492,7 @@ worksheets.push({
           hints: [
             "Überlegen Sie, wie Sie sicherstellen können, dass der Wert von <code>shift</code> immer kleiner ist als die Anzahl der Buchstaben im Alphabet.",
             "Wäre es sinnvoll, mit einer if-Abfrage überprüfen, ob der Wert von <code>shift</code> größer ist als 25?",
+            "Sie könnten den Wert von <code>shift</code> auf 25 begrenzen, wenn er größer ist. Das könnte so aussehen:<br><code class='language-specific task-language-python'><pre>if shift > 25:\n    shift = 25</pre></code><code class='language-specific task-language-javascript hide-element'><pre>if (shift > 25) {\n    shift = 25;\n}</pre></code>",
           ],
         },
         {
@@ -523,7 +524,7 @@ worksheets.push({
         "Sie konnten den verschlüsselten Text <code>EVZE, ZTY YRSV DVZE VJJVE MVIXVJJVE. VJ XZSK JGRVKVI ELUVCE LEU VZJ ZE UVI TRWVKVIZR!</code>, der zwischen zwei Mitschüler*innen ausgetauscht wurde, abfangen. Wie können Sie nun möglichst schnell erfahren, worum es in der Nachricht geht?",
       subtasks: [
         {
-          task: "Ergänzen Sie den Code um eine Funktion <code class='language-specific task-language-python'>caesar_decrypt</code><code class='language-specific task-language-javascript hide-element'>caesarDecrypt</code> zum Entschlüsseln eines Strings, der vorher mit dem Caesar-Chiffre um eine bekannte Länge verschlüsselt wurde. Die Funktion sollte wie bisher die Parameter <code>text</code> und <code>shift</code> als Eingabe erhalten. Nutzen Sie die bestehende Funktion <code class='language-specific task-language-python'>shift_character()</code><code class='language-specific task-language-javascript hide-element'>shiftCharakter()</code>, ohne diese zu verändern.",
+          task: "Ergänzen Sie den Code um eine Funktion <code class='language-specific task-language-python'>caesar_decrypt</code><code class='language-specific task-language-javascript hide-element'>caesarDecrypt</code> zum Entschlüsseln eines Strings, der vorher mit dem Caesar-Chiffre verschlüsselt wurde. Die Funktion sollte wie bisher die Parameter <code>text</code> und <code>shift</code> als Eingabe erhalten. Nutzen Sie die bestehende Funktion <code class='language-specific task-language-python'>shift_character()</code><code class='language-specific task-language-javascript hide-element'>shiftCharakter()</code>, ohne diese zu verändern.",
           answerType: "code",
           hints: [
             "Denken Sie darüber nach, wie Sie die Richtung der Verschiebung umkehren können.",
@@ -553,8 +554,8 @@ worksheets.push({
           task: '<span class="text-muted">(Zusatzaufgabe)</span> Erläutern Sie mögliche Wege, wie die Anzahl der Prüfung auf mögliche Verschiebungen reduziert werden kann. Geben Sie auch an, welche Informationen Sie dafür benötigen würden.',
           answerType: "text",
           hints: [
-            '<figure class="figure"><img src="img/caesar-buchstabenhaeufigkeit.png" alt="Durchschnittliche Buchstabenhäufigkeit in deutschen Texten. Die Buchstaben E, N, I, R und S kommen am häufigsten vor." class="figure-img img-fluid"><figcaption class="figure-caption">Die häufigsten Buchstaben in deutschen Wörtern (Quelle: <a href="https://www.duden.de/sprachwissen/sprachratgeber/Die-haufigsten-Buchstaben-deutschen-Wortern" target="_blank" title="Die häufigsten Buchstaben in deutschen Wörtern auf duden.de">DUDEN</a>)</figcaption></figure>',
             "Wäre es sinnvoll, die Häufigkeit von Buchstaben im Text zu analysieren?",
+            '<figure class="figure"><img src="img/caesar-buchstabenhaeufigkeit.png" alt="Durchschnittliche Buchstabenhäufigkeit in deutschen Texten. Die Buchstaben E, N, I, R und S kommen am häufigsten vor." class="figure-img img-fluid"><figcaption class="figure-caption">Die häufigsten Buchstaben in deutschen Wörtern (Quelle: <a href="https://www.duden.de/sprachwissen/sprachratgeber/Die-haufigsten-Buchstaben-deutschen-Wortern" target="_blank" title="Die häufigsten Buchstaben in deutschen Wörtern auf duden.de">DUDEN</a>)</figcaption></figure>',
             "Wäre es möglich, den entschlüsselten Text auf bekannte und lesbare Wörter zu überprüfen?",
           ],
         },

@@ -137,7 +137,7 @@ worksheets.push({
         },
         {
           task: "Nennen Sie die erwartete Ausgabe.",
-          answerType: "text",
+          answerType: "textShort",
         },
       ],
       helpers: [
@@ -161,7 +161,7 @@ worksheets.push({
           answerType: "none",
         },
         {
-          task: "Vergleichen Sie das Ergebnis mit ihrer Vorhersage.",
+          task: "Vergleichen Sie das Ergebnis mit Ihrer Vorhersage und erklären Sie, ob und warum Ihre Vorhersage korrekt war oder warum das Ergebnis abweicht.",
           answerType: "textLong",
         },
       ],

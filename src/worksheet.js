@@ -173,6 +173,16 @@ async function loadWorksheet(index) {
         taskHtml += `<li class="mb-3 subtask" data-subtask-type="${subtask.answerType}" data-subtask-id="${data.titleTechnical}-${i}-${j}">${subtask.task}`;
         if (subtask.answerType === "textShort") {
           taskHtml += `<input type="text" class="form-control save-user-input" id="task-${data.titleTechnical}-${i}-${j}" data-answer-type="${subtask.answerType}">`;
+        } else if (subtask.answerType === "textShortCheckable") {
+          taskHtml += `<div class="input-group"><input type="text" class="form-control save-user-input" id="task-${
+            data.titleTechnical
+          }-${i}-${j}" data-answer-type="${
+            subtask.answerType
+          }"><button type="button" class="check-user-answer btn btn-outline-secondary" data-correct-answers="${subtask.correctAnswers.join(
+            ","
+          )}" data-feedback="">Antwort prüfen</button></div><div class="alert alert-light mt-2 hide-element" id="task-${
+            data.titleTechnical
+          }-${i}-${j}-feedback"></div>`;
         } else if (subtask.answerType === "text") {
           taskHtml += `<textarea class="form-control save-user-input" id="task-${data.titleTechnical}-${i}-${j}" data-answer-type="${subtask.answerType}"></textarea>`;
         } else if (subtask.answerType === "textLong") {

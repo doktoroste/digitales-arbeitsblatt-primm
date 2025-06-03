@@ -124,6 +124,16 @@ worksheets.push({
         {
           task: "Beschreiben Sie, was der gezeigte Code beim Aufruf der Funktion <code>main()</code> macht.",
           answerType: "textLong",
+          phrasingHelpers: [
+            "Beim Aufruf der Funktion <code>main()</code> wird zunächst ...",
+            "Zuerst wird der Text aus der Variable <code>message</code> ...",
+            "Danach wird ...",
+            'Die Funktion <code class="language-specific task-language-python">shift_character()</code><code class="language-specific task-language-javascript hide-element">shiftCharacter()</code> überprüft ...',
+            'In der Funktion <code class="language-specific task-language-python">caesar_encrypt()</code><code class="language-specific task-language-javascript hide-element">caesar_encrypt()</code> wird jeder Buchstabe ...',
+            "... innerhalb der Schleife ...",
+            "... wird in der Bedingung <code>if</code> überprüft, ob ...",
+            "Am Ende wird das Ergebnis ...",
+          ],
         },
         {
           task: "Nennen Sie die erwartete Ausgabe.",

@@ -464,9 +464,9 @@ worksheets.push({
       title: "Aufgabe 4: Den Code verbessern",
       helpers: [
         {
-          title: "Unicode-Tabelle (Zeichen 91 bis 102)",
+          title: "Unicode-Tabelle (Zeichen 88 bis 102)",
           content:
-            '<table class="table text-center"><thead><tr><th>Position</th><th>Zeichen</th><th>Unicode</th></tr></thead><tbody><tr><td>27</td><td>[</td><td>91</td></tr><tr><td>28</td><td>\\</td><td>92</td></tr><tr><td>29</td><td>]</td><td>93</td></tr><tr><td>30</td><td>^</td><td>94</td></tr><tr><td>31</td><td>_</td><td>95</td></tr><tr><td>32</td><td>`</td><td>96</td></tr><tr><td>33</td><td>a</td><td>97</td></tr><tr><td>34</td><td>b</td><td>98</td></tr><tr><td>35</td><td>c</td><td>99</td></tr><tr><td>36</td><td>d</td><td>100</td></tr><tr><td>37</td><td>e</td><td>101</td></tr><tr><td>38</td><td>f</td><td>102</td></tr><tr><td colspan="3">...</td></tr></tbody></table>',
+            '<table class="table text-center"><thead><tr><th>Position</th><th>Zeichen</th><th>Unicode</th></tr></thead><tbody><tr><td colspan="3">...</td></tr><tr><td>25</td><td>X</td><td>88</td></tr><tr><td>25</td><td>Y</td><td>89</td></tr><tr><td>26</td><td>Z</td><td>90</td></tr><tr><td>27</td><td>[</td><td>91</td></tr><tr><td>28</td><td>\\</td><td>92</td></tr><tr><td>29</td><td>]</td><td>93</td></tr><tr><td>30</td><td>^</td><td>94</td></tr><tr><td>31</td><td>_</td><td>95</td></tr><tr><td>32</td><td>`</td><td>96</td></tr><tr><td>33</td><td>a</td><td>97</td></tr><tr><td>34</td><td>b</td><td>98</td></tr><tr><td>35</td><td>c</td><td>99</td></tr><tr><td>36</td><td>d</td><td>100</td></tr><tr><td>37</td><td>e</td><td>101</td></tr><tr><td>38</td><td>f</td><td>102</td></tr><tr><td colspan="3">...</td></tr></tbody></table>',
         },
       ],
       subtasks: [

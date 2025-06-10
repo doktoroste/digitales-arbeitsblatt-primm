@@ -21,58 +21,66 @@ worksheets.push({
   codeHelpers: {
     python: [
       {
-        title: "<code>String isalpha()</code>",
+        title: '<code>String <span class="text-dark">isalpha()</span></code>',
         content:
           "Diese Funktion prüft, ob der gegebene String nur Charaktere aus dem Alphabet, also Buchstaben, enthält.",
       },
       {
-        title: "<code>upper()</code>",
+        title: '<code class="text-dark">upper()</code>',
         content:
-          'Diese Funktion wandelt den String in Großbuchstaben um. Beispiel: <code>"Hallo".upper()</code> gibt <code>"HALLO"</code> zurück.',
+          'Diese Funktion wandelt den String in Großbuchstaben um. Beispiel: <pre style="display:inline;"><code>"Hallo".upper()</code></pre> gibt <code>"HALLO"</code> zurück.',
       },
       {
-        title: "<code>ord()</code>",
+        title:
+          '<code><span class="hljs-built_in">ord</span><span class="text-dark">()</span></code>',
         content:
-          "Diese Funktion gibt die Zahl des Unicode-Codes eines Zeichens zurück. Beispiel: <code>ord('H')</code> gibt <code>72</code> zurück.",
+          "Diese Funktion gibt die Zahl des Unicode-Codes eines Zeichens zurück. Beispiel: <pre style=\"display:inline;\"><code>ord('H')</code></pre> gibt <code>72</code> zurück.",
       },
       {
-        title: "<code>chr()</code>",
+        title:
+          '<code><span class="hljs-built_in">chr</span><span class="text-dark">()</span></code>',
         content:
-          "Diese Funktion gibt das Unicode-Zeichen zurück, das durch diese Nummer repräsentiert wird. Beispiel: <code>chr(72)</code> gibt <code>'H'</code> zurück.",
+          "Diese Funktion gibt das Unicode-Zeichen zurück, das durch diese Nummer repräsentiert wird. Beispiel: <pre style=\"display:inline;\"><code>chr(72)</code></pre> gibt <code>'H'</code> zurück.",
       },
       {
-        title: "<code>Unicode-Tabelle</code>",
+        title: "Unicode-Tabelle",
         content:
           "Die Unicode-Tabelle ist eine standardisierte Zuordnung von Zeichen zu Zahlen. Sie stellt sicher, dass die als Zahl gespeicherten Zeichen auf jedem digitalen Gerät das gleiche Zeichen darstellen. In diesem Fall werden Buchstaben durch ihre Unicode-Werte dargestellt. Ein Ausschnitt der Unicode-Tabelle für Großbuchstaben ist unten zu finden.",
       },
     ],
     javascript: [
       {
-        title: "<code>/[A-Z]/.test(char)</code>",
+        title:
+          '<code><span class="text-dark">/[A-Z]/.</span><span class="hljs-title function_">test</span><span class="text-dark">(char)</span></code>',
         content:
           "Hierbei handelt es sich um einen regulären Ausdruck, mit dem geprüft wird, ob der eingegebene Parameter <code>char</code> ein Buchstaben ist.<br><br>Ein regulärer Ausdruck ist ein Muster an Zeichen, das verwendet wird, um in einer Zeichenkette bestimmte Folgen von Zeichen zu suchen. In diesem Fall wird geprüft, ob <code>char</code> ein Großbuchstabe zwischen <code>'A'</code> und <code>'Z'</code> ist.",
       },
       {
-        title: "<code>String.prototype.charCodeAt()</code>",
+        title:
+          '<code><span class="hljs-title function_">String</span><span class="text-dark">.</span><span class="hljs-title function_">prototype</span><span class="text-dark">.</span><span class="hljs-title function_">charCodeAt</span><span class="text-dark">()</span></code>',
         content:
-          "Diese Methode gibt den Unicode-Wert des Zeichens an der ersten Position zurück. Beispiel: <code>'H'.charCodeAt()</code> gibt <code>72</code> zurück.",
+          "Diese Methode gibt den Unicode-Wert des Zeichens an der ersten Position zurück. Beispiel: <pre style=\"display:inline;\"><code>'H'.charCodeAt()</code></pre> gibt <code>72</code> zurück.",
       },
       {
-        title: "<code>String.fromCharCode()</code>",
+        title:
+          '<code><span class="hljs-title function_">String</span><span class="text-dark">.</span><span class="hljs-title function_">fromCharCode</span>()</code>',
         content:
-          "Diese Funktion gibt das Unicode-Zeichen zurück, das durch diese Nummer repräsentiert wird. Beispiel: <code>String.fromCharCode(72)</code> gibt <code>'H'</code> zurück.",
+          "Diese Funktion gibt das Unicode-Zeichen zurück, das durch diese Nummer repräsentiert wird. Beispiel: <pre style=\"display:inline;\"><code>String.fromCharCode(72)</code></pre> gibt <code>'H'</code> zurück.",
       },
       {
-        title: "<code>String.toUpperCase()</code>",
+        title:
+          '<code><span class="hljs-title function_">String</span><span class="text-dark">.</span><span class="hljs-title function_">toUpperCase</span><span class="text-dark">()</span></code>',
         content:
-          'Diese Funktion wandelt den String in Großbuchstaben um. Beispiel: <code>"hallo".toUpperCase()</code> gibt <code>"HALLO"</code> zurück.',
+          'Diese Funktion wandelt den String in Großbuchstaben um. Beispiel: <pre style="display:inline;"><code>"hallo".toUpperCase()</code></pre> gibt <code>"HALLO"</code> zurück.',
       },
       {
-        title: "<code>console.log()</code>",
-        content: "Diese Funktion gibt den übergebenen Wert in der Konsole aus.",
+        title:
+          '<code><span class="hljs-variable">console</span>.<span class="hljs-title function_">log</span><span class="text-dark">()</span></code>',
+        content:
+          "Diese Funktion gibt den übergebenen Wert in der Konsole des Browsers aus.",
       },
       {
-        title: "<code>Unicode-Tabelle</code>",
+        title: "Unicode-Tabelle",
         content:
           "Die Unicode-Tabelle ist eine standardisierte Zuordnung von Zeichen zu Zahlen. Sie stellt sicher, dass die als Zahl gespeicherten Zeichen auf jedem digitalen Gerät das gleiche Zeichen darstellen. In diesem Fall werden Buchstaben durch ihre Unicode-Werte dargestellt. Ein Ausschnitt der Unicode-Tabelle für Großbuchstaben ist unten zu finden.",
       },

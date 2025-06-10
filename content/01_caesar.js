@@ -9,9 +9,9 @@ worksheets.push({
   imageAlt: "Kaiser Caesar übergibt einem Boten eine verschlüsselte Nachricht.",
   code: {
     javascript:
-      'function shiftCharacter(char, shift) {\n    if (/[A-Z]/.test(char)) {\n        let newPosition = char.charCodeAt() + shift;\n        return String.fromCharCode(newPosition);\n    } else {\n        return char;\n    }\n}\n\nfunction caesarEncrypt(text, shift) {\n    let result = "";\n    text = text.toUpperCase();\n    for (let char of text) {\n        result = result + shiftCharacter(char, shift);\n    }\n    return result;\n}\n\nfunction main() {\n    let message = "Hello, World!";\n    let shift = 3;\n    let encrypted = caesarEncrypt(message, shift);\n    console.log(encrypted);\n}\n\nmain();',
+      'function shiftCharacter(char, shift) {\n    if (/[A-Z]/.test(char)) {\n        let newPosition = char.charCodeAt() + shift;\n        return String.fromCharCode(newPosition);\n    } else {\n        return char;\n    }\n}\n\nfunction caesarEncrypt(text, shift) {\n    let result = "";\n    text = text.toUpperCase();\n    for (let char of text) {\n        result = result + shiftCharacter(char, shift);\n    }\n    return result;\n}\n\nlet message = "Hello, World!";\nlet shift = 3;\nlet encrypted = caesarEncrypt(message, shift);\nconsole.log(encrypted);',
     python:
-      'def shift_character(char, shift):\n    if char.isalpha():\n        char = char.upper()\n        new_position = ord(char) + shift\n        return chr(new_position)\n    else:\n        return char\n\ndef caesar_encrypt(text, shift):\n    result = ""\n    for char in text:\n        result = result + shift_character(char, shift)\n    return result\n\ndef main():\n    message = "Hello, World!"\n    shift = 3\n    encrypted = caesar_encrypt(message, shift)\n    print(encrypted)\n\nmain()',
+      'def shift_character(char, shift):\n    if char.isalpha():\n        char = char.upper()\n        new_position = ord(char) + shift\n        return chr(new_position)\n    else:\n        return char\n\ndef caesar_encrypt(text, shift):\n    result = ""\n    for char in text:\n        result = result + shift_character(char, shift)\n    return result\n\nmessage = "Hello, World!"\nshift = 3\nencrypted = caesar_encrypt(message, shift)\nprint(encrypted)',
   },
   codeFilename: {
     python: "caesar.py",

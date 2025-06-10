@@ -170,7 +170,7 @@ async function loadWorksheet(index) {
 
       // Subtasks
       task.subtasks.forEach((subtask, j) => {
-        taskHtml += `<li class="mb-3 subtask" data-subtask-type="${subtask.answerType}" data-subtask-id="${data.titleTechnical}-${i}-${j}">${subtask.task}`;
+        taskHtml += `<li class="mb-3 subtask" id="subtask-${i}-${j}" data-subtask-type="${subtask.answerType}" data-subtask-id="${data.titleTechnical}-${i}-${j}">${subtask.task}`;
         if (subtask.answerType === "textShort") {
           taskHtml += `<input type="text" class="form-control save-user-input" id="task-${data.titleTechnical}-${i}-${j}" data-answer-type="${subtask.answerType}">`;
         } else if (subtask.answerType === "textShortCheckable") {

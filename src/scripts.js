@@ -29,6 +29,7 @@ function initialiseWorksheet() {
   document.querySelectorAll(".subtask").forEach((input) => {
     input.addEventListener("click", function () {
       currentSubtaskId = this.getAttribute("data-subtask-id");
+      currentSubtaskLink = this.getAttribute("id");
       if (showDebugLogs)
         console.log(
           "Setting current subtask to: ",
@@ -38,6 +39,21 @@ function initialiseWorksheet() {
         .querySelectorAll(".subtask")
         .forEach((el) => el.classList.remove("current-subtask"));
       this.classList.add("current-subtask");
+      // Set href of the "move to current subtask" button to current subtask
+      const moveToCurrentSubtaskButton = document.getElementById(
+        "move-to-current-subtask"
+      );
+      if (moveToCurrentSubtaskButton) {
+        moveToCurrentSubtaskButton.classList.remove("hide-element");
+        moveToCurrentSubtaskButton.setAttribute(
+          "href",
+          `#${currentSubtaskLink}`
+        );
+        if (showDebugLogs)
+          console.log(
+            `- - - Setting current subtask link to: #${currentSubtaskLink}`
+          );
+      }
       saveUserInput(currentIndex);
     });
   });
@@ -262,6 +278,17 @@ function loadUserInput(currentWorksheet) {
         if (subtaskElement) {
           currentSubtaskId = `${worksheet.titleTechnical}-${taskIndex}-${subtaskIndex}`;
           subtaskElement.classList.add("current-subtask");
+          // Set href of the "move to current subtask" button to current subtask
+          const moveToCurrentSubtaskButton = document.getElementById(
+            "move-to-current-subtask"
+          );
+          if (moveToCurrentSubtaskButton) {
+            moveToCurrentSubtaskButton.classList.remove("hide-element");
+            moveToCurrentSubtaskButton.setAttribute(
+              "href",
+              `#subtask-${taskIndex}-${subtaskIndex}`
+            );
+          }
           if (showDebugLogs)
             console.log(
               `- - - Setting current subtask to: ${worksheet.titleTechnical}-${taskIndex}-${subtaskIndex}`

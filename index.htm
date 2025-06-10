@@ -129,18 +129,41 @@
         <div id="worksheet-citations"></div>
       </footer>
 
-      <!-- Sidebar -->
-      <button
-        type="button"
-        class="btn btn-dark"
-        id="toggle-sidebar"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#sidebar"
-        aria-controls="sidebar"
-      >
-        <i class="bi bi-card-checklist"></i>
-      </button>
+      <!-- Sidebar buttons -->
+      <div id="sidebar-buttons">
+        <button
+          type="button"
+          class="btn btn-dark btn-sidebar"
+          id="toggle-sidebar"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#sidebar"
+          aria-controls="sidebar"
+          title="Übersicht der Arbeitsblätter öffnen"
+        >
+          <i class="bi bi-card-checklist"></i>
+        </button>
 
+        <a
+          type="button"
+          class="btn btn-secondary btn-sidebar"
+          id="move-to-code"
+          title="Zum Code springen"
+          href="#worksheet-code-container"
+        >
+          <i class="bi bi-code-square"></i>
+        </a>
+
+        <button
+          type="button"
+          class="btn btn-secondary btn-sidebar"
+          id="move-to-current-subtask"
+          title="Zur zuletzt bearbeiteten Aufgabe springen"
+        >
+          <i class="bi bi-pencil-square"></i>
+        </button>
+      </div>
+
+      <!-- Sidebar -->
       <div
         class="offcanvas offcanvas-start"
         tabindex="-1"

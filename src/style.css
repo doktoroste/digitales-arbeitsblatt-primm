@@ -20,6 +20,10 @@
   display: none;
 }
 
+code {
+  white-space: nowrap !important;
+}
+
 #sidebar-buttons {
   position: fixed;
   top: 20%;

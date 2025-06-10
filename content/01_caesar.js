@@ -543,7 +543,7 @@ worksheets.push({
         },
         {
           task: "Erklären Sie, wie häufig Sie nun den Code ausführen müssten, um den verschlüsselten Text lesen zu können und was das für die Sicherheit des Caesar-Chiffres bedeuten. Handelt es sich um ein sicheres Verfahren?",
-          answerType: "text",
+          answerType: "textLong",
           hints: [
             "Wie viele Verschiebungen müssen ausprobiert werden, um den Text zu entschlüsseln?",
             "Ist es sinnvoll, ein Verfahren zu verwenden, bei dem nur 25 mögliche Schlüssel ausprobiert werden müssen?",
@@ -561,7 +561,7 @@ worksheets.push({
         },
         {
           task: '<span class="text-muted">(Zusatzaufgabe)</span> Erläutern Sie mögliche Wege, wie die Anzahl der Prüfung auf mögliche Verschiebungen reduziert werden kann. Geben Sie auch an, welche Informationen Sie dafür benötigen würden.',
-          answerType: "text",
+          answerType: "textLong",
           hints: [
             "Wäre es sinnvoll, die Häufigkeit von Buchstaben im Text zu analysieren?",
             '<figure class="figure"><img src="img/caesar-buchstabenhaeufigkeit.png" alt="Durchschnittliche Buchstabenhäufigkeit in deutschen Texten. Die Buchstaben E, N, I, R und S kommen am häufigsten vor." class="figure-img img-fluid"><figcaption class="figure-caption">Die häufigsten Buchstaben in deutschen Wörtern (Quelle: <a href="https://www.duden.de/sprachwissen/sprachratgeber/Die-haufigsten-Buchstaben-deutschen-Wortern" target="_blank" title="Die häufigsten Buchstaben in deutschen Wörtern auf duden.de">DUDEN</a>)</figcaption></figure>',

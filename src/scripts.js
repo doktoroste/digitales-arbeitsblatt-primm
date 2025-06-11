@@ -1152,6 +1152,28 @@ function endTrackingCurrentSubtask() {
   }
 }
 
+// Pin code
+document
+  .getElementById("pin-code-button")
+  .addEventListener("click", function () {
+    const button = document.getElementById("pin-code-button");
+    const codeCard = document.getElementById("card-code");
+    if (button.classList.contains("active")) {
+      button.classList.remove("active");
+      button.setAttribute("title", "Code an der rechten Seite anheften");
+      codeCard.classList.remove("code-pinned");
+      codeCard.classList.remove("col-md-4");
+    } else {
+      button.classList.add("active");
+      button.setAttribute(
+        "title",
+        "Code wieder an ursprünglicher Position anzeigen"
+      );
+      codeCard.classList.add("code-pinned");
+      codeCard.classList.add("col-md-4");
+    }
+  });
+
 // Change code language
 document
   .getElementById("worksheet-code-language-buttons")

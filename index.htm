@@ -68,12 +68,22 @@
             <!-- Code-Ausschnitt -->
             <div class="col-md-8">
               <h6>Code</h6>
-              <div class="card mb-3">
+              <div class="card mb-3" id="card-code">
                 <div class="card-body card-body-code">
-                  <div
-                    class="btn-group btn-group-sm float-end"
-                    id="worksheet-code-language-buttons"
-                  ></div>
+                  <div class="d-flex justify-content-end mb-2">
+                    <div
+                      class="btn-group btn-group-sm"
+                      id="worksheet-code-language-buttons"
+                    ></div>
+                    <button
+                      class="btn btn-sm btn-outline-secondary"
+                      id="pin-code-button"
+                      title="Code an der rechten Seite anheften"
+                    >
+                      <i class="bi bi-pin-fill"></i>
+                    </button>
+                  </div>
+
                   <pre id="worksheet-code">Lade Code...</pre>
                 </div>
               </div>

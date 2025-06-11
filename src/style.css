@@ -16,6 +16,9 @@
 #pin-code-button {
   margin-left: 0.5em;
 }
+.text-sm {
+  font-size: 0.875rem;
+}
 
 .card-body-code pre code {
   padding: 0;

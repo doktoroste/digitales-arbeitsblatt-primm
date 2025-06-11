@@ -74,9 +74,29 @@ function initialiseWorksheet() {
       if (subtaskHintButtons.length > 0) {
         if (showDebugLogs)
           console.log("Found these hint buttons: ", subtaskHintButtons);
-        subtaskHintButtons[0].removeAttribute("disabled");
+        // Wait for the specified timeout time (hintTimeout in settings.js) before enabling the next hint button and
+        // show remaining seconds in the hint timeout span
+        /* const hintTimeoutSpan = document.querySelector(
+          `${subtaskHintButtons[0].getAttribute("data-bs-target")}-timeout`
+        );
+        if (hintTimeoutSpan) {
+          hintTimeoutSpan.classList.remove("hide-element");
+          let secondsLeft = hintTimeout;
+          hintTimeoutSpan.innerHTML = `Warte ${secondsLeft}...`;
+          const interval = setInterval(() => {
+            secondsLeft--;
+            hintTimeoutSpan.innerHTML = `Warte ${secondsLeft}...`;
+            if (secondsLeft <= 0) {
+              clearInterval(interval);
+              hintTimeoutSpan.classList.add("hide-element");
+              // Enable the next hint button
+              subtaskHintButtons[0].removeAttribute("disabled");
+            }
+          }, 1000);
+        }*/
       }
       this.disabled = true;
+      subtaskHintButtons[0].removeAttribute("disabled");
       this.setAttribute("data-hint-opened", "true");
       saveUserInput(currentIndex);
     });

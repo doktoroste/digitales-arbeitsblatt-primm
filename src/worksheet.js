@@ -257,7 +257,9 @@ async function loadWorksheet(index) {
               data.titleTechnical
             }-${i}-${j}-hint-${k}" ${buttonDisabled}>Hilfe: Tipp ${
               k + 1
-            } <i class="bi bi-chevron-down"></i></button>
+            } <i class="bi bi-chevron-down"></i><span class="badge rounded-pill text-bg-secondary badge-hint-wait hide-element" id="task-${
+              data.titleTechnical
+            }-${i}-${j}-hint-${k}-timeout">Warte X...</span></button>
                             <div class="collapse" id="task-${
                               data.titleTechnical
                             }-${i}-${j}-hint-${k}">

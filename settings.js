@@ -3,12 +3,12 @@
 const subjectName = "Informatik";
 const courseName = "Kryptologie";
 const showDebugLogs = true;
+const hintTimeout = 10; // Time in seconds before the next hint button is enabled
 
 // Feedback
 // -------------------------------------
 
-// If set to true, each exercise will ask for feedback after it is completed
-const askForFeedback = true;
+const askForFeedback = true; // If set to true, each exercise will ask for feedback after it is completed
 
 // Layout
 // -------------------------------------

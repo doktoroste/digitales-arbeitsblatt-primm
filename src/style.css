@@ -53,3 +53,6 @@ code {
 .alert-hint {
   margin-bottom: 0px;
 }
+.badge-hint-wait {
+  margin-left: 1em;
+}

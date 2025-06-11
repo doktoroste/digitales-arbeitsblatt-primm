@@ -28,26 +28,26 @@ worksheets.push({
   codeHelpers: {
     python: [
       {
-        title: '<code>String <span class="text-dark">isalpha()</span></code>',
+        title: '<code>String <span class="code-dark">isalpha()</span></code>',
         content:
           "Diese Funktion prüft, ob der gegebene String nur Charaktere aus dem Alphabet, also Buchstaben, enthält.",
       },
       {
-        title: '<code class="text-dark">upper()</code>',
+        title: '<code class="code-dark">upper()</code>',
         content:
-          'Diese Funktion wandelt den String in Großbuchstaben um. Beispiel: <pre style="display:inline;"><code>"Hallo".upper()</code></pre> gibt <code>"HALLO"</code> zurück.',
+          'Diese Funktion wandelt den String in Großbuchstaben um. Beispiel: <pre style="display:inline;"><code class="language-python nohljsln">"Hallo".upper()</code></pre> gibt <code>"HALLO"</code> zurück.',
       },
       {
         title:
-          '<code><span class="hljs-built_in">ord</span><span class="text-dark">()</span></code>',
+          '<code><span class="hljs-built_in">ord</span><span class="code-dark">()</span></code>',
         content:
-          "Diese Funktion gibt die Zahl des Unicode-Codes eines Zeichens zurück. Beispiel: <pre style=\"display:inline;\"><code>ord('H')</code></pre> gibt <code>72</code> zurück.",
+          'Diese Funktion gibt die Zahl des Unicode-Codes eines Zeichens zurück. Beispiel: <pre style="display:inline;"><code class="language-python nohljsln">ord(\'H\')</code></pre> gibt <code>72</code> zurück.',
       },
       {
         title:
-          '<code><span class="hljs-built_in">chr</span><span class="text-dark">()</span></code>',
+          '<code><span class="hljs-built_in">chr</span><span class="code-dark">()</span></code>',
         content:
-          "Diese Funktion gibt das Unicode-Zeichen zurück, das durch diese Nummer repräsentiert wird. Beispiel: <pre style=\"display:inline;\"><code>chr(72)</code></pre> gibt <code>'H'</code> zurück.",
+          'Diese Funktion gibt das Unicode-Zeichen zurück, das durch diese Nummer repräsentiert wird. Beispiel: <pre style="display:inline;"><code class="language-python nohljsln">chr(72)</code></pre> gibt <code>\'H\'</code> zurück.',
       },
       {
         title: "Unicode-Tabelle",
@@ -58,31 +58,31 @@ worksheets.push({
     javascript: [
       {
         title:
-          '<code><span class="text-dark">/[A-Z]/.</span><span class="hljs-title function_">test</span><span class="text-dark">(char)</span></code>',
+          '<code><span class="code-dark">/[A-Z]/.</span><span class="hljs-title function_">test</span><span class="code-dark">(char)</span></code>',
         content:
           "Hierbei handelt es sich um einen regulären Ausdruck, mit dem geprüft wird, ob der eingegebene Parameter <code>char</code> ein Buchstaben ist.<br><br>Ein regulärer Ausdruck ist ein Muster an Zeichen, das verwendet wird, um in einer Zeichenkette bestimmte Folgen von Zeichen zu suchen. In diesem Fall wird geprüft, ob <code>char</code> ein Großbuchstabe zwischen <code>'A'</code> und <code>'Z'</code> ist.",
       },
       {
         title:
-          '<code><span class="hljs-title function_">String</span><span class="text-dark">.</span><span class="hljs-title function_">prototype</span><span class="text-dark">.</span><span class="hljs-title function_">charCodeAt</span><span class="text-dark">()</span></code>',
+          '<code><span class="hljs-title function_">String</span><span class="code-dark">.</span><span class="hljs-title function_">prototype</span><span class="code-dark">.</span><span class="hljs-title function_">charCodeAt</span><span class="code-dark">()</span></code>',
         content:
           "Diese Methode gibt den Unicode-Wert des Zeichens an der ersten Position zurück. Beispiel: <pre style=\"display:inline;\"><code>'H'.charCodeAt()</code></pre> gibt <code>72</code> zurück.",
       },
       {
         title:
-          '<code><span class="hljs-title function_">String</span><span class="text-dark">.</span><span class="hljs-title function_">fromCharCode</span>()</code>',
+          '<code><span class="hljs-title function_">String</span><span class="code-dark">.</span><span class="hljs-title function_">fromCharCode</span><span class="code-dark">()</span></code>',
         content:
-          "Diese Funktion gibt das Unicode-Zeichen zurück, das durch diese Nummer repräsentiert wird. Beispiel: <pre style=\"display:inline;\"><code>String.fromCharCode(72)</code></pre> gibt <code>'H'</code> zurück.",
+          'Diese Funktion gibt das Unicode-Zeichen zurück, das durch diese Nummer repräsentiert wird. Beispiel: <pre style="display:inline;"><code class="language-javascript nohljsln">String.fromCharCode(72)</code></pre> gibt <code>\'H\'</code> zurück.',
       },
       {
         title:
-          '<code><span class="hljs-title function_">String</span><span class="text-dark">.</span><span class="hljs-title function_">toUpperCase</span><span class="text-dark">()</span></code>',
+          '<code><span class="hljs-title function_">String</span><span class="code-dark">.</span><span class="hljs-title function_">toUpperCase</span><span class="code-dark">()</span></code>',
         content:
-          'Diese Funktion wandelt den String in Großbuchstaben um. Beispiel: <pre style="display:inline;"><code>"hallo".toUpperCase()</code></pre> gibt <code>"HALLO"</code> zurück.',
+          'Diese Funktion wandelt den String in Großbuchstaben um. Beispiel: <pre style="display:inline;"><code class="language-javascript nohljsln">"hallo".toUpperCase()</code></pre> gibt <code>"HALLO"</code> zurück.',
       },
       {
         title:
-          '<code><span class="hljs-variable">console</span>.<span class="hljs-title function_">log</span><span class="text-dark">()</span></code>',
+          '<code><span class="hljs-variable">console</span>.<span class="hljs-title function_">log</span><span class="code-dark">()</span></code>',
         content:
           "Diese Funktion gibt den übergebenen Wert in der Konsole des Browsers aus.",
       },
@@ -98,7 +98,7 @@ worksheets.push({
       title: "Aufgabe 1: Den Code beschreiben",
       subtasks: [
         {
-          task: 'Beschreiben Sie, was die Funktion <code class="language-specific task-language-python">shift_character()</code><code class="language-specific task-language-javascript hide-element">shiftCharacter()</code> macht.',
+          task: 'Beschreiben Sie, was die Funktion <code class="language-specific task-language-python"><span class="hljs-title">shift_character</span><span class="code-dark">()</span></code><code class="language-specific task-language-javascript hide-element"><span class="hljs-title">shiftCharacter</span><span class="code-dark">()</span></code> macht.',
           answerType: "text",
           phrasingHelpers: [
             "Die Funktion <code class='language-specific task-language-python'>shift_character()</code><code class='language-specific task-language-javascript hide-element'>shiftCharacter()</code> erhält als Parameter ... übergeben.",
@@ -107,7 +107,7 @@ worksheets.push({
           ],
         },
         {
-          task: 'Nennen Sie die erwartete Ausgabe der Funktion <code class="language-specific task-language-python">shift_character()</code><code class="language-specific task-language-javascript hide-element">shiftCharacter()</code> mit den Eingabewerten <code>char = "H"</code> und <code>shift = 3</code>.',
+          task: 'Nennen Sie die erwartete Ausgabe der Funktion <code class="language-specific task-language-python"><span class="hljs-title">shift_character</span><span class="code-dark">()</span></code><code class="language-specific task-language-javascript hide-element"><span class="hljs-title">shiftCharacter</span><span class="code-dark">()</span></code> mit den Eingabewerten <code><span class="code-dark">char = </span><span class="hljs-title">"H"</span></code> und <code><span class="code-dark">shift = 3</span></code>.',
           answerType: "multipleChoice",
           choices: [
             {
@@ -137,17 +137,17 @@ worksheets.push({
           ],
         },
         {
-          task: "Beschreiben Sie, was der gezeigte Code beim Aufruf der Funktion <code>main()</code> macht.",
+          task: 'Beschreiben Sie, was der gezeigte Code beim Aufruf des gesamten Codes (inklusive der Zeilen <span class="language-specific task-language-python">15 bis 18</span><span class="language-specific task-language-javascript hide-element">19 bis 22</span>) macht.',
           answerType: "textLong",
           phrasingHelpers: [
-            "Beim Aufruf der Funktion <code>main()</code> wird zunächst ...",
-            "Zuerst wird der Text aus der Variable <code>message</code> ...",
+            "Beim Aufruf des gesamten Codes wird zunächst ...",
+            "Zuerst wird der Text aus der Variable ...",
+            "... wird in der Bedingung <code>if</code> überprüft, ob ...",
             "Danach wird ...",
+            "... innerhalb der Schleife ...",
+            "Am Ende wird das Ergebnis ...",
             'Die Funktion <code class="language-specific task-language-python">shift_character()</code><code class="language-specific task-language-javascript hide-element">shiftCharacter()</code> überprüft ...',
             'In der Funktion <code class="language-specific task-language-python">caesar_encrypt()</code><code class="language-specific task-language-javascript hide-element">caesar_encrypt()</code> wird jeder Buchstabe ...',
-            "... innerhalb der Schleife ...",
-            "... wird in der Bedingung <code>if</code> überprüft, ob ...",
-            "Am Ende wird das Ergebnis ...",
           ],
         },
         {
@@ -185,7 +185,7 @@ worksheets.push({
       title: "Aufgabe 3: Den Code analysieren",
       subtasks: [
         {
-          task: 'Nennen Sie den Datentyp, der in der Funktion <code class="language-specific task-language-python">caesar_encrypt()</code><code class="language-specific task-language-javascript hide-element">caesarEncrypt()</code> im Parameter <code>text</code> übergeben wird.',
+          task: 'Nennen Sie den Datentyp, der in der Funktion <code class="language-specific task-language-python"><span class="hljs-title">caesar_encrypt</span><span class="code-dark">()</span></code><code class="language-specific task-language-javascript hide-element"><span class="hljs-title">caesarEncrypt</span><span class="code-dark">()</span></code> im Parameter <code class="code-dark">text</code> übergeben wird.',
           answerType: "textShortCheckable",
           correctAnswers: ["String", "string"],
           feedbackText:
@@ -223,7 +223,7 @@ worksheets.push({
           ],
         },
         {
-          task: "Nennen Sie den Datentyp, der im Parameter <code>shift</code> übergeben wird.",
+          task: 'Nennen Sie den Datentyp, der im Parameter <code class="code-dark">shift</code> übergeben wird.',
           answerType: "textShortCheckable",
           correctAnswers: ["Integer", "integer"],
           feedbackText:
@@ -296,7 +296,7 @@ worksheets.push({
           ],
         },
         {
-          task: 'Begründen Sie, warum die Funktion <code class="language-specific task-language-python">ord()</code><code class="language-specific task-language-javascript hide-element">charCodeAt()</code> im Code nicht weggelassen werden kann.',
+          task: 'Begründen Sie, warum die Funktion <code class="language-specific task-language-python"><span class="hljs-built_in">ord</span><span class="code-dark">()</span></code><code class="language-specific task-language-javascript hide-element"><span class="hljs-title">charCodeAt</span><span class="code-dark">()</span></code> im Code nicht weggelassen werden kann.',
           answerType: "text",
           hints: [
             '<span class="language-specific task-language-python">Welcher Wert wird im Parameter der Funktionen übergeben?</span><span class="language-specific task-language-javascript hide-element">Auf was für ein Element wird die Funktion angewandt? Was enthält dieses Element?</span>',
@@ -331,7 +331,7 @@ worksheets.push({
           ],
         },
         {
-          task: 'Begründen Sie, warum die Funktion <code class="language-specific task-language-python">chr()</code><code class="language-specific task-language-javascript hide-element">String.fromCharCode()</code> im Code nicht weggelassen werden kann.',
+          task: 'Begründen Sie, warum die Funktion <code class="language-specific task-language-python"><span class="hljs-built_in">chr</span><span class="code-dark">()</span></code><code class="language-specific task-language-javascript hide-element"><span class="hljs-title">String</span><span class="code-dark">.</span><span class="hljs-title">fromCharCode</span><span class="code-dark">()</span></code> im Code nicht weggelassen werden kann.',
           answerType: "text",
           hints: [
             "Welcher Wert wird im Parameter der Funktion übergeben?",
@@ -366,7 +366,7 @@ worksheets.push({
           ],
         },
         {
-          task: 'Erklären Sie den Code in <span class="language-specific task-language-python">Zeile 4</span><span class="language-specific task-language-javascript hide-element">Zeile 3</span>: <code class="language-specific task-language-python">new_position = ord(char) + shift</code><code class="language-specific task-language-javascript hide-element">let newPosition = char.charCodeAt() + shift;</code>',
+          task: 'Erklären Sie den Code in <span class="language-specific task-language-python">Zeile 4</span><span class="language-specific task-language-javascript hide-element">Zeile 3</span>: <code class="language-specific task-language-python"><span class="code-dark">new_position = </span><span class="hljs-built_in">ord</span><span class="code-dark">(char) + shift</span></code><code class="language-specific task-language-javascript hide-element"><span class="hljs-keyword">let</span> <span class="code-dark">newPosition = char.</span><span class="hljs-title">charCodeAt</span><span class="code-dark">() + shift;</span></code>',
           answerType: "text",
           hints: [
             "Welchen Wert gibt die Funktion <code class='language-specific task-language-python'>ord()</code><code class='language-specific task-language-javascript hide-element'>charCodeAt()</code> für den Buchstaben <code>H</code> zurück?",
@@ -436,7 +436,7 @@ worksheets.push({
           ],
         },
         {
-          task: 'Erklären Sie, warum die Eingaben <code>"hello, world!"</code> und <code>"HELLO, WORLD!"</code> zu einer identischen Ausgabe führen.',
+          task: 'Erklären Sie, warum die Eingaben <code class="hljs-string">"hello, world!"</code> und <code class="hljs-string">"HELLO, WORLD!"</code> zu einer identischen Ausgabe führen.',
           answerType: "text",
           hints: [
             "Wird im Code zwischen Groß- und Kleinbuchstaben unterschieden?",
@@ -483,19 +483,20 @@ worksheets.push({
       ],
       subtasks: [
         {
-          task: "Nennen und begründen Sie, welche Ausgabe Sie beim Ausführen des Codes mit dem Parametern <code>message = 'A'</code> und <code>shift = 26</code> (Zeilen <span class='language-specific task-language-python'>16 und 17</span><span class='language-specific task-language-javascript hide-element'>20 und 21</span>) erwarten. Sie müssen keinen spezifischen Ausgabewert angeben. Führen Sie den Code noch nicht aus.",
+          task: "Nennen und begründen Sie, welche Ausgabe Sie beim Ausführen des Codes mit dem Parametern <code><span class='code-dark'>message = </span><span class='hljs-string'>'A'</span></code> und <code class='code-dark'>shift = 26</code> (Zeilen <span class='language-specific task-language-python'>15 und 16</span><span class='language-specific task-language-javascript hide-element'>19 und 20</span>) erwarten. Sie müssen keinen spezifischen Ausgabewert angeben. Führen Sie den Code noch nicht aus.",
           answerType: "text",
           hints: [
             "Vermuten Sie, welche Zeichen noch auf der Unicode-Tabelle vorhanden sind. Großbuchstaben sind nur den Werten 65 und 90 zu finden.",
             "Der Unicode-Wert von <code>A</code> ist 65. Welcher Buchstabe wird bei der Verschiebung um 26 Zeichen ausgegeben?",
           ],
           phrasingHelpers: [
-            "Bei einer Verschiebung um 26 Zeichen wird der Buchstabe ...",
+            "Bei einer Verschiebung um 26 Zeichen wird das Zeichen ...",
             "Das Unicode-Zeichen an der Stelle ... wird ausgegeben.",
+            "Die Verschiebung um 26 Zeichen führt dazu, dass das Zeichen ... ausgegeben wird.",
           ],
         },
         {
-          task: 'Setzen Sie die Parameter <code>message = "A"</code> und <code>shift = 26</code> und führen den Code aus. Vergleichen Sie das Ergebnis mit Ihrer Vorhersage.',
+          task: "Setzen Sie die Parameter <code><span class='code-dark'>message = </span><span class='hljs-string'>'A'</span></code> und <code class='code-dark'>shift = 26</code> und führen den Code aus. Vergleichen Sie das Ergebnis mit Ihrer Vorhersage.",
           answerType: "text",
         },
         {
@@ -517,7 +518,7 @@ worksheets.push({
           ],
         },
         {
-          task: 'Beschreiben Sie, welche Ausgabe Sie beim Ausführen des veränderten Codes mit dem Parametern <code>text = "A"</code> und <code>shift = 104</code>. erwarten. Sie müssen keinen spezifischen Ausgabewert angeben.',
+          task: 'Beschreiben Sie, welche Ausgabe Sie beim Ausführen des veränderten Codes mit dem Parametern <code><span class="code-dark">text = </span><span class="hljs-string">\'A\'</span></code> und <code class="code-dark">shift = 104</code> erwarten. Sie müssen keinen spezifischen Ausgabewert angeben.',
           answerType: "text",
           hints: [
             "Wie haben Sie den Code verändert? Gibt es jetzt eine Begrenzung für den Wert von <code>shift</code>?",
@@ -525,7 +526,7 @@ worksheets.push({
           ],
         },
         {
-          task: 'Setzen Sie die Parameter <code>text = "A"</code> und <code>shift = 104</code> und führen den Code aus. Vergleichen Sie das Ergebnis mit Ihrer Vorhersage.',
+          task: 'Setzen Sie die Parameter <code><span class="code-dark">text = </span><span class="hljs-string">\'A\'</span></code> und <code class="code-dark">shift = 104</code> und führen den Code aus. Vergleichen Sie das Ergebnis mit Ihrer Vorhersage.',
           answerType: "text",
         },
         {
@@ -542,10 +543,10 @@ worksheets.push({
     {
       title: "Aufgabe 5: Den Code erweitern",
       description:
-        "Sie konnten den verschlüsselten Text <code>EVZE, ZTY YRSV DVZE VJJVE MVIXVJJVE. VJ XZSK JGRVKVI ELUVCE LEU VZJ ZE UVI TRWVKVIZR!</code>, der zwischen zwei Mitschüler*innen ausgetauscht wurde, abfangen. Wie können Sie nun möglichst schnell erfahren, worum es in der Nachricht geht?",
+        'Sie konnten den verschlüsselten Text <code class="hljs-string">"EVZE, ZTY YRSV DVZE VJJVE MVIXVJJVE. VJ XZSK JGRVKVI ELUVCE LEU VZJ ZE UVI TRWVKVIZR!"</code>, der zwischen zwei Mitschüler*innen ausgetauscht wurde, abfangen. Wie können Sie nun möglichst schnell erfahren, worum es in der Nachricht geht?',
       subtasks: [
         {
-          task: "Ergänzen Sie den Code um eine Funktion <code class='language-specific task-language-python'>caesar_decrypt</code><code class='language-specific task-language-javascript hide-element'>caesarDecrypt</code> zum Entschlüsseln eines Strings, der vorher mit dem Caesar-Chiffre verschlüsselt wurde. Die Funktion sollte wie bisher die Parameter <code>text</code> und <code>shift</code> als Eingabe erhalten. Nutzen Sie die bestehende Funktion <code class='language-specific task-language-python'>shift_character()</code><code class='language-specific task-language-javascript hide-element'>shiftCharakter()</code>, ohne diese zu verändern.",
+          task: "Ergänzen Sie den Code um eine Funktion <code class='language-specific task-language-python hljs-title'>caesar_decrypt</code><code class='language-specific task-language-javascript hide-element hljs-title'>caesarDecrypt</code> zum Entschlüsseln eines Strings, der vorher mit dem Caesar-Chiffre verschlüsselt wurde. Die Funktion sollte wie bisher die Parameter <code class='code-dark'>text</code> und <code class='code-dark'>shift</code> als Eingabe erhalten. Nutzen Sie die bestehende Funktion <code class='language-specific task-language-python hljs-title'>shift_character()</code><code class='language-specific task-language-javascript hide-element hljs-title'>shiftCharakter()</code>, ohne diese zu verändern.",
           answerType: "code",
           hints: [
             "Denken Sie darüber nach, wie Sie die Richtung der Verschiebung umkehren können.",

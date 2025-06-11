@@ -261,7 +261,7 @@ worksheets.push({
           ],
         },
         {
-          task: 'Beschreiben Sie, wie häufig die for-Schleife in Zeile <span class="language-specific task-language-python">11</span><span class="language-specific task-language-javascript">13</span> durchlaufen wird.',
+          task: 'Beschreiben Sie, wie häufig die for-Schleife in Zeile <span class="language-specific task-language-python">11</span><span class="language-specific task-language-javascript hide-element">13</span> durchlaufen wird.',
           answerType: "text",
           hints: [
             "Welcher Wert wird in <code>text</code> gespeichert?",

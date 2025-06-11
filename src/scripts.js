@@ -30,6 +30,7 @@ function initialiseWorksheet() {
     input.addEventListener("click", function () {
       currentSubtaskId = this.getAttribute("data-subtask-id");
       currentSubtaskLink = this.getAttribute("id");
+      startTrackingCurrentSubtask();
       if (showDebugLogs)
         console.log(
           "Setting current subtask to: ",
@@ -884,6 +885,69 @@ function saveUserInput(currentWorksheet) {
   localStorage.setItem(worksheetDataKey, JSON.stringify(worksheetData));
 }
 
+// Start or end tracking the current subtask
+function startTrackingCurrentSubtask() {
+  if (
+    currentActivePeriod.subtaskId !== currentSubtaskId &&
+    currentActivePeriod.subtaskId !== null
+  ) {
+    // If the current subtask is different from the one we are tracking, stop tracking the old one
+    endTrackingCurrentSubtask();
+
+    // Start tracking the new subtask
+    currentActivePeriod = {
+      subtaskId: currentSubtaskId,
+      start: new Date(),
+      end: null,
+      totalTime: 0,
+    };
+    if (showDebugLogs)
+      console.log(
+        "Starting tracking of current subtask ",
+        currentActivePeriod.subtaskId,
+        " at ",
+        currentActivePeriod.start
+      );
+  } else if (currentActivePeriod.subtaskId === null) {
+    // If we are not tracking any subtask, start tracking the current one
+    currentActivePeriod.subtaskId = currentSubtaskId;
+    currentActivePeriod.start = new Date();
+    if (showDebugLogs)
+      console.log(
+        "Starting tracking of current subtask ",
+        currentActivePeriod.subtaskId,
+        " at ",
+        currentActivePeriod.start
+      );
+  }
+}
+
+function endTrackingCurrentSubtask() {
+  if (currentActivePeriod.subtaskId !== null) {
+    // If we are tracking a subtask, end tracking it
+    currentActivePeriod.end = new Date();
+    currentActivePeriod.totalTime =
+      (currentActivePeriod.end - currentActivePeriod.start) / 1000; // in seconds
+    activePeriods.push(currentActivePeriod);
+    if (showDebugLogs)
+      console.log(
+        "Ending tracking of current subtask ",
+        currentActivePeriod.subtaskId,
+        " at ",
+        currentActivePeriod.end
+      );
+    localStorage.setItem("activePeriods", JSON.stringify(activePeriods));
+
+    // Reset current active period
+    currentActivePeriod = {
+      subtaskId: null,
+      start: null,
+      end: null,
+      totalTime: 0,
+    };
+  }
+}
+
 // Change code language
 document
   .getElementById("worksheet-code-language-buttons")
@@ -960,9 +1024,10 @@ document.getElementById("export-code").addEventListener("click", function () {
 // Export user data as JSON file
 document.getElementById("export-data").addEventListener("click", function () {
   // Retrieve the hierarchical data from localStorage
-  const worksheetDataKey = "worksheetData";
-  const worksheetData =
-    JSON.parse(localStorage.getItem(worksheetDataKey)) || {};
+  const worksheetData = JSON.parse(localStorage.getItem("worksheetData")) || {};
+  endTrackingCurrentSubtask();
+  worksheetData["activePeriods"] =
+    JSON.parse(localStorage.getItem("activePeriods")) || {};
 
   // Convert the data to a JSON string with indentation for readability
   const dataStr =

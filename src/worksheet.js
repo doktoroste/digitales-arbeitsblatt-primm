@@ -2,11 +2,21 @@ let worksheets = [];
 let currentIndex = 0;
 let currentSelectedLanguage = "python";
 let currentSubtaskId = "";
+let activePeriods = [];
+let currentActivePeriod = {
+  subtaskId: null,
+  start: "",
+  end: "",
+  totalTime: 0,
+};
 
 async function loadWorksheets() {
   let tocHtml = "";
   if (localStorage.getItem("currentSelectedLanguage")) {
     currentSelectedLanguage = localStorage.getItem("currentSelectedLanguage");
+  }
+  if (localStorage.getItem("activePeriods")) {
+    activePeriods = JSON.parse(localStorage.getItem("activePeriods"));
   }
   worksheets.forEach((ws, index) => {
     const status = localStorage.getItem(ws.file) === "done" ? "✔️" : "";
@@ -170,7 +180,7 @@ async function loadWorksheet(index) {
 
       // Subtasks
       task.subtasks.forEach((subtask, j) => {
-        taskHtml += `<li class="mb-4 subtask" id="subtask-${i}-${j}" data-subtask-type="${subtask.answerType}" data-subtask-id="${data.titleTechnical}-${i}-${j}">${subtask.task}`;
+        taskHtml += `<li class="mb-4 subtask" id="subtask-${i}-${j}" data-subtask-type="${subtask.answerType}" data-worksheet-id="${index}" data-task-id="${i}" data-subtask-id="${data.titleTechnical}-${i}-${j}">${subtask.task}`;
         if (subtask.answerType === "textShort") {
           taskHtml += `<input type="text" class="form-control save-user-input" id="task-${data.titleTechnical}-${i}-${j}" data-answer-type="${subtask.answerType}">`;
         } else if (subtask.answerType === "textShortCheckable") {

@@ -188,9 +188,13 @@ async function loadWorksheet(index) {
             data.titleTechnical
           }-${i}-${j}" data-answer-type="${
             subtask.answerType
-          }"><button type="button" class="check-user-answer btn btn-outline-secondary" data-correct-answers="${subtask.correctAnswers.join(
+          }" data-answer-checked="false" data-answer-checked-result="null"><button type="button" class="check-user-answer btn btn-outline-secondary" data-subtask-id="task-${
+            data.titleTechnical
+          }-${i}-${j}" data-correct-answers="${subtask.correctAnswers.join(
             ","
-          )}" data-feedback="">Antwort prüfen</button></div><div class="alert alert-light mt-2 hide-element" id="task-${
+          )}" data-feedback-text="${
+            subtask.feedbackText || ""
+          }">Antwort prüfen</button></div><div class="alert alert-light mt-2 hide-element" id="task-${
             data.titleTechnical
           }-${i}-${j}-feedback"></div>`;
         } else if (subtask.answerType === "text") {

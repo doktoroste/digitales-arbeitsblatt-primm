@@ -20,7 +20,7 @@
   display: none;
 }
 
-code {
+li code {
   white-space: nowrap !important;
 }
 

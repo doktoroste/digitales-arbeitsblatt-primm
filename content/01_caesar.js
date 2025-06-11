@@ -186,8 +186,10 @@ worksheets.push({
       subtasks: [
         {
           task: 'Nennen Sie den Datentyp, der in der Funktion <code class="language-specific task-language-python">caesar_encrypt()</code><code class="language-specific task-language-javascript hide-element">caesarEncrypt()</code> im Parameter <code>text</code> übergeben wird.',
-          answerType: "textShort",
-          correctAnswers: ["String"],
+          answerType: "textShortCheckable",
+          correctAnswers: ["String", "string"],
+          feedbackText:
+            "Der zu verschlüsselnde Text ist eine Zeichenkette und damit ein <code>String</code>.",
           hints: [
             "Gibt es in Programmiersprachen wie Python oder JavaScript einen spezifischen Datentypen für Textketten?",
             '<table class="table text-center"><thead><tr><th>Datentyp</th><th>Beispiel</th></tr></thead><tbody><tr><td>String</td><td><code>"Hallo Welt"</code></td></tr><tr><td>Char</td><td><code>\'H\'<code></td></tr><tr><td>Integer</td><td><code>42<code></td></tr><tr><td>Float</td><td><code>3.1415<code></td></tr></tbody></table>',
@@ -222,7 +224,10 @@ worksheets.push({
         },
         {
           task: "Nennen Sie den Datentyp, der im Parameter <code>shift</code> übergeben wird.",
-          answerType: "textShort",
+          answerType: "textShortCheckable",
+          correctAnswers: ["Integer", "integer"],
+          feedbackText:
+            "Die Anzahl, um die die Buchstaben verschoben werden, ist immer eine ganze Zahl und damit ein <code>Integer</code>.",
           hints: [
             "Welcher Datentyp wird in Programmiersprachen wie Python oder JavaScript für ganze Zahlen verwendet?",
             '<table class="table text-center"><thead><tr><th>Datentyp</th><th>Beispiel</th></tr></thead><tbody><tr><td>String</td><td><code>"Hallo Welt"</code></td></tr><tr><td>Char</td><td><code>\'H\'<code></td></tr><tr><td>Integer</td><td><code>42<code></td></tr><tr><td>Float</td><td><code>3.1415<code></td></tr></tbody></table>',

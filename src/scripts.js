@@ -59,6 +59,89 @@ function initialiseWorksheet() {
     });
   });
 
+  // Check user answer on an .check-user-answer button click (correct answers are in data-correct-answer attribute
+  // if multiple correct answers are possible, they are separated by a comma)
+  document.querySelectorAll(".check-user-answer").forEach((button) => {
+    button.addEventListener("click", function (e) {
+      endTrackingCurrentSubtask(); // Stop tracking current subtask when checking the answer
+      // Disable all remaining hint buttons for this subtask
+      const subtaskHintButtons = document.querySelectorAll(
+        `.btn-subtask-hint[data-subtask-id="${e.target.getAttribute(
+          "data-subtask-id"
+        )}"]`
+      );
+      subtaskHintButtons.forEach((btn) => {
+        if (btn.getAttribute("data-hint-opened") === "false") {
+          // Only disable buttons that have not been opened yet
+          btn.setAttribute("disabled", "true");
+        }
+      });
+
+      if (showDebugLogs)
+        console.log(
+          "Checking user answer for subtask: ",
+          e.target.getAttribute("data-subtask-id")
+        );
+      const subtaskId = e.target.getAttribute("data-subtask-id");
+      const subtaskInput = document.getElementById(subtaskId);
+      if (!subtaskInput) {
+        console.error(
+          `Subtask input with id ${subtaskId} not found. Cannot check user answer.`
+        );
+        return;
+      }
+      const correctAnswers = e.target.getAttribute("data-correct-answers");
+      if (!correctAnswers) {
+        console.error(
+          `No correct answers defined for subtask ${subtaskId}. Cannot check user answer.`
+        );
+        return;
+      }
+      const correctAnswersArray = correctAnswers
+        .split(",")
+        .map((ans) => ans.trim());
+      const userAnswer = subtaskInput.value.trim(); // Get user answer and convert it to lowercase for case-insensitive comparison
+      if (showDebugLogs)
+        console.log(
+          `User answer: "${userAnswer}", Correct answers: ${correctAnswersArray.join(
+            ", "
+          )}`
+        );
+      const isCorrect = correctAnswersArray.includes(userAnswer); // Check if user answer is in the correct answers array
+      const feedbackElement = document.querySelector(`#${subtaskId}-feedback`);
+      document.getElementById(subtaskId).setAttribute("disabled", "true"); // Disable the input field after checking the answer
+      subtaskInput.setAttribute("data-answer-checked", "true");
+      if (isCorrect) {
+        e.target.innerHTML = `<i class="bi bi-check-lg"></i> Antwort korrekt`;
+        e.target.classList.remove("btn-outline-secondary");
+        e.target.classList.add("btn-outline-success");
+        e.target.setAttribute("disabled", "true");
+        subtaskInput.setAttribute("data-answer-checked-result", "true");
+      } else {
+        e.target.innerHTML = `<i class="bi bi-x-lg"></i> Antwort falsch`;
+        e.target.classList.remove("btn-outline-secondary");
+        e.target.classList.add("btn-outline-danger");
+        e.target.setAttribute("disabled", "true");
+        subtaskInput.setAttribute("data-answer-checked-result", "false");
+      }
+      if (feedbackElement) {
+        feedbackElement.classList.remove("hide-element");
+        feedbackElement.classList.add("show");
+        if (isCorrect) {
+          feedbackElement.innerHTML = `<span class="badge text-bg-success">Die Antwort ist korrekt.</span><br>${e.target.getAttribute(
+            "data-feedback-text"
+          )}`;
+        } else {
+          feedbackElement.innerHTML = `<span class="badge text-bg-danger">Die Antwort ist falsch.</span><br>${e.target.getAttribute(
+            "data-feedback-text"
+          )}<span class="text-muted mt-2">Die richtige Antwort ist:</span> ${correctAnswersArray.join(
+            " oder "
+          )}`;
+        }
+      }
+    });
+  });
+
   // Disabling and enabling subtask hint buttons
   document.querySelectorAll(".btn-subtask-hint").forEach((button) => {
     button.addEventListener("click", function (e) {
@@ -123,6 +206,7 @@ function initialiseWorksheet() {
     .querySelectorAll(".btn-subtask-multiple-choice-answer")
     .forEach((button) => {
       button.addEventListener("click", function (e) {
+        endTrackingCurrentSubtask(); // Stop tracking current subtask when checking the answer
         // Disable all buttons of this subtask
         const subtaskId = e.target.getAttribute("data-subtask-id");
         const subtaskButtons = document.querySelectorAll(
@@ -322,6 +406,82 @@ function loadUserInput(currentWorksheet) {
         `task-${worksheet.titleTechnical}-${taskIndex}-${subtaskIndex}`
       );
       if (subtaskInput) {
+        // If the subtask has data-answer-type="textShortCheckable", check if the subtask was already checked (subtask.answerChecked), if yes: set data-answer-checked to true
+        // and check if answer was  correct or not correct (subtask.answerCheckedResult), set data-answer-checked-result and display the feedback
+        if (
+          subtaskInput.getAttribute("data-answer-type") === "textShortCheckable"
+        ) {
+          if (subtaskData.answerChecked === "true") {
+            subtaskInput.setAttribute("data-answer-checked", "true");
+            subtaskInput.setAttribute(
+              "data-answer-checked-result",
+              subtaskData.answerCheckedResult
+            );
+            subtaskInput.setAttribute("disabled", "true");
+            if (showDebugLogs)
+              console.log(
+                `- - - Loading answer checked state for task ${taskIndex} subtask ${subtaskIndex}:`,
+                subtaskData.answerChecked,
+                subtaskData.answerCheckedResult
+              );
+            const checkButton = document.querySelector(
+              `.check-user-answer[data-subtask-id="task-${worksheet.titleTechnical}-${taskIndex}-${subtaskIndex}"]`
+            );
+            const feedbackElement = document.querySelector(
+              `#task-${worksheet.titleTechnical}-${taskIndex}-${subtaskIndex}-feedback`
+            );
+            if (checkButton) {
+              checkButton.setAttribute("disabled", "true");
+              const correctAnswersArray = checkButton
+                .getAttribute("data-correct-answers")
+                .split(",")
+                .map((ans) => ans.trim());
+              if (subtaskData.answerCheckedResult === "true") {
+                checkButton.innerHTML = `<i class="bi bi-check-lg"></i> Antwort korrekt`;
+                checkButton.classList.remove("btn-outline-secondary");
+                checkButton.classList.add("btn-outline-success");
+                if (feedbackElement) {
+                  feedbackElement.classList.remove("hide-element");
+                  feedbackElement.classList.add("show");
+                  feedbackElement.innerHTML =
+                    `<span class="badge text-bg-success">Die Antwort ist korrekt.</span>` +
+                    "<br>" +
+                    checkButton.getAttribute("data-feedback-text");
+                }
+              } else {
+                checkButton.innerHTML = `<i class="bi bi-x-lg"></i> Antwort falsch`;
+                checkButton.classList.remove("btn-outline-secondary");
+                checkButton.classList.add("btn-outline-danger");
+                if (feedbackElement) {
+                  feedbackElement.classList.remove("hide-element");
+                  feedbackElement.classList.add("show");
+                  feedbackElement.innerHTML =
+                    `<span class="badge text-bg-danger">Die Antwort ist falsch.</span>` +
+                    "<br>" +
+                    checkButton.getAttribute("data-feedback-text") +
+                    `<div class="mt-2"><span class="text-muted">Die richtige Antwort ist:</span> ${correctAnswersArray.join(
+                      " oder "
+                    )}</div>`;
+                }
+              }
+            }
+            // Disable all remaining hint buttons for this subtask
+            const subtaskHintButtons = document.querySelectorAll(
+              `.btn-subtask-hint[data-subtask-id="task-${worksheet.titleTechnical}-${taskIndex}-${subtaskIndex}"]`
+            );
+            subtaskHintButtons.forEach((btn) => {
+              if (btn.getAttribute("data-hint-opened") === "false") {
+                // Only disable buttons that have not been opened yet
+                btn.setAttribute("disabled", "true");
+                btn.setAttribute("data-hint-opened", "true"); // Set data-hint-opened to true to prevent further clicks
+              }
+            });
+          } else {
+            subtaskInput.setAttribute("data-answer-checked", "false");
+            subtaskInput.setAttribute("data-answer-checked-result", "null");
+          }
+        }
+
         // If the subtask has data-answer-type="multiple-choice", load the multiple choice state
         if (
           subtaskInput.getAttribute("data-answer-type") === "multipleChoice"
@@ -717,6 +877,30 @@ function saveUserInput(currentWorksheet) {
       );
       // If the subtask has data-answer-type="multiple-choice", save the multiple choice state and the selected answer
       if (subtaskInput) {
+        // If the subtask has data-answer-type="textShortCheckable", save if the subtask was already checked (data-answer-checked) and if it was a correct or incorrect result (data-answer-checked-result)
+        if (
+          subtaskInput.getAttribute("data-answer-type") === "textShortCheckable"
+        ) {
+          worksheetData[currentWorksheet].tasks[taskIndex].subtasks[
+            subtaskIndex
+          ].answerChecked = subtaskInput.getAttribute("data-answer-checked");
+          worksheetData[currentWorksheet].tasks[taskIndex].subtasks[
+            subtaskIndex
+          ].answerCheckedResult = subtaskInput.getAttribute(
+            "data-answer-checked-result"
+          );
+          if (showDebugLogs)
+            console.log(
+              `- - - Saving answer checked state for task ${taskIndex} subtask ${subtaskIndex}:`,
+              worksheetData[currentWorksheet].tasks[taskIndex].subtasks[
+                subtaskIndex
+              ].answerChecked,
+              worksheetData[currentWorksheet].tasks[taskIndex].subtasks[
+                subtaskIndex
+              ].answerCheckedResult
+            );
+        }
+
         if (
           subtaskInput.getAttribute("data-answer-type") === "multipleChoice"
         ) {

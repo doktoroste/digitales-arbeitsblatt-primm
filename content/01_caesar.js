@@ -6,6 +6,11 @@ worksheets.push({
     "<p>Beim Schreiben von Nachrichten in Messenger-Apps wie WhatsApp oder Signal stellt sich die Frage, wie sicher diese eigentlich sind. Was passiert, wenn eine Nachricht abgefangen wird? Moderne Apps verwenden komplexe Verschlüsselungsverfahren, um Nachrichten geheim zu halten. Doch die Idee, Nachrichten zu verschlüsseln, ist keineswegs neu.</p><p>Bereits in der Antike entwickelten Menschen Methoden, um geheime Botschaften zu schützen. Eine der bekanntesten nutzte bereits Julius Caesar: Er griff auf eine einfache Technik zurück, um seine Nachrichten vor unbefugtem Zugriff zu sichern.</p><p>Wie ist Caesar vorgegangen? Und wie sicher waren seine Nachrichten verschlüsselt?</p>",
   citations: [
     {
+      short: "schroedel2008",
+      citation:
+        'Schrödel, T. (2008). Breaking Short Vigenère Ciphers. <i>Cryptologia</i>, 32(4), 334–347. <a href="https://doi.org/10.1080/01611190802336097" target="_blank">https://doi.org/10.1080/01611190802336097</a>',
+    },
+    {
       short: "wikipedia2025",
       citation:
         'Wikipedia contributors (2025). List of Unicode characters. <i>Wikipedia, The Free Encyclopedia</i>. Aufgerufen am 11. Juni 2025 von <a href="https://en.wikipedia.org/w/index.php?title=List_of_Unicode_characters&oldid=1291316821" target="_blank">https://en.wikipedia.org/w/index.php?title=List_of_Unicode_characters&oldid=1291316821</a>',
@@ -579,6 +584,23 @@ worksheets.push({
             "Wäre es sinnvoll, die Häufigkeit von Buchstaben im Text zu analysieren?",
             '<figure class="figure"><img src="img/caesar-buchstabenhaeufigkeit.png" alt="Durchschnittliche Buchstabenhäufigkeit in deutschen Texten. Die Buchstaben E, N, I, R und S kommen am häufigsten vor." class="figure-img img-fluid"><figcaption class="figure-caption">Die häufigsten Buchstaben in deutschen Wörtern (Quelle: <a href="https://www.duden.de/sprachwissen/sprachratgeber/Die-haufigsten-Buchstaben-deutschen-Wortern" target="_blank" title="Die häufigsten Buchstaben in deutschen Wörtern auf duden.de">DUDEN</a>)</figcaption></figure>',
             "Wäre es möglich, den entschlüsselten Text auf bekannte und lesbare Wörter zu überprüfen?",
+          ],
+        },
+      ],
+    },
+    {
+      title:
+        "Aufgabe 6: Neuen Code schreiben <span class='text-muted'>(Zusatzaufgabe)</span>",
+      description:
+        '<figure class="figure col-md-4 float-end"><img src="img/vigenere-chatgpt.webp" class="figure-img img-fluid" alt="Der Abt Blaise de Vigenere zeigt seine Verschlüsselungstabelle."><figcaption class="figure-caption" id="worksheet-image-description">Bild: Generiert mit ChatGPT, eigene Bearbeitung.</figcaption></figure><p>Es dauerte nicht lange, bis das Caesar-Verfahren einer breiteren Masse bekannt war und nicht mehr als sicher galt. Im 16. Jahrhundert begannen Mönche, das Verfahren um eine weitere Dimension zu erweitern: Statt einer einfachen Verschiebung des Alphabets wurde nun für jeden Buchstaben eine unterschiedliche Verschiebung genutzt. Wegen dieser für damalige Verhältnisse komplexe Methode galt sie lange Zeit als die "unentzifferbare Chiffre“ <a class="link-secondary" href="#schroedel2008">(Schrödel, 2008)</a></p><p>Später entwickelte Blaise de <strong>Vigenère</strong> das Verfahren weiter, weshalb es nach ihm benannt wurde.</p><p>Die verschiedenen Caesar-Verschiebungen im Vigenère-Chiffre werden durch ein Schlüsselwort bestimmt. Dieser Schlüssel wird wiederholt, um die Länge des Klartextes zu erreichen. Der Vigenère-Chiffre ist deutlich sicherer als der Caesar-Chiffre, da die Verschiebung für jeden Buchstaben unterschiedlich ist. Macht ihn das wirklich unentzifferbar?</p><p>In der folgenden Aufgabe sollen Sie einen neuen Code schreiben, der dieses Verfahren umsetzt. Sie können dabei auf den bereits geschriebenen Code für den Caesar-Chiffre zurückgreifen.</p>',
+      subtasks: [
+        {
+          task: "Schreiben Sie eine Funktion <code class='language-specific task-language-python hljs-title'>vigenere_encrypt</code><code class='language-specific task-language-javascript hide-element hljs-title'>vigenereEncrypt</code>, die einen Text mit dem Vigenère-Chiffre verschlüsselt. Die Funktion soll die Parameter <code class='code-dark'>text</code> und <code class='code-dark'>key</code> als Eingabe erhalten. Nutzen Sie die bestehende Funktion <code class='language-specific task-language-python hljs-title'>shift_character()</code><code class='language-specific task-language-javascript hide-element hljs-title'>shiftCharakter()</code>, ohne diese zu verändern.",
+          answerType: "code",
+          hints: [
+            "Denken Sie darüber nach, wie Sie die Verschiebung für jeden Buchstaben des Textes anpassen können.",
+            "Kopieren Sie den ursprünglichen Code bzw. Ihre Version aus Aufgabe 4. An welcher Stelle müssen Sie die Verschiebung anpassen?",
+            'Ein möglicher Ansatz für die Funktion (noch mit Lücken): <code class="language-specific task-language-python"><pre>def vigenere_encrypt(text, key):\n    result = ""\n    key_length = len(key)\n    for i, char in enumerate(text):\n        # TODO\n    return result</pre></code><code class="language-specific task-language-javascript hide-element"><pre>function vigenereEncrypt(text, key) {\n    let result = "";\n    let keyLength = key.length;\n    for (let i = 0; i < text.length; i++) {\n        // TODO\n    }\n    return result;\n}</pre></code>',
           ],
         },
       ],

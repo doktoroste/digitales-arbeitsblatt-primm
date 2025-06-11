@@ -175,7 +175,8 @@ async function loadWorksheet(index) {
                     </div>`;
       }
 
-      taskHtml += `<div class="col-md-8">
+      taskHtml += `<!-- Task Content -->
+                   <div class="col-md-8">
                         <ol type="a">`;
 
       // Subtasks
@@ -216,7 +217,6 @@ async function loadWorksheet(index) {
           });
           taskHtml += `<div class="subtask-multiple-choice-feedback hide-element" data-subtask-id="task-${data.titleTechnical}-${i}-${j}" id="task-${data.titleTechnical}-${i}-${j}-multiple-choice-feedback">
                     <div class="alert alert-light mt-2"></div>
-                  </div>
                   </div>`;
         }
 
@@ -358,11 +358,12 @@ async function loadWorksheet(index) {
                 </li>`;
       }
       taskHtml += `</ol>
-                </div>`;
+                </div><!-- End of Task Content -->`;
 
       // Task helpers
       if (task.helpers) {
-        taskHtml += `<div class="col-md-4">
+        taskHtml += `<!-- Task Helpers -->
+                    <div class="col-md-4">
                         <h6>Weitere Erklärungen</h6>
                         <div class="accordion accordion-helpers" id="task-${data.titleTechnical}-${i}-helpers">`;
         task.helpers.forEach((helper, j) => {
@@ -379,10 +380,11 @@ async function loadWorksheet(index) {
                         </div>
                     </div>`;
         });
-        taskHtml += `</div>`;
+        taskHtml += `</div><!-- End of Task Helpers -->`;
       }
 
-      taskHtml += `</div>`;
+      taskHtml += `</div>
+                </div><!-- End of Task ${i} -->`;
     });
   }
   document.getElementById("worksheet-tasks").innerHTML = taskHtml;

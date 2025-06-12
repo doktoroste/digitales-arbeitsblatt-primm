@@ -37,6 +37,9 @@
 li code {
   white-space: nowrap !important;
 }
+.li-code-wrap code {
+  white-space: unset !important;
+}
 .code-dark {
   color: #000;
 }

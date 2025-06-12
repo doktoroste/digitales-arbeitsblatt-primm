@@ -101,10 +101,12 @@ worksheets.push({
   tasks: [
     {
       title: "Aufgabe 1: Den Code beschreiben",
+      description:
+        "In dieser Aufgabe sollen Sie den Code analysieren und verstehen, was er macht. Anschließend sollen Sie eine Prognose über die Ausgabe des Codes treffen. <strong>Führen Sie den Code dazu noch nicht aus</strong>, sondern versuchen Sie, die Ausgabe nur durch das Lesen des Codes zu ermitteln.",
       subtasks: [
         {
           task: 'Beschreiben Sie, was die Funktion <code class="language-specific task-language-python"><span class="hljs-title">shift_character</span><span class="code-dark">()</span></code><code class="language-specific task-language-javascript hide-element"><span class="hljs-title">shiftCharacter</span><span class="code-dark">()</span></code> macht.',
-          answerType: "text",
+          answerType: "textLong",
           phrasingHelpers: [
             "Die Funktion <code class='language-specific task-language-python'>shift_character()</code><code class='language-specific task-language-javascript hide-element'>shiftCharacter()</code> erhält als Parameter ... übergeben.",
             "Es wird zuerst überprüft, ob...",
@@ -142,8 +144,8 @@ worksheets.push({
           ],
         },
         {
-          task: 'Beschreiben Sie, was der gezeigte Code beim Aufruf des gesamten Codes (inklusive der Zeilen <span class="language-specific task-language-python">15 bis 18</span><span class="language-specific task-language-javascript hide-element">19 bis 22</span>) macht.',
-          answerType: "textLong",
+          task: 'Beschreiben Sie, was der gezeigte Code beim Aufruf des gesamten Codes (inklusive der Zeilen <span class="language-specific task-language-python">15 bis 18</span><span class="language-specific task-language-javascript hide-element">19 bis 22</span>) macht. Sie müssen hier nicht noch einmal auf die Details der Funktion <code class="language-specific task-language-python"><span class="hljs-title">shift_character</span><span class="code-dark">()</span></code><code class="language-specific task-language-javascript hide-element"><span class="hljs-title">shiftCharacter</span><span class="code-dark">()</span></code> eingehen.',
+          answerType: "text",
           phrasingHelpers: [
             "Beim Aufruf des gesamten Codes wird zunächst ...",
             "Zuerst wird der Text aus der Variable ...",

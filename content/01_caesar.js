@@ -49,6 +49,11 @@ worksheets.push({
           'Diese Funktion gibt die Zahl des Unicode-Codes eines Zeichens zurück. Beispiel: <pre style="display:inline;"><code class="language-python nohljsln">ord(\'H\')</code></pre> gibt <code>72</code> zurück.',
       },
       {
+        title: '<code class="hljs-keyword">return</code>',
+        content:
+          'Mit diesem Schlüsselwort wird festgelegt, welcher Wert von der Funktion zurückgegeben wird, wenn diese aufgerufen wird. In diesem Fall wird der Wert der Variable, die hinter <code class="hljs-keyword">return</code> steht, zurückgegeben. Beispiel: <pre style="display:inline;"><code class="language-python nohljsln">return "Hallo"</code></pre> gibt den String <code class="hljs-string">"Hallo"</code> zurück.',
+      },
+      {
         title:
           '<code><span class="hljs-built_in">chr</span><span class="code-dark">()</span></code>',
         content:
@@ -78,6 +83,11 @@ worksheets.push({
           '<code><span class="hljs-title function_">String</span><span class="code-dark">.</span><span class="hljs-title function_">prototype</span><span class="code-dark">.</span><span class="hljs-title function_">charCodeAt</span><span class="code-dark">()</span></code>',
         content:
           "Diese Methode gibt den Unicode-Wert des Zeichens an der ersten Position zurück. Beispiel: <pre style=\"display:inline;\"><code>'H'.charCodeAt()</code></pre> gibt <code>72</code> zurück.",
+      },
+      {
+        title: '<code class="hljs-keyword">return</code>',
+        content:
+          'Mit diesem Schlüsselwort wird festgelegt, welcher Wert von der Funktion zurückgegeben wird, wenn diese aufgerufen wird. In diesem Fall wird der Wert der Variable, die hinter <code class="hljs-keyword">return</code> steht, zurückgegeben. Beispiel: <pre style="display:inline;"><code class="language-javascript nohljsln">return "Hallo"</code></pre> gibt den String <code class="hljs-string">"Hallo"</code> zurück.',
       },
       {
         title:

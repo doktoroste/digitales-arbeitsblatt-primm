@@ -1,7 +1,7 @@
 // General
 // -------------------------------------
 const subjectName = "Informatik";
-const courseName = "Kryptologie";
+const courseName = "Programmieren";
 const showDebugLogs = true;
 const hintTimeout = 10; // Time in seconds before the next hint button is enabled
 

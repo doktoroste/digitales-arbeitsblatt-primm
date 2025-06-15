@@ -3,7 +3,7 @@ worksheets.push({
   titleTechnical: "grades",
   title: "Frust oder Freude: Wie fällt mein Zeugnis aus?",
   description:
-    "<p>Das Schuljahresende naht und damit auch der Termin, der entweder Grund zur Freude oder leider auch für Frust ist: Die Ausgabe der Zeugnisse.</p><p>Doch auf welche Emotion kannst du dich einstellen? In dieser Lektion lernen Sie, wie Sie mit Python ein Programm schreiben können, das Ihren Notendurchschnitt bewertet.",
+    "<p>Das Schuljahresende naht und damit auch der Termin, der entweder Grund zur Freude oder leider auch für Frust ist: Die Ausgabe der Zeugnisse.</p><p>Doch auf welche Emotion können Sie sich einstellen? In dieser Lektion lernen Sie, wie Sie mit Python ein Programm schreiben können, das Ihren Notendurchschnitt bewertet.",
   image: "img/zeugnis_bearbeitet.jpg",
   imageDescription:
     'Bild: <a href="https://www.schulministerium.nrw/wie-kommt-eine-zeugnisnote-zustande" target="_blank">iStock/Bildungsministerium NRW</a>, eigene Bearbeitung.',
@@ -178,7 +178,7 @@ worksheets.push({
           ],
         },
         {
-          task: "Begründen Sie, warum die Funktion <code class='hljs-title'>len()</code> in Zeile <span class='language-specific task-language-python'>8</span> nicht weggelassen werden kann.",
+          task: "Begründen Sie, warum die Funktion <code class='hljs-title'>len()</code> in Zeile <span class='language-specific task-language-python'>5</span> nicht weggelassen werden kann.",
           answerType: "text",
           phrasingHelpers: [
             "Die Funktion <code class='hljs-title'>len()</code> wird benötigt, um ...",
@@ -205,7 +205,7 @@ worksheets.push({
           ],
         },
         {
-          task: "Nennen Sie die Anzahl, woe oft <code class='hljs-keyword'>if</code>-Bedingungen bei einem Notendurchschnitt von <code class='code-dark'>5</code> geprüft werden.",
+          task: "Nennen Sie die Anzahl, wie oft <code class='hljs-keyword'>if</code>-Bedingungen bei einem Notendurchschnitt von <code class='code-dark'>5</code> geprüft werden.",
           answerType: "textShortCheckable",
           correctAnswers: ["2", "Zwei", "zwei"],
           feedbackText:

@@ -55,6 +55,12 @@ worksheets.push({
           'Diese Funktion gibt das Unicode-Zeichen zurück, das durch diese Nummer repräsentiert wird. Beispiel: <pre style="display:inline;"><code class="language-python nohljsln">chr(72)</code></pre> gibt <code>\'H\'</code> zurück.',
       },
       {
+        title:
+          '<code><span class="hljs-keyword">for</span> <span class="code-dark">a</span> <span class="hljs-keyword">in</span> <span class="code-dark">b:</span></code>',
+        content:
+          'Eine <code class="hljs-keyword">for</code>-Schleife in dieser Form wiederholt den unter ihr eingerückten Code so oft, wie es Werte in der Variable <code class="code-dark">b</code> gibt. Dabei wird der jeweils aktuell aufgerufene Wert in der Variable <code class="code-dark">a</code> gespeichert.<br><br>Handelt es sich bei Variable <code class="code-dark">b</code> um einen String, so wird die Schleife für jedes Zeichen im String durchlaufen. Beispiel: <pre style="display:inline;"><code class="language-python nohljsln">for char in "Hallo":</code></pre> gibt nacheinander <code>H</code>, <code>a</code>, <code>l</code>, <code>l</code>, <code>o</code> zurück.',
+      },
+      {
         title: "Unicode-Tabelle",
         content:
           "Die Unicode-Tabelle ist eine standardisierte Zuordnung von Zeichen zu Zahlen. Sie stellt sicher, dass die als Zahl gespeicherten Zeichen auf jedem digitalen Gerät das gleiche Zeichen darstellen. In diesem Fall werden Buchstaben durch ihre Unicode-Werte dargestellt. Ein Ausschnitt der Unicode-Tabelle für Großbuchstaben ist unten zu finden.",
@@ -90,6 +96,12 @@ worksheets.push({
           '<code><span class="hljs-variable">console</span>.<span class="hljs-title function_">log</span><span class="code-dark">()</span></code>',
         content:
           "Diese Funktion gibt den übergebenen Wert in der Konsole des Browsers aus.",
+      },
+      {
+        title:
+          '<code><span class="hljs-keyword">for</span> <span class="code-dark">(</span><span class="hljs-keyword">let</span> <span class="code-dark">a</span> <span class="hljs-keyword">of</span> <span class="code-dark">b)</span></code>',
+        content:
+          'Eine <code class="hljs-keyword">for</code>-Schleife in dieser Form wiederholt den unter ihr eingerückten Code so oft, wie es Werte in der Variable <code class="code-dark">b</code> gibt. Dabei wird der jeweils aktuell aufgerufene Wert in der Variable <code class="code-dark">a</code> gespeichert.<br><br>Handelt es sich bei Variable <code class="code-dark">b</code> um einen String, so wird die Schleife für jedes Zeichen im String durchlaufen. Beispiel: <pre style="display:inline;"><code class="language-javascript nohljsln">for (char in "Hallo")</code></pre> gibt nacheinander <code>H</code>, <code>a</code>, <code>l</code>, <code>l</code>, <code>o</code> zurück.',
       },
       {
         title: "Unicode-Tabelle",
@@ -268,8 +280,16 @@ worksheets.push({
           ],
         },
         {
-          task: 'Beschreiben Sie, wie häufig die for-Schleife in Zeile <span class="language-specific task-language-python">11</span><span class="language-specific task-language-javascript hide-element">13</span> durchlaufen wird.',
-          answerType: "text",
+          task: 'Nennen Sie die Anzahl, wie häufig die for-Schleife in Zeile <span class="language-specific task-language-python">11</span><span class="language-specific task-language-javascript hide-element">13</span> durchlaufen wird.',
+          answerType: "textShortCheckable",
+          correctAnswers: [
+            "13",
+            "So oft, wie der Text Zeichen enthält",
+            "13 Mal",
+            "13 mal",
+          ],
+          feedbackText:
+            "Die Schleife wird so oft durchlaufen, wie der Text <code>text</code> Zeichen enthält. In diesem Fall sind es 13 Zeichen.",
           hints: [
             "Welcher Wert wird in <code>text</code> gespeichert?",
             "Wie viele Zeichen hat der Text <code>text</code>?",
@@ -485,7 +505,7 @@ worksheets.push({
         {
           title: "Unicode-Tabelle (Zeichen 88 bis 102)",
           content:
-            '<table class="table text-center"><thead><tr><th>Position</th><th>Zeichen</th><th>Unicode</th></tr></thead><tbody><tr><td colspan="3">...</td></tr><tr><td>25</td><td>X</td><td>88</td></tr><tr><td>25</td><td>Y</td><td>89</td></tr><tr><td>26</td><td>Z</td><td>90</td></tr><tr><td>27</td><td>[</td><td>91</td></tr><tr><td>28</td><td>\\</td><td>92</td></tr><tr><td>29</td><td>]</td><td>93</td></tr><tr><td>30</td><td>^</td><td>94</td></tr><tr><td>31</td><td>_</td><td>95</td></tr><tr><td>32</td><td>`</td><td>96</td></tr><tr><td>33</td><td>a</td><td>97</td></tr><tr><td>34</td><td>b</td><td>98</td></tr><tr><td>35</td><td>c</td><td>99</td></tr><tr><td>36</td><td>d</td><td>100</td></tr><tr><td>37</td><td>e</td><td>101</td></tr><tr><td>38</td><td>f</td><td>102</td></tr><tr><td colspan="3">...</td></tr></tbody></table>',
+            '<table class="table text-center"><thead><tr><th>Position</th><th>Zeichen</th><th>Unicode</th></tr></thead><tbody><tr><td colspan="3">...</td></tr><tr><td>24</td><td>X</td><td>88</td></tr><tr><td>25</td><td>Y</td><td>89</td></tr><tr><td>26</td><td>Z</td><td>90</td></tr><tr><td>27</td><td>[</td><td>91</td></tr><tr><td>28</td><td>\\</td><td>92</td></tr><tr><td>29</td><td>]</td><td>93</td></tr><tr><td>30</td><td>^</td><td>94</td></tr><tr><td>31</td><td>_</td><td>95</td></tr><tr><td>32</td><td>`</td><td>96</td></tr><tr><td>33</td><td>a</td><td>97</td></tr><tr><td>34</td><td>b</td><td>98</td></tr><tr><td>35</td><td>c</td><td>99</td></tr><tr><td>36</td><td>d</td><td>100</td></tr><tr><td>37</td><td>e</td><td>101</td></tr><tr><td>38</td><td>f</td><td>102</td></tr><tr><td colspan="3">...</td></tr></tbody></table>',
         },
       ],
       subtasks: [
@@ -525,7 +545,7 @@ worksheets.push({
           ],
         },
         {
-          task: 'Beschreiben Sie, welche Ausgabe Sie beim Ausführen des veränderten Codes mit dem Parametern <code><span class="code-dark">text = </span><span class="hljs-string">\'A\'</span></code> und <code class="code-dark">shift = 104</code> erwarten. Sie müssen keinen spezifischen Ausgabewert angeben.',
+          task: 'Beschreiben Sie, welche Ausgabe Sie beim Ausführen des veränderten Codes mit dem Parametern <code><span class="code-dark">text = </span><span class="hljs-string">\'A\'</span></code> und <code class="code-dark">shift = 100</code> erwarten. Sie müssen keinen spezifischen Ausgabewert angeben.',
           answerType: "text",
           hints: [
             "Wie haben Sie den Code verändert? Gibt es jetzt eine Begrenzung für den Wert von <code>shift</code>?",

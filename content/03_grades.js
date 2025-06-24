@@ -89,6 +89,10 @@ worksheets.push({
             "In der Variable ... wird ... gespeichert.",
             "Es wird eine Variable mit dem Namen ... erstellt, die ... enthält.",
           ],
+          hints: [
+            "Gehen Sie den Code Zeile für Zeile durch und versuchen Sie, die Funktion der Zeilen nachzuvollziehen und zu beschreiben.",
+            "Ein möglicher Start: <em>Die Funktion <code class='language-specific task-language-python'>zeugnis_bewertung()</code> erhält eine Liste von Noten als Parameter übergeben. Anschließend wird der Wert der Variable ... auf ... gesetzt. ...</em>",
+          ],
         },
         {
           task: 'Nennen Sie die erwartete Ausgabe der Funktion <code class="language-specific task-language-python"><span class="hljs-title">zeugnis_bewertung</span><span class="code-dark">()</span></code> beim Ausführen mit den Werten <code><span class="code-dark">noten = [1, 2, 1]</span></code>.',
@@ -266,7 +270,7 @@ worksheets.push({
           answerType: "textLong",
         },
         {
-          task: "Erklären Sie, wie man die Ausgabe für einen Notendurchschnitt von <code>2.1</code> und <code>4</code> unterscheiden kann, damit die Funktion bei einem Durchschnitt von <code>2.1</code> zum Beispiel das Emoji 🤓 zurückgibt.",
+          task: "Erklären Sie, wie man für die Notendurchschnitte von <code>2.1</code> und <code>4</code> unterschiedliche Ausgaben zurückgeben lassen kann, zum Beispiel das Emoji 🤓 bei einem Durchschnitt von <code>2.1</code>.",
           answerType: "text",
           hints: [
             "Wie könnte man einen weiteren Vergleich hinzufügen, um die Ausgabe für einen Durchschnitt zwischen 2 und 3 abzubilden?",

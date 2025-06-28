@@ -6,6 +6,13 @@
   padding-right: 2em;
 }
 
+#move-code-button {
+  cursor: move;
+}
+#move-code-button:hover {
+  background: none;
+  color: unset;
+}
 .code-pinned {
   position: fixed;
   top: 20px;

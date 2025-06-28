@@ -1157,12 +1157,14 @@ document
   .getElementById("pin-code-button")
   .addEventListener("click", function () {
     const button = document.getElementById("pin-code-button");
+    // const moveButton = document.getElementById("move-code-button");
     const codeCard = document.getElementById("card-code");
     if (button.classList.contains("active")) {
       button.classList.remove("active");
       button.setAttribute("title", "Code an der rechten Seite anheften");
       codeCard.classList.remove("code-pinned");
       codeCard.classList.remove("col-md-4");
+      // moveButton.classList.add("hide-element");
     } else {
       button.classList.add("active");
       button.setAttribute(
@@ -1171,6 +1173,7 @@ document
       );
       codeCard.classList.add("code-pinned");
       codeCard.classList.add("col-md-4");
+      // moveButton.classList.remove("hide-element");
     }
   });
 

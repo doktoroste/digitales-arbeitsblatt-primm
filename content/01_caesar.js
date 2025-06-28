@@ -201,7 +201,7 @@ worksheets.push({
           answerType: "none",
         },
         {
-          task: "Führen Sie den Code aus.",
+          task: "Führen Sie den Code aus. Nutzen Sie dazu beispielsweise eine Entwicklungsumgebung wie <span class='language-specific task-language-python'>Thonny oder </span>Visual Studio Code. Alternativ können Sie auch einen Online-Compiler wie <a href='https://www.programiz.com/python-programming/online-compiler/' class='language-specific task-language-python' target='_blank'>Programiz</a><a href='https://www.programiz.com/javascript/online-compiler/' class='language-specific task-language-javascript hide-element' target='_blank'>Programiz</a> verwenden.",
           answerType: "none",
         },
         {

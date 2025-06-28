@@ -40,13 +40,13 @@ worksheets.push({
       {
         title: '<code class="code-dark">upper()</code>',
         content:
-          'Diese Funktion wandelt den String in Großbuchstaben um. Beispiel: <pre style="display:inline;"><code class="language-python nohljsln">"Hallo".upper()</code></pre> gibt <code>"HALLO"</code> zurück.',
+          'Diese Funktion wandelt den String in Großbuchstaben um. Beispiel: <pre style="display:inline;"><code class="language-python nohljsln">"Hallo".upper()</code></pre> gibt <code class="hljs-string">"HALLO"</code> zurück.',
       },
       {
         title:
           '<code><span class="hljs-built_in">ord</span><span class="code-dark">()</span></code>',
         content:
-          'Diese Funktion gibt die Zahl des Unicode-Codes eines Zeichens zurück. Beispiel: <pre style="display:inline;"><code class="language-python nohljsln">ord(\'H\')</code></pre> gibt <code>72</code> zurück.',
+          'Diese Funktion gibt die Zahl des Unicode-Codes eines Zeichens zurück. Beispiel: <pre style="display:inline;"><code class="language-python nohljsln">ord(\'H\')</code></pre> gibt <code class="code-dark">72</code> zurück.',
       },
       {
         title: '<code class="hljs-keyword">return</code>',
@@ -290,7 +290,7 @@ worksheets.push({
           ],
         },
         {
-          task: 'Nennen Sie die Anzahl, wie häufig die for-Schleife in Zeile <span class="language-specific task-language-python">11</span><span class="language-specific task-language-javascript hide-element">13</span> durchlaufen wird.',
+          task: 'Nennen Sie die Anzahl, wie häufig die <code class="hljs-keyword">for</code>-Schleife in Zeile <span class="language-specific task-language-python">11</span><span class="language-specific task-language-javascript hide-element">13</span> durchlaufen wird.',
           answerType: "textShortCheckable",
           correctAnswers: [
             "13",

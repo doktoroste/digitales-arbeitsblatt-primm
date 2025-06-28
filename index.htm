@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="lib/highlight/styles/vs.min.css" />
     <!-- Custom CSS -->
     <link href="src/style.css" rel="stylesheet" />
+    <link href="src/print.css" rel="stylesheet" media="print" />
   </head>
   <body id="worksheet">
     <div class="container">
@@ -70,7 +71,9 @@
               <h6>Code</h6>
               <div class="card mb-3" id="card-code">
                 <div class="card-body card-body-code">
-                  <div class="d-flex justify-content-between mb-2">
+                  <div
+                    class="d-flex justify-content-between mb-2 hide-on-print"
+                  >
                     <div>
                       <!-- Move code -->
                       <button
@@ -103,7 +106,7 @@
                   <pre id="worksheet-code">Lade Code...</pre>
                 </div>
               </div>
-              <p class="text-muted text-sm">
+              <p class="text-muted text-sm hide-on-print">
                 Tipp: Sie können über den Button
                 <i class="bi bi-code-square"></i> am linken Seitenrand jederzeit
                 zurück zum Code springen. Mit dem Button

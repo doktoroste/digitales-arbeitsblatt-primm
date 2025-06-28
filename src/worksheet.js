@@ -164,7 +164,7 @@ async function loadWorksheet(index) {
   if (data.tasks) {
     data.tasks.forEach((task, i) => {
       taskHtml += `<!-- Task ${i} -->
-                <div class="row mt-5">
+                <div class="row task-row mt-5">
                     <!-- Task -->
                     <div class="col-md-12 mb-3">
                         <h4 class="border-bottom pb-3" id="task${i}">${task.title} <a href="#task${i}" class="link-secondary"><i class="bi bi-hash"></i></a></h4>
@@ -295,7 +295,7 @@ async function loadWorksheet(index) {
         taskHtml += `</li>`;
       });
       if (askForFeedback) {
-        taskHtml += `<li class="mt-5" style="list-style-type: none;">
+        taskHtml += `<li class="mt-5 task-feedback-wrapper" style="list-style-type: none;">
                     <div class="alert alert-light">
                         <strong>Feedback zur Aufgabe</strong> 
 

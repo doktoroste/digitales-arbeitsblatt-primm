@@ -157,7 +157,7 @@ worksheets.push({
           ],
         },
         {
-          task: 'Nennen Sie die Anzahl, wie häufig die <code class="hljs-keyword">if</code>-Bedingung in Zeile <span class="language-specific task-language-python">7</span> durchlaufen wird.',
+          task: 'Nennen Sie die Anzahl, wie oft die <code class="hljs-keyword">if</code>-Bedingungen in Zeile <span class="language-specific task-language-python">7</span> durchlaufen wird.',
           answerType: "textShortCheckable",
           correctAnswers: ["1", "Eins", "eins", "1x", "1 mal", "Einmal"],
           feedbackText:
@@ -209,9 +209,20 @@ worksheets.push({
           ],
         },
         {
-          task: "Nennen Sie die Anzahl, wie oft <code class='hljs-keyword'>if</code>-Bedingungen bei einem Notendurchschnitt von <code class='code-dark'>5</code> geprüft werden.",
+          task: "Nennen Sie die Anzahl, wie viele <code class='hljs-keyword'>if</code>-Bedingungen bei einem Notendurchschnitt von <code class='code-dark'>5</code> geprüft werden.",
           answerType: "textShortCheckable",
-          correctAnswers: ["2", "Zwei", "zwei"],
+          correctAnswers: [
+            "2",
+            "Zwei",
+            "zwei",
+            "Zwei mal",
+            "zwei mal",
+            "Zwei Mal",
+            "zwei Mal",
+            "2x",
+            "2 mal",
+            "2 Mal",
+          ],
           feedbackText:
             "Die <code class='hljs-keyword'>if</code>-Bedingung wird zwei Mal geprüft: Einmal für den Vergleich mit <code class='code-dark'>2</code>. Da diese Bedingung falsch ist, wird in den <code class='hljs-keyword'>else</code>-Abschnitt gewechselt. Hier findet noch einmal ein Vergleich mit <code class='code-dark'>4</code> statt.",
           hints: [

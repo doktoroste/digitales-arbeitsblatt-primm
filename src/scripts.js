@@ -1277,6 +1277,33 @@ document.getElementById("export-data").addEventListener("click", function () {
   document.body.removeChild(downloadAnchor);
 });
 
+// Upload user data from JSON file into LocalStorage
+document
+  .getElementById("upload-worksheet-data")
+  .addEventListener("click", function () {
+    const fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.accept = "application/json";
+    fileInput.onchange = (event) => {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const uploadedData = JSON.parse(e.target.result);
+          localStorage.setItem("worksheetData", JSON.stringify(uploadedData));
+          alert("Daten erfolgreich hochgeladen!");
+          // Reload the page to load the uploaded data
+          location.reload();
+        } catch (error) {
+          alert("Fehler beim Hochladen der Daten: Ungültige JSON-Datei.");
+          console.error("Error parsing uploaded JSON:", error);
+        }
+      };
+      reader.readAsText(file);
+    };
+    fileInput.click();
+  });
+
 // Print worksheet
 document
   .getElementById("print-worksheet")

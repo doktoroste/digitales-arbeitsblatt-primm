@@ -154,10 +154,29 @@
       <!-- Tasks -->
       <main id="worksheet-tasks"></main>
 
-      <!-- Footer -->
+      <!-- Navigation Footer-->
+      <footer class="mt-5 mb-5 pt-3">
+        <div
+          class="d-flex justify-content-between align-items-center mt-5 pt-3 border-top"
+          id="footer"
+        >
+          <a href="#" id="footer-link-back" class="hide-element">
+            <i class="bi bi-arrow-left"></i> Vorheriges
+          </a>
+          <span class="text-muted" id="footer-worksheet-number"
+            >Arbeitsblatt 1 von 1</span
+          >
+          <a href="#" id="footer-link-forward" class="hide-element">
+            Nächstes <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </footer>
+
+      <!-- Download Footer -->
       <footer class="border-top mt-5 mb-5 pt-3">
         <button class="btn btn-secondary" id="export-data">
-          <i class="bi bi-download"></i> Daten herunterladen
+          <i class="bi bi-download"></i> Daten aller Arbeitsblätter
+          herunterladen
         </button>
         <button class="btn btn-light" id="print-worksheet">
           <i class="bi bi-printer"></i> Arbeitsblatt drucken oder als PDF
@@ -205,6 +224,16 @@
         >
           <i class="bi bi-pencil-square"></i>
         </a>
+
+        <a
+          type="button"
+          class="btn btn-light btn-sidebar hide-element"
+          id="upload-worksheet-data"
+          title="Bereits gespeicherte Ergebnisse hochladen"
+          href="#"
+        >
+          <i class="bi bi-upload"></i>
+        </a>
       </div>
 
       <!-- Sidebar -->
@@ -240,8 +269,8 @@
     <!-- Loading worksheets -->
     <script src="src/worksheet.js"></script>
     <!-- Add all worksheets you want to load here -->
-    <script src="content/01_caesar.js"></script>
-    <script src="content/03_grades.js"></script>
+    <script src="content/python_intro/01_Einstieg.js"></script>
+    <script src="content/python_intro/02_Turtle_1.js"></script>
 
     <!-- Bootstrap JS -->
     <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>

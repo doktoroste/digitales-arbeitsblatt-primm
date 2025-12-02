@@ -1,4 +1,5 @@
-worksheets.push({
+// worksheets.push({
+({
   titleShort: "Vigenère",
   titleTechnical: "vigenere",
   title: 'Lässt sich die "unentzifferbare Chiffre" doch entziffern?',

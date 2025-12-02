@@ -75,6 +75,10 @@ async function loadWorksheet(index) {
     document
       .querySelector("#worksheet-link-forward")
       .classList.add("hide-element");
+    document.querySelector("#footer-link-back").classList.add("hide-element");
+    document
+      .querySelector("#footer-link-forward")
+      .classList.add("hide-element");
   } else {
     if (index > 0) {
       document
@@ -83,10 +87,17 @@ async function loadWorksheet(index) {
       document
         .querySelector("#worksheet-link-back")
         .setAttribute("onclick", `loadWorksheet(${index - 1})`);
+      document
+        .querySelector("#footer-link-back")
+        .classList.remove("hide-element");
+      document
+        .querySelector("#footer-link-back")
+        .setAttribute("onclick", `loadWorksheet(${index - 1})`);
     } else {
       document
         .querySelector("#worksheet-link-back")
         .classList.add("hide-element");
+      document.querySelector("#footer-link-back").classList.add("hide-element");
     }
     if (index < worksheets.length - 1) {
       document
@@ -95,12 +106,25 @@ async function loadWorksheet(index) {
       document
         .querySelector("#worksheet-link-forward")
         .setAttribute("onclick", `loadWorksheet(${index + 1})`);
+      document
+        .querySelector("#footer-link-forward")
+        .classList.remove("hide-element");
+      document
+        .querySelector("#footer-link-forward")
+        .setAttribute("onclick", `loadWorksheet(${index + 1})`);
     } else {
       document
         .querySelector("#worksheet-link-forward")
         .classList.add("hide-element");
+      document
+        .querySelector("#footer-link-forward")
+        .classList.add("hide-element");
     }
   }
+  // Change worksheet number in footer
+  document.getElementById(
+    "footer-worksheet-number"
+  ).innerHTML = `Arbeitsblatt ${index + 1} von ${worksheets.length}`;
 
   // Worksheet code
   if (showDebugLogs) {

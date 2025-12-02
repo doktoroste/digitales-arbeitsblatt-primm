@@ -1,14 +1,14 @@
 // General
 // -------------------------------------
 const subjectName = "Informatik";
-const courseName = "Programmieren";
+const courseName = "Einstieg in Python";
 const showDebugLogs = true;
 const hintTimeout = 10; // Time in seconds before the next hint button is enabled
 
 // Feedback
 // -------------------------------------
 
-const askForFeedback = true; // If set to true, each exercise will ask for feedback after it is completed
+const askForFeedback = false; // If set to true, each exercise will ask for feedback after it is completed
 
 // Layout
 // -------------------------------------

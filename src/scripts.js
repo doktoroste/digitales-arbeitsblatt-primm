@@ -1266,9 +1266,11 @@ document.getElementById("export-data").addEventListener("click", function () {
   // Create a temporary anchor element to trigger the download
   const downloadAnchor = document.createElement("a");
   downloadAnchor.setAttribute("href", dataStr);
+  // Add current date and time to filename
+  const currentDate = new Date().toISOString().slice(0, 10);
   downloadAnchor.setAttribute(
     "download",
-    `AB_${subjectName}_${courseName}.json`
+    `ABs_${subjectName}_${courseName}_${currentDate}.json`
   );
 
   // Append the anchor to the document, trigger the download, and remove the anchor

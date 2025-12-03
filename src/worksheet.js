@@ -206,7 +206,9 @@ async function loadWorksheet(index) {
       // Subtasks
       task.subtasks.forEach((subtask, j) => {
         taskHtml += `<li class="mb-4 subtask" id="subtask-${i}-${j}" data-subtask-type="${subtask.answerType}" data-worksheet-id="${index}" data-task-id="${i}" data-subtask-id="${data.titleTechnical}-${i}-${j}">${subtask.task}`;
-        if (subtask.answerType === "textShort") {
+        if (subtask.answerType === "none") {
+          taskHtml += `<br>`;
+        } else if (subtask.answerType === "textShort") {
           taskHtml += `<input type="text" class="form-control save-user-input" id="task-${data.titleTechnical}-${i}-${j}" data-answer-type="${subtask.answerType}">`;
         } else if (subtask.answerType === "textShortCheckable") {
           taskHtml += `<div class="input-group"><input type="text" class="form-control save-user-input" id="task-${
@@ -242,6 +244,8 @@ async function loadWorksheet(index) {
           taskHtml += `<div class="subtask-multiple-choice-feedback hide-element" data-subtask-id="task-${data.titleTechnical}-${i}-${j}" id="task-${data.titleTechnical}-${i}-${j}-multiple-choice-feedback">
                     <div class="alert alert-light mt-2"></div>
                   </div>`;
+        } else if (subtask.answerType === "canvas") {
+          taskHtml += `<div class="canvas-container" id="task-${data.titleTechnical}-${i}-${j}" data-answer-type="${subtask.answerType}"></div>`;
         }
 
         // Subtask phrasingHelpers

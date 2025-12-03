@@ -6,7 +6,7 @@ worksheets.push({
     "<p>Im ersten Arbeitsblatt haben Sie die Grundlagen von Python kennengelernt und einen einfachen Python-Code analysiert. In diesem Tutorial werden wir uns mit der Turtle-Grafik in Python beschäftigen. Mit dieser ist es möglich, über einfache Befehle Grafiken zu erstellen. So lässt sich Code direkt sichtbar machen.</p>",
   image: "img/turtle-beispielgrafik.jpg",
   imageDescription:
-    'Bild: <a href="https://www.python-lernen.de/python-turtle.htm" target="_blank">Python-Lernen.de</a>',
+    'Beispielhaftes Muster, das mit Python Turtle erzeugt wurde. Bild: <a href="https://www.python-lernen.de/python-turtle.htm" target="_blank">Python-Lernen.de</a>',
   imageAlt: "Ein Beispiel für eine Turtle-Grafik in Python.",
   code: {
     python:
@@ -222,14 +222,6 @@ worksheets.push({
           answerType: "code",
           hints: [
             "Kopieren Sie die Struktur des ursprünglichen Codes und passen Sie diesen an.",
-          ],
-        },
-        {
-          task: "Fassen Sie den Code aus der vorherigen Aufgabe so zusammen, dass Sie die Anzahl der Seiten und die Seitenlänge nur noch an einer einzigen Stelle im Code ändern müssen, falls Sie diese anpassen möchten.",
-          answerType: "code",
-          hints: [
-            "Kopieren Sie die Struktur des ursprünglichen Codes und passen Sie diesen an.",
-            "Verwenden Sie Variablen für die Anzahl der Seiten und die Seitenlänge.",
           ],
         },
       ],

@@ -27,7 +27,12 @@ async function loadWorksheets() {
     tocHtml += `</ul></li>`;
   });
   document.getElementById("sidebar-content").innerHTML = tocHtml;
-  if (localStorage.getItem("currentWorksheet")) {
+  // If a worksheet index is given in the url via ?ws=INDEX, load that worksheet, else look if theres is a saved worksheet in localStorage, else load the first worksheet
+  const urlParams = new URLSearchParams(window.location.search);
+  const wsIndex = urlParams.get("ws");
+  if (wsIndex) {
+    loadWorksheet(parseInt(wsIndex));
+  } else if (localStorage.getItem("currentWorksheet")) {
     loadWorksheet(parseInt(localStorage.getItem("currentWorksheet")));
   } else {
     loadWorksheet(0);

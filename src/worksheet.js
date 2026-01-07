@@ -246,6 +246,7 @@ async function loadWorksheet(index) {
               mc.feedbackText || ""
             }">${mc.text}</button></div>`;
           });
+          taskHtml += `</div>`;
           taskHtml += `<div class="subtask-multiple-choice-feedback hide-element" data-subtask-id="task-${data.titleTechnical}-${i}-${j}" id="task-${data.titleTechnical}-${i}-${j}-multiple-choice-feedback">
                     <div class="alert alert-light mt-2"></div>
                   </div>`;

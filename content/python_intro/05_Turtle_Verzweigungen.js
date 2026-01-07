@@ -4,11 +4,11 @@ worksheets.push({
   title: "Wenn Code nicht immer gelten soll: Verzweigungen und Bedingungen",
   description:
     "<p>Genau wie beispielsweise bei Parkzonen im Straßenverkehr gibt es auch beim Programmieren Code, der nicht immer oder nur unter bestimmten Bedingungen ausgeführt werden soll. Solche Programmierstrukturen nennt man auch häufig <strong>Verzweigungen</strong>.</p><p>Verzweigungen werden in Programmiersprachen häufig mit dem Schlüsselwort <code class='code-dark'>if</code> (englisch für 'wenn') eingeleitet. Anschließend folgt die <strong>Bedingung</strong>, wann der folgende Code ausgeführt werden soll – genau wie bei der <code class='code-dark'>while</code>-Schleife.</p><p>Der Code, der nur unter bestimmten Bedingungen ausgeführt werden soll, wird dann eingerückt unterhalb der <code class='code-dark'>if</code>-Anweisung geschrieben.</p><p>Will man zusätzlich noch Code bereitstellen, der immer dann ausgeführt wird, wenn die Bedingung nicht erfüllt ist, kann man das Schlüsselwort <code class='code-dark'>else</code> (englisch für 'ansonsten') verwenden. Auch der Code unterhalb der <code class='code-dark'>else</code>-Anweisung wird eingerückt geschrieben.</p>",
-  image: "img/bedingungen.jpg",
+  image: "img/verzweigung.jpg",
   imageDescription:
-    'Bedingungen gibt es nicht nur beim Programmieren: Hier werden bestimmte Verkehrsregeln um Besonderheiten ergänzt. Foto: Eckhard Stengel/IMAGO auf <a href="https://www.tz.de/verbraucher/auto-fahrer-verkehr-stvo-falschparken-halteverbot-bussgeld-strafe-koblenz-fall-zr-93334068.html">tz.de</a>',
+    'Manchmal benötigt man auch beim Programmierungen die Option, verschiedene Wege zu gehen. Foto: <a href="https://uudux.org/home-2-4/360_f_388001301_ek6xkbrbn5ldxeazvu2vsatbibxaz6m3/">uudux.org</a>',
   imageAlt:
-    "Mehrere Verkehrszeichen zu einer Fahrradstraße und Parkzonen mit jeweils verschiedenen Ergänzungen und Bedingungen, zum Beispiel zur geltenden Tageszeit.",
+    "Ein Weg, der sich in zwei verschiedene Wege verzweigt, die jeweils in unterschiedliche Richtungen führen.",
   code: {
     python:
       'from turtle import *\npenup()\ngoto(-200, -200)\npensize(5)\npendown()\n\nfor i in range(10):\n    if i % 2 == 0:\n        pencolor("red")\n    else:\n        pencolor("green")\n\n    forward(40)\n    left(90)\n    forward(40)\n    right(90)\n\nmainloop()',
@@ -289,6 +289,15 @@ worksheets.push({
           ],
         },
         {
+          task: "Verändern Sie den ursprünglichen Code so, dass nur dann rot gezeichnet wird, wenn der Wert der Variable <code class='code-dark'>i</code> sowohl durch zwei als auch durch drei teilbar ist. Sie können mehrere Bedingungen durch den Operator <code class='code-dark'>and</code> verknüpfen. <i>Beispiel: Falls i kleiner als 10 und teilbar durch zwei sein soll, kann <code class='code-dark'>if i < 10 and i % 2 == 0:</code></i> als Bedingung genutzt werden",
+          answerType: "code",
+          hints: [
+            "Überlegen Sie, wie Sie die Bedingung anpassen können, um beide Teilbarkeitsprüfungen zu integrieren.",
+            "Nutzen Sie den logischen Operator <code class='code-dark'>and</code>, um beide Bedingungen zu verknüpfen.",
+            "Die Bedingung könnte so aussehen: <code class='code-dark'>if i % ... == 0 and i % ... == 0:</code>",
+          ],
+        },
+        {
           task: "Ergänzen Sie den ursprünglichen Code so, dass die Turtle bei durch zwei teilbaren Werten von <code class='code-dark'>i</code> rot zeichnet, bei durch drei teilbaren Werten von <code class='code-dark'>i</code> blau zeichnet und in allen anderen Fällen grün zeichnet.",
           answerType: "code",
           hints: [
@@ -307,16 +316,36 @@ worksheets.push({
           task: "Schreiben Sie Code, der mithilfe einer <code class='code-dark'>for</code>-Schleife ein Quadrat zeichnet. Dabei sollen die ungeraden Seiten des Quadrats rot und die geraden Seiten grün sein. <i>Hinweis: In den Hinweisen finden Sie eine Starthilfe, die Sie kopieren können.</i>",
           answerType: "code",
           hints: [
-            "<code>from turtle import *\n\nfor i in range(4):\n    # Fügen Sie hier Ihre Bedingung ein\n    \n    forward(100)\n    right(90)\n\nmainloop()</code>",
+            "<pre>from turtle import *\n\nfor i in range(4):\n    # Fügen Sie hier Ihre Bedingung ein\n    \n    forward(100)\n    right(90)\n\nmainloop()</pre>",
             "Ergänzen Sie in der Starthilfe eine Bedingung, die überprüft, ob die Seite gerade oder ungerade ist.",
             "Nutzen Sie den Modulo-Operator <code class='code-dark'>%</code>, um zu überprüfen, ob die Zahl in der Variable <code class='code-dark'>i</code> gerade oder ungerade ist.",
           ],
         },
         {
-          task: "<img src='img/turtle-ifelse-spirale.png' style='width:180px;' alt='Beispiel einer Spirale, die aus vielen Linien besteht, die sich immer weiter nach außen drehen. Die inneren Linien sind blau, die äußeren orange.' class='img-thumbnail float-end mb-2'/> Schreiben Sie Code, der mithilfe einer beliebigen Schleife eine Spirale zeichnet. Dabei soll die Spirale bei Seitenlängen unter 100 Pixel blau sein, ansonsten orange.",
+          task: "<img src='img/turtle-ifelse-spirale.png' style='width:180px;' alt='Beispiel einer Spirale, die aus vielen Linien besteht, die sich immer weiter nach außen drehen. Die inneren Linien sind blau, die äußeren orange.' class='img-thumbnail float-end mb-2'/>Schreiben Sie Code, der mithilfe einer beliebigen Schleife eine Spirale zeichnet. Dabei soll die Spirale bei Seitenlängen unter 100 Pixel blau sein, ansonsten orange.",
           answerType: "code",
           hints: [
             "Nutzen Sie die Ihre bisherigen Lösungen aus den vorherigen Arbeitsblättern und ergänzen Sie diese um eine Verzweigung.",
+          ],
+        },
+      ],
+    },
+    {
+      title: "Zusatzaufgaben",
+      subtasks: [
+        {
+          task: "<img src='img/turtle-ifelse-zufallspunkte.png' style='width:180px;' alt='Mehrere zufällig angeordnete Punkte. Die linken unteren Punkte sind grün, die oberen rechten rot.' class='img-thumbnail float-end mb-2'/>Schreiben Sie Code, der ähnlich wie im Bild zufällige Punkte zeichnet. Dabei soll jeder Punkt grün sein, wenn die Summe seiner x- und y-Koordinate kleiner als 0 ist, ansonsten rot. Nutzen Sie die Bibliothek <code class='code-dark'>from random import *</code> und die Funktion <code class='code-dark'>randint()</code> sowie eine einfache for-Schleife. <i>Hinweis: Sie finden in den Hinweisen eine Starthilfe, die Sie kopieren können.</i>",
+          answerType: "code",
+          hints: [
+            "<pre>from turtle import *\nfrom random import *\npenup()\nspeed(1000)\n\nfor i in range(100):\n    x = randint(-300, 300)\n    y = randint(-300, 300)\n    goto(x, y)\n\n    #...</pre>",
+          ],
+        },
+        {
+          task: "<img src='img/turtle-ifelse-punkte.png' style='width:180px;' alt='Es werden viele Punkte in einem quadratischen Muster angezeigt. Die linke obere Hälfte ist dabei grün, die rechte untere rot.' class='img-thumbnail float-end mb-2'/>Schreiben Sie Code, das folgende Bild erzeugt. Nutzen Sie dazu zwei ineinander verschachtelte <code class='code-dark'>for</code>-Schleifen und eine Verzweigung. <i>Hinweis: Sie finden in den Hinweisen eine Starthilfe, die Sie kopieren können.</i>",
+          answerType: "code",
+          hints: [
+            "<pre>from turtle import *\n\nfor i in range(-200, 200, 20):\n    for j in range(-200, 200, 20):\n        goto(i, j)\n        #Fügen Sie hier Ihre Bedingung ein\n     pendown()\n        dot(15)\n        penup()\n\nmainloop()</pre>",
+            "Ergänzen Sie in der Starthilfe eine Bedingung, die überprüft, ob die Summe von i und j kleiner oder größer als 0 ist.",
           ],
         },
       ],

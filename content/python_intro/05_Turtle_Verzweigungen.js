@@ -6,7 +6,7 @@ worksheets.push({
     "<p>Genau wie beispielsweise bei Parkzonen im Straßenverkehr gibt es auch beim Programmieren Code, der nicht immer oder nur unter bestimmten Bedingungen ausgeführt werden soll. Solche Programmierstrukturen nennt man auch häufig <strong>Verzweigungen</strong>.</p><p>Verzweigungen werden in Programmiersprachen häufig mit dem Schlüsselwort <code class='code-dark'>if</code> (englisch für 'wenn') eingeleitet. Anschließend folgt die <strong>Bedingung</strong>, wann der folgende Code ausgeführt werden soll – genau wie bei der <code class='code-dark'>while</code>-Schleife.</p><p>Der Code, der nur unter bestimmten Bedingungen ausgeführt werden soll, wird dann eingerückt unterhalb der <code class='code-dark'>if</code>-Anweisung geschrieben.</p><p>Will man zusätzlich noch Code bereitstellen, der immer dann ausgeführt wird, wenn die Bedingung nicht erfüllt ist, kann man das Schlüsselwort <code class='code-dark'>else</code> (englisch für 'ansonsten') verwenden. Auch der Code unterhalb der <code class='code-dark'>else</code>-Anweisung wird eingerückt geschrieben.</p>",
   image: "img/verzweigung.jpg",
   imageDescription:
-    'Manchmal benötigt man auch beim Programmierungen die Option, verschiedene Wege zu gehen. Foto: <a href="https://uudux.org/home-2-4/360_f_388001301_ek6xkbrbn5ldxeazvu2vsatbibxaz6m3/">uudux.org</a>',
+    'Manchmal benötigt man auch beim Programmieren die Option, verschiedene Wege zu gehen. Foto: <a href="https://uudux.org/home-2-4/360_f_388001301_ek6xkbrbn5ldxeazvu2vsatbibxaz6m3/">uudux.org</a>',
   imageAlt:
     "Ein Weg, der sich in zwei verschiedene Wege verzweigt, die jeweils in unterschiedliche Richtungen führen.",
   code: {

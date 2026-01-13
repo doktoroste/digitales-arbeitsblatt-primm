@@ -285,12 +285,6 @@ worksheets.push({
       description:
         "In dieser Aufgabe sollst Du jeweils neue Programme schreiben, die auf dem bisher Gelernten aufbauen. Nutze dafür weiterhin die Entwicklungsumgebung auf <a href='https://www.programiz.com/online-compiler/5tLXLWBG6MY3b' target='_blank'>Programiz</a>. Kopiere den fertigen Code anschließend in die Textfelder der jeweiligen Unteraufgaben.",
       image: "img/notentabelle.png",
-      helpers: [
-        {
-          title: "Test",
-          content: "Test",
-        },
-      ],
       subtasks: [
         {
           task: "Schreibe ein Programm, das zuerst die Summe aus zwei Variablen <code>a</code> und <code>b</code> berechnet. Anschließend soll von dieser Summe noch der Wert einer dritten Variable <code>c</code> subtrahiert werden. Anschließend soll das Ergebnis ausgegeben werden.<br>Nutze als Beispielwerte für <code>a</code> den Wert 50, für <code>b</code> den Wert 30 und für <code>c</code> den Wert 20. Teste deinen Code auch mit anderen Werten.",

@@ -78,11 +78,7 @@ worksheets.push({
       title: "Aufgabe 2: Den Code ausführen",
       subtasks: [
         {
-          task: 'Kopiere den <a href="#worksheet-code">Code</a> in einen Online-Editor wie den auf <a href="https://www.programiz.com/online-compiler/5tLXLWBG6MY3b" target="_blank">Programiz</a>. Schreibe ihn nicht ab.',
-          answerType: "none",
-        },
-        {
-          task: "Führe den Code in einem JavaScript-Interpreter aus. ",
+          task: 'Führe den Code im Online-Editor auf <a href="https://www.programiz.com/online-compiler/5tLXLWBG6MY3b" target="_blank">Programiz</a> aus. Der Code ist dort bereits hinterlegt. Klicke auf den "Run"-Button, um den Code auszuführen.',
           answerType: "none",
         },
         {
@@ -95,11 +91,11 @@ worksheets.push({
       title: "Aufgabe 3: Den Code analysieren",
       subtasks: [
         {
-          task: "Wähle aus, welche Funktion <strong>Zeile 1</strong> im Code erfüllt.",
+          task: "Wähle aus, was in <strong>Zeile 1</strong> im Code passiert.",
           answerType: "multipleChoice",
           choices: [
             {
-              text: "Variable",
+              text: "Wert in Variable speichern",
               correct: true,
               feedbackText:
                 "In Zeile 1 wird die Variable <code>zahl1</code> deklariert und mit dem Wert <code>5</code> initialisiert.",
@@ -119,11 +115,11 @@ worksheets.push({
           ],
         },
         {
-          task: "Wähle aus, welche Funktion <strong>Zeile 2</strong> im Code erfüllt.",
+          task: "Wähle aus, was in <strong>Zeile 2</strong> im Code passiert.",
           answerType: "multipleChoice",
           choices: [
             {
-              text: "Variable",
+              text: "Wert in Variable speichern",
               correct: true,
               feedbackText:
                 "In Zeile 2 wird die Variable <code>zahl2</code> deklariert und mit dem Wert <code>10</code> initialisiert.",
@@ -143,38 +139,38 @@ worksheets.push({
           ],
         },
         {
-          task: "Wähle aus, welche Funktion <strong>Zeile 3</strong> im Code erfüllt.",
+          task: "Wähle aus, was in <strong>Zeile 3</strong> im Code passiert.",
           answerType: "multipleChoice",
           choices: [
             {
-              text: "Variable",
-              correct: true,
+              text: "Wert in Variable speichern",
+              correct: false,
               feedbackText:
-                "In Zeile 3 wird die Variable <code>summe</code> deklariert und das  Ergebnis der Addition von <code>zahl1</code> und <code>zahl2</code> gespeichert.",
+                "In Zeile 3 wird die Variable <code>summe</code> zwar deklariert, vorher aber das Ergebnis der Addition von <code>zahl1</code> und <code>zahl2</code> berechnet. Dieses wird in der Variable <code>summe</code> gespeichert.",
             },
             {
               text: "Rechenoperation",
-              correct: true,
+              correct: false,
               feedbackText:
-                "In Zeile 3 wird die Variable <code>summe</code> deklariert und das  Ergebnis der Addition von <code>zahl1</code> und <code>zahl2</code> gespeichert.",
-            },
-            {
-              text: "Variable und Rechenoperation",
-              correct: true,
-              feedbackText:
-                "In Zeile 3 wird die Variable <code>summe</code> deklariert und das  Ergebnis der Addition von <code>zahl1</code> und <code>zahl2</code> gespeichert.",
+                "In Zeile 3 wird die Variable <code>summe</code> zwar deklariert, vorher aber das Ergebnis der Addition von <code>zahl1</code> und <code>zahl2</code> berechnet. Dieses wird in der Variable <code>summe</code> gespeichert.",
             },
             {
               text: "Ausgabe",
               correct: false,
               feedbackText:
-                "In Zeile 3 wird die Variable <code>summe</code> deklariert und das  Ergebnis der Addition von <code>zahl1</code> und <code>zahl2</code> gespeichert.",
+                "In Zeile 3 wird die Variable <code>summe</code> zwar deklariert, vorher aber das Ergebnis der Addition von <code>zahl1</code> und <code>zahl2</code> berechnet. Dieses wird in der Variable <code>summe</code> gespeichert.",
+            },
+            {
+              text: "Rechenoperation und Wert in Variable speichern",
+              correct: true,
+              feedbackText:
+                "In Zeile 3 das Ergebnis der Addition von <code>zahl1</code> und <code>zahl2</code> berechnet und in der Variable <code>summe</code> gespeichert.",
             },
             {
               text: "Rechenoperation und Ausgabe",
               correct: false,
               feedbackText:
-                "In Zeile 3 wird die Variable <code>summe</code> deklariert und das  Ergebnis der Addition von <code>zahl1</code> und <code>zahl2</code> gespeichert.",
+                "In Zeile 3 wird die Variable <code>summe</code> zwar deklariert, vorher aber das Ergebnis der Addition von <code>zahl1</code> und <code>zahl2</code> berechnet. Dieses wird in der Variable <code>summe</code> gespeichert.",
             },
           ],
         },
@@ -183,7 +179,7 @@ worksheets.push({
           answerType: "multipleChoice",
           choices: [
             {
-              text: "Variable",
+              text: "Wert in Variable speichern",
               correct: false,
               feedbackText:
                 "In Zeile 4 wird der Wert der Variable <code>summe</code> mit der Funktion <code class='code-dark'>alert()</code> ausgegeben.",
@@ -200,17 +196,6 @@ worksheets.push({
               feedbackText:
                 "In Zeile 4 wird der Wert der Variable <code>summe</code> mit der Funktion <code class='code-dark'>alert()</code> ausgegeben.",
             },
-          ],
-        },
-        {
-          task: "Beschreibe in eigenen Worten, was eine Variable ist und wofür sie verwendet wird. <em>Tipp: Klappe weiter oben die Erklärung zu Variablen rechts vom Code auf.</em>",
-          answerType: "text",
-          hints: [
-            "Klappe die erste Erklärung rechts vom Code auf, den du weiter oben im Arbeitsblatt findest.",
-          ],
-          phrasingHelpers: [
-            "Eine Variable ist ...",
-            "Sie wird verwendet, um ...",
           ],
         },
         {
@@ -228,9 +213,20 @@ worksheets.push({
           answerType: "textShortCheckable",
           correctAnswers: ["alert", "Alert", "alert()"],
           feedbackText:
-            "Die Funktion <code class='code-dark'>alert()</code> wird verwendet, um eine Ausgabe anzuzeigen.",
+            "Die Funktion <code class='code-dark'>alert</code> wird verwendet, um eine Ausgabe anzuzeigen.",
           hints: [
             "Such in den Erklärungen rechts vom Code nach der Funktion, mit der sich eine Ausgabe anzeigen lässt.",
+          ],
+        },
+        {
+          task: "Beschreibe in eigenen Worten, was eine Variable ist und wofür sie verwendet wird. <em>Tipp: Klappe weiter oben die Erklärung zu Variablen rechts vom Code auf.</em>",
+          answerType: "text",
+          hints: [
+            "Klappe die erste Erklärung rechts vom Code auf, den du weiter oben im Arbeitsblatt findest.",
+          ],
+          phrasingHelpers: [
+            "Eine Variable ist ...",
+            "Sie wird verwendet, um ...",
           ],
         },
       ],
@@ -255,19 +251,19 @@ worksheets.push({
           ],
         },
         {
+          task: "Ergänze den Code so, dass eine neue Variable eingeführt wird, in der ebenfalls eine Zahl gespeichert wird. Weise den drei Variablen die Werte 8, 13 und 21 zu. Passe den Code so an, dass die Summe aller drei Zahlen ausgegeben wird.",
+          answerType: "code",
+          hints: [
+            "Füge eine dritte Variable <code class='code-dark'>zahl3</code> hinzu, die ebenfalls eine Zahl speichert.",
+            "Berechne die Summe aller drei Variablen und gib das Ergebnis aus.",
+          ],
+        },
+        {
           task: "Verändere den Code so, dass nur noch eine einzige Variable verwendet wird, die die Zahl 15 speichert. Passe den Code so an, dass diese Zahl veroppelt wird und das Ergebnis ausgegeben wird.",
           answerType: "code",
           hints: [
             "Du kannst eine Zahl veroppeln, indem du sie mit 2 multiplizierst.",
             "Die Multiplikationsoperator ist das Sternchen <code class='code-dark'>*</code>.",
-          ],
-        },
-        {
-          task: "Ergänze den Code so, dass eine dritte Variable eingeführt wird, die ebenfalls eine Zahl speichert. Passe den Code so an, dass die Summe aller drei Zahlen ausgegeben wird.",
-          answerType: "code",
-          hints: [
-            "Füge eine dritte Variable <code class='code-dark'>zahl3</code> hinzu, die ebenfalls eine Zahl speichert.",
-            "Berechne die Summe aller drei Variablen und gib das Ergebnis aus.",
           ],
         },
         {
@@ -304,6 +300,23 @@ worksheets.push({
             "Nutze zwei Variablen, um die maximalen Punkte und die erreichten Punkte zu speichern Denke über passende Namen nach.",
             "Die Formel zur Berechnung der erreichten Prozentzahl lautet: <code class='code-dark'>(erreichte_punkte / maximale_punkte) * 100</code>",
             "Mit folgendem Code könnte dein Programm beginnen:<br><code class='code-dark'>var maximalePunkte = 120;<br>var erreichtePunkte = 90;</code>",
+          ],
+        },
+        {
+          task: "<em>Zusatzaufgabe</em>: Ergänze den Code aus der vorherigen Aufgabe so, dass bei der Ausgabe ein zusätzlicher Text angezeigt wird, zum Beispiel: \"Du hast folgende Prozentzahl erreicht: 42\". <em>Tipp: Du kannst Text und Zahlen mit dem Operator <code class='code-dark'>+</code> verketten, also beispielsweise <code class='code-dark'>alert('Mein Name ist ' + name);</code>.</em>",
+          answerType: "code",
+          hints: [
+            "Überlege, wie du Text und Zahlen mit dem Operator <code class='code-dark'>+</code> verketten kannst.",
+            "Du kannst die Verkettung direkt in der Funktion <code class='code-dark'>alert()</code> durchführen oder in einer neuen Variable speichern.",
+          ],
+        },
+        {
+          task: "<em>Zusatzaufgabe</em>: Schreibe ein Programm, das<ul><li>eine Startzahl hat,</li><li>diese verdoppelt,</li><li>anschließend 5 addiert,</li><li>diese Summe durch 3 teilt und</li><li>das Ergebnis ausgibt.</li></ul>Nutze als Startzahl den Wert 9. Teste deinen Code auch mit anderen Startzahlen.",
+          answerType: "code",
+          hints: [
+            "Nutze eine Variable, um die Startzahl zu speichern.",
+            "Führe die Berechnungen Schritt für Schritt durch und speichere Zwischenergebnisse in Variablen.",
+            "Expert*innen-Modus: Versuche, nur eine einzige Variable zu verwenden, in der du die Zwischenergebnisse immer wieder überschreibst.",
           ],
         },
       ],

@@ -1,9 +1,10 @@
 // General
 // -------------------------------------
-const subjectName = "Informatik";
-const courseName = "Einstieg in Python";
+const subjectName = "Informatik WF10 (Dt)";
+const courseName = "Einstieg in JavaScript";
 const showDebugLogs = true;
 const hintTimeout = 10; // Time in seconds before the next hint button is enabled
+const useFormalLanguage = false; // If true, "Sie" is used instead of "Du"
 
 // Feedback
 // -------------------------------------

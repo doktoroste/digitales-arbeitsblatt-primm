@@ -24,6 +24,17 @@ function initialiseWorksheet() {
     );
   });
 
+  // Hide text-formal or text-informal based on useFormalLanguage setting
+  if (useFormalLanguage) {
+    document
+      .querySelectorAll(".text-informal")
+      .forEach((el) => el.classList.add("hide-element"));
+  } else {
+    document
+      .querySelectorAll(".text-formal")
+      .forEach((el) => el.classList.add("hide-element"));
+  }
+
   // Highlighting currently active subtask
   // Remove class .current-subtask of all other subtasks and only give it to the currently active one
   document.querySelectorAll(".subtask").forEach((input) => {

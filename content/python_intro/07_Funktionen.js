@@ -41,7 +41,7 @@ worksheets.push({
         {
           task: 'Nennen Sie die Ausgabe der Funktion <code class="code-dark">berechne_preis</code>, die bei der Eingabe von <code class="code-dark">("saft", 3)</code> zurückgegeben wird.',
           answerType: "textShortCheckable",
-          correctAnswers: ["4.5", "4,5"],
+          correctAnswers: ["4.5", "4,5", "4.50", "4,50"],
           feedbackText:
             "Die Funktion gibt bei der Eingabe von <code>(&quot;saft&quot;, 3)</code> den Wert 4.5 zurück, da der Preis für Saft 1.50 beträgt und dieser mit der Menge 3 multipliziert wird (1.50 * 3 = 4.5). Achten Sie darauf, dass Kommazahlen in den meisten Programmiersprachen mit einem Punkt geschrieben werden.",
           hints: [
@@ -122,14 +122,14 @@ worksheets.push({
           hints: ["Gucken Sie sich die Zeile 11 des Codes an."],
         },
         {
-          task: "Beschreiben Sie, wann der <code>else</code>-Code in Zeile 11 aufgerufen wird und weshalb dies sinnvoll ist.",
+          task: "Beschreiben Sie, wann der <code>else</code>-Code in Zeile 8 aufgerufen wird und weshalb dies sinnvoll ist.",
           answerType: "text",
           hints: [
             "Überlegen Sie, welche Bedingungen in den vorherigen <code class='code-dark'>if</code>- und <code class='code-dark'>elif</code>-Anweisungen überprüft werden.",
             "Überlegen Sie, was passiert, wenn keine der vorherigen Bedingungen erfüllt ist.",
           ],
           phrasingHelpers: [
-            "Der Code in Zeile 11 wird nur dann ausgeführt, wenn ...",
+            "Der Code in Zeile 8 wird nur dann ausgeführt, wenn ...",
           ],
         },
         {
@@ -138,10 +138,6 @@ worksheets.push({
           hints: [
             "Überlegen Sie, wie oft die Funktion im Beispielcode verwendet wird.",
             "Überlegen Sie, wie der Code aussehen würde, wenn die Funktion nicht verwendet werden würde.",
-          ],
-          phrasingHelpers: [
-            "Der Code in Zeile 11 wird nur dann ausgeführt, wenn ...",
-            "Ermöglicht wird dies durch die das Schlüsselwort ... in Zeile ...",
           ],
         },
         {
@@ -174,7 +170,7 @@ worksheets.push({
           ],
         },
         {
-          task: "Ergänzen Sie den Code um eine zweite Funktion mit dem Namen <code class='code-dark'>zeige_preis(getraenk, wasser)</code>, in der die Funktion berechne_preis aufgerufen wird und zusätzlich zum Preis auch eine kurze Zusammenfassung der Bestellung zurückgegeben wird, z. B. <em>2 Mal Wasser kosten 2 Euro</em>. Lassen Sie die Zusammenfassung weiterhin mit <code class='code-dark'>return</code> zurückgeben und rufen Sie die Funktion beispielhaft auf.",
+          task: "Ergänzen Sie den Code um eine zweite Funktion mit dem Namen <code class='code-dark'>zeige_preis(getraenk, menge)</code>, in der die Funktion berechne_preis aufgerufen wird und zusätzlich zum Preis auch eine kurze Zusammenfassung der Bestellung zurückgegeben wird, z. B. <em>2 Mal Wasser kosten 2 Euro</em>. Lassen Sie die Zusammenfassung mit dem <code class='code-dark'>print</code>-Befehl zurückgeben, z. B. <code class='code-dark'>print(menge, \" Mal \", getraenk, \" kosten \", preis, ” Euro.\")</code>.",
           answerType: "code",
           hints: [
             "Nutzen Sie die Funktion <code class='code-dark'>berechne_preis</code> innerhalb der neuen Funktion, um den Preis zu berechnen.",

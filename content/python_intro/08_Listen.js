@@ -74,7 +74,7 @@ worksheets.push({
           ],
         },
         {
-          task: 'Stellen Sie eine Vermutung über die folgenden Ausgaben in Zeile 5, 8,11, 14, 15 und 17 auf. Nennen Sie jeweils die Ausgabe der <code class="code-dark">print</code>-Funktion.',
+          task: 'Stellen Sie eine Vermutung über die folgenden Ausgaben in Zeile 5, 8, 11, 14 und 17 auf. Nennen Sie jeweils die Ausgabe der <code class="code-dark">print</code>-Funktion.',
           answerType: "textLong",
           hints: [
             "Wenn Sie nicht wissen, was die einzelnen Methoden machen, schauen Sie sich die Code-Hilfen rechts vom Code an.",
@@ -206,7 +206,7 @@ worksheets.push({
           answerType: "code",
         },
         {
-          task: "Am stärksten ist eine Liste, wenn sie mit einer Schleife kombiniert wird. Dazu gibt es zwei Möglichkeiten:<p><pre><code>for elem in reservierungen:\n&nbsp;&nbsp;&nbsp;&nbsp;print(elem)</code></pre></p><p><pre><code>for i in len(reservierungen):\n&nbsp;&nbsp;&nbsp;&nbsp;print(reservierungen[i])</code></pre></p>Testen Sie beide beide Varianten. Beschreiben Sie, was jeweils ausgegeben wird und erklären Sie Vorteile der jeweiligen Variante sein könnten.",
+          task: "Am stärksten ist eine Liste, wenn sie mit einer Schleife kombiniert wird. Dazu gibt es zwei Möglichkeiten:<p><pre><code>for elem in reservierungen:\n&nbsp;&nbsp;&nbsp;&nbsp;print(elem)</code></pre></p><p><pre><code>for i in range(len(reservierungen)):\n&nbsp;&nbsp;&nbsp;&nbsp;print(reservierungen[i])</code></pre></p>Testen Sie beide beide Varianten. Beschreiben Sie, was jeweils ausgegeben wird und erklären Sie Vorteile der jeweiligen Variante sein könnten.",
           answerType: "text",
           hints: [
             "Kopieren Sie den Code in Ihren Python-Interpreter und führen Sie ihn aus. Nutzen Sie die Liste <code class='code-dark'>reservierungen</code> aus dem ursprünglichen Code.",

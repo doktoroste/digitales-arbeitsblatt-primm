@@ -154,7 +154,7 @@ Hints are helpers for subtasks which can be opened by students if they are stuck
 hints: [
     'Gibt es in Programmiersprachen wie Python oder JavaScript einen spezifischen Datentypen für Textketten?',
     '<table class="table text-center"><thead><tr><th>Datentyp</th><th>Beispiel</th></tr></thead><tbody><tr><td>String</td><td><code>"Hallo Welt"</code></td></tr><tr><td>Char</td><td><code>\'H\'<code></td></tr><tr><td>Integer</td><td><code>42<code></td></tr><tr><td>Float</td><td><code>3.1415<code></td></tr></tbody></table>',
-    ],
+],
 ```
 
 #### Multiple Choice Hints
@@ -215,7 +215,7 @@ No other parameter is needed for these types.
 
 ```
 
-#### code
+##### code
 
 Works like `textLong` but provides a monospace font in the `textarea`. The provided code in the answer field is currently not being highlighted.
 
@@ -226,7 +226,7 @@ Works like `textLong` but provides a monospace font in the `textarea`. The provi
 }
 ```
 
-#### textShortCheckable
+##### textShortCheckable
 
 Works like `textShort` and adds a button on the right to let users check their given answer for a match with one of the given correct answers in the array `correctAnswers`. The check against the user input is case-sensitive. For further explanation of why the answer is (in)correct, it can be explained in the `feedbackText` parameter which is shown after an answer is submitted.
 
@@ -241,7 +241,7 @@ Works like `textShort` and adds a button on the right to let users check their g
 }
 ```
 
-#### multipleChoice
+##### multipleChoice
 
 Provides buttons with choices instead of a text or code input. Multiple answers can be set as correct. When this answer type is used, provide the possible answers in the parameter `choices` which should contain an array of objects with the parameters `text` for the displayed text, `correct` with a boolean value setting this option as correct or incorrect and `feedbackText` for an individual feedback that is displayed after choosing an answer. The user is only allowed to choose one answer.
 

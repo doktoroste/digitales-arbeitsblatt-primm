@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digitales Arbeitsblatt erstellen</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="../lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      href="../lib/bootstrap-icons/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link href="../src/style.css" rel="stylesheet" />
+  </head>
+  <body id="worksheet-creator">
+    <div class="container">
+      <header class="pb-3 mt-5 mb-5 border-bottom">
+        <div class="row">
+          <div class="col-md-6">
+            <span class="fw-bold" id="subject-name">Digitales Arbeitsblatt</span
+            ><br />
+            <span id="course-name">Generator</span>
+          </div>
+          <div class="col-md-6 text-end"></div>
+        </div>
+      </header>
+
+      <main>
+        <div class="row mb-4">
+          <div class="col-md-8">
+            <label for="worksheet-title" class="form-label"
+              >Titel des Arbeitsblatts</label
+            >
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              placeholder="Titel des Arbeitsblatts"
+              id="worksheet-title"
+            />
+          </div>
+          <div class="col-md-4">
+            <label for="worksheet-title-short" class="form-label"
+              >Kurztitel (für Dateiname)</label
+            >
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              placeholder="titel"
+              required
+              id="worksheet-title-short"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-4">
+          <div class="col-md-8" id="worksheet-description">
+            <div class="d-flex justify-content-between mb-2">
+              <label for="worksheet-description" class="form-label"
+                >Beschreibung des Arbeitsblatts</label
+              >
+              <div
+                class="btn-group mb-2 hide-on-print"
+                role="group"
+                aria-label="Text formatieren"
+              >
+                <button
+                  class="btn btn-sm btn-outline-secondary"
+                  id="worksheet-description-format-bold"
+                  title="Text fett formatieren"
+                >
+                  <i class="bi bi-type-bold"></i>
+                </button>
+                <button
+                  class="btn btn-sm btn-outline-secondary"
+                  id="worksheet-description-format-italic"
+                  title="Text kursiv formatieren"
+                >
+                  <i class="bi bi-type-italic"></i>
+                </button>
+                <button
+                  class="btn btn-sm btn-outline-secondary"
+                  id="worksheet-description-format-underline"
+                  title="Text unterstrichen formatieren"
+                >
+                  <i class="bi bi-type-underline"></i>
+                </button>
+                <button
+                  class="btn btn-sm btn-outline-secondary"
+                  id="worksheet-description-format-code"
+                  title="Text als Code formatieren"
+                >
+                  <i class="bi bi-code-slash"></i>
+                </button>
+                <button
+                  class="btn btn-sm btn-outline-secondary"
+                  id="worksheet-description-format-list-unordered"
+                  title="Ungeordnete Liste formatieren"
+                >
+                  <i class="bi bi-list-ul"></i>
+                </button>
+                <button
+                  class="btn btn-sm btn-outline-secondary"
+                  id="worksheet-description-format-list-ordered"
+                  title="Geordnete Liste formatieren"
+                >
+                  <i class="bi bi-list-ol"></i>
+                </button>
+              </div>
+            </div>
+            <div
+              contenteditable="true"
+              class="form-control"
+              id="worksheet-description"
+              placeholder="Beschreibung des Arbeitsblatts"
+              style="
+                height: 240px;
+                font-family: &quot;Courier New&quot;, Courier, monospace;
+              "
+            ></div>
+          </div>
+          <div class="col-md-4" id="worksheet-additional-settings">
+            <label for="worksheet-language" class="form-label"
+              >Pfad/URL für Bild</label
+            >
+            <input
+              type="text"
+              class="form-control mb-3"
+              id="worksheet-image-path"
+              placeholder="Pfad/URL für Bild eingeben"
+            />
+
+            <label for="worksheet-language" class="form-label"
+              >Bildbeschreibung</label
+            >
+            <textarea
+              class="form-control mb-3"
+              id="worksheet-image-description"
+              placeholder="Beschreibung des Bildes eingeben"
+            ></textarea>
+
+            <label for="worksheet-language" class="form-label"
+              >Alternativtext für das Bild</label
+            >
+            <textarea
+              type="text"
+              class="form-control mb-3"
+              id="worksheet-image-alt"
+              placeholder="Alternativtext für das Bild eingeben"
+            ></textarea>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <div class="container-fluid bg-light pt-1 pb-3">
+      <div class="container" id="worksheet-code-container">
+        <main>
+          <!-- Code -->
+          <div
+            class="row mt-5 worksheet-code-wrapper"
+            id="worksheet-code-wrapper-1"
+          >
+            <!-- Code-Ausschnitt -->
+            <div class="col-md-8">
+              <label for="worksheet-code" class="form-label">Code</label>
+              <textarea
+                class="form-control"
+                id="worksheet-code"
+                data-code-content
+                rows="10"
+                placeholder="Code einfügen"
+                style="font-family: &quot;Courier New&quot;, Courier, monospace"
+              ></textarea>
+            </div>
+            <div class="col-md-4">
+              <label for="worksheet-code-language" class="form-label"
+                >Programmiersprache <span class="text-danger">*</span></label
+              >
+              <input
+                type="text"
+                class="form-control worksheet-code-language"
+                id="worksheet-code-language-1"
+                placeholder="z. B. javascript, python, java"
+                required
+              />
+              <div class="invalid-feedback">
+                Programmiersprache ist erforderlich.
+              </div>
+              <div class="mb-3"></div>
+
+              <label for="worksheet-code-filename" class="form-label"
+                >Dateiname</label
+              >
+              <input
+                type="text"
+                class="form-control mb-3 worksheet-code-filename"
+                id="worksheet-code-filename-1"
+                placeholder="z. B. caesar.py"
+              />
+
+              <label for="worksheet-code-primary-language" class="form-label">
+                <input
+                  type="radio"
+                  class="form-check-input worksheet-code-primary-language"
+                  id="worksheet-code-primary-language-1"
+                  name="worksheet-code-primary-language"
+                  checked
+                />
+                Primär ausgewählt
+              </label>
+
+              <br />
+
+              <label class="form-label">Weitere Erklärungen</label><br />
+              <div class="card mb-2" data-helper-card>
+                <div class="card-body">
+                  <input
+                    type="text"
+                    class="form-control mb-2"
+                    data-helper-title
+                    placeholder="Titel für Erklärung"
+                  />
+                  <textarea
+                    class="form-control mb-2"
+                    data-helper-content
+                    rows="3"
+                    placeholder="Erklärungstext"
+                  ></textarea>
+                </div>
+              </div>
+              <button
+                type="button"
+                class="btn btn-outline-secondary mb-2 worksheet-code-add-explanation"
+              >
+                <i class="bi bi-plus-circle"></i> Erklärung hinzufügen
+              </button>
+              <div class="worksheet-code-explanations"></div>
+            </div>
+            <hr class="mt-4" />
+          </div>
+          <button
+            class="btn btn-outline-secondary mt-3"
+            id="worksheet-code-add-language"
+          >
+            <i class="bi bi-plus-circle"></i> Weitere Programmiersprache
+            hinzufügen
+          </button>
+        </main>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Tasks -->
+      <main id="worksheet-tasks">
+        <div
+          class="row mt-4 worksheet-task-wrapper"
+          id="worksheet-task-wrapper-1"
+          data-task-index="0"
+        >
+          <div class="col-md-8">
+            <label class="form-label"
+              >Aufgabe <span class="task-number">1</span></label
+            >
+            <input
+              type="text"
+              class="form-control mb-2"
+              data-task-title
+              placeholder="Aufgabentitel"
+            />
+            <textarea
+              class="form-control mb-3"
+              data-task-description
+              rows="3"
+              placeholder="Aufgabenbeschreibung (optional, HTML erlaubt)"
+            ></textarea>
+
+            <!-- Subtasks -->
+            <div data-subtasks-container></div>
+
+            <div class="input-group mt-3">
+              <select class="form-select worksheet-subtask-type">
+                <option value="text" selected>Freitext</option>
+                <option value="textShort">Freitext (kurz)</option>
+                <option value="textLong">Freitext (lang)</option>
+                <option value="code">Code</option>
+                <option value="textShortCheckable">
+                  Freitext (kurz) überprüfbar
+                </option>
+                <option value="multipleChoice">Multiple Choice</option>
+                <option value="none">keine Antwort</option>
+              </select>
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                data-add-subtask
+              >
+                Unteraufgabe einfügen
+              </button>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Weitere Erklärungen</label><br />
+            <div class="card mb-2" data-task-helper-card>
+              <div class="card-body">
+                <input
+                  type="text"
+                  class="form-control mb-2"
+                  data-task-helper-title
+                  placeholder="Titel für Erklärung"
+                />
+                <textarea
+                  class="form-control mb-2"
+                  data-task-helper-content
+                  rows="3"
+                  placeholder="Erklärungstext"
+                ></textarea>
+              </div>
+            </div>
+            <button
+              type="button"
+              class="btn btn-outline-secondary mb-2 worksheet-task-add-explanation"
+            >
+              <i class="bi bi-plus-circle"></i> Erklärung hinzufügen
+            </button>
+            <div class="worksheet-task-explanations"></div>
+          </div>
+        </div>
+
+        <hr />
+
+        <button class="btn btn-outline-secondary mt-3" id="worksheet-add-task">
+          <i class="bi bi-plus-circle"></i> Aufgabe hinzufügen
+        </button>
+      </main>
+
+      <footer class="mt-5 mb-5 pt-3">
+        <button class="btn btn-primary" id="download-worksheet-json">
+          <i class="bi bi-download"></i> Arbeitsblatt herunterladen
+        </button>
+      </footer>
+    </div>
+
+    <template id="code-helper-card-template">
+      <div class="card mb-2" data-helper-card>
+        <div class="card-body">
+          <input
+            type="text"
+            class="form-control mb-2"
+            data-helper-title
+            placeholder="Titel für Erklärung"
+          />
+          <textarea
+            class="form-control mb-2"
+            data-helper-content
+            rows="3"
+            placeholder="Erklärungstext"
+          ></textarea>
+          <button
+            type="button"
+            class="btn btn-sm btn-outline-danger mt-1"
+            data-remove-helper
+          >
+            <i class="bi bi-x-circle"></i> Erklärung entfernen
+          </button>
+        </div>
+      </div>
+    </template>
+
+    <template id="remove-language-button-template">
+      <button
+        type="button"
+        class="btn btn-outline-danger btn-sm mb-4 mt-2 btn-remove-language"
+      >
+        <i class="bi bi-x-circle"></i> Sprache entfernen
+      </button>
+    </template>
+
+    <template id="task-helper-card-template">
+      <div class="card mb-2" data-task-helper-card>
+        <div class="card-body">
+          <input
+            type="text"
+            class="form-control mb-2"
+            data-task-helper-title
+            placeholder="Titel für Erklärung"
+          />
+          <textarea
+            class="form-control mb-2"
+            data-task-helper-content
+            rows="3"
+            placeholder="Erklärungstext"
+          ></textarea>
+          <button
+            type="button"
+            class="btn btn-sm btn-outline-danger mt-1"
+            data-remove-task-helper
+          >
+            <i class="bi bi-x-circle"></i> Erklärung entfernen
+          </button>
+        </div>
+      </div>
+    </template>
+
+    <template id="input-list-item-template">
+      <div class="input-group mb-1 align-items-start">
+        <input type="text" class="form-control form-control-sm" />
+        <button
+          type="button"
+          class="btn btn-sm btn-outline-danger"
+          data-remove-item
+        >
+          <i class="bi bi-x"></i>
+        </button>
+      </div>
+    </template>
+
+    <template id="textarea-list-item-template">
+      <div class="input-group mb-1 align-items-start">
+        <textarea class="form-control form-control-sm" rows="2"></textarea>
+        <button
+          type="button"
+          class="btn btn-sm btn-outline-danger"
+          data-remove-item
+        >
+          <i class="bi bi-x"></i>
+        </button>
+      </div>
+    </template>
+
+    <template id="choice-card-template">
+      <div class="card mb-2" data-choice-card>
+        <div class="card-body p-2">
+          <div class="d-flex gap-2 align-items-center mb-1">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              data-choice-text
+              placeholder="Antworttext"
+            />
+            <div class="form-check mb-0 text-nowrap">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                data-choice-correct
+              />
+              <label class="form-check-label small">Korrekt</label>
+            </div>
+            <button
+              type="button"
+              class="btn btn-sm btn-outline-danger flex-shrink-0"
+              data-remove-choice
+            >
+              <i class="bi bi-x"></i>
+            </button>
+          </div>
+          <input
+            type="text"
+            class="form-control form-control-sm"
+            data-choice-feedback
+            placeholder="Feedback-Text"
+          />
+        </div>
+      </div>
+    </template>
+
+    <template id="choices-section-template">
+      <div data-choices-section>
+        <div class="form-label small mt-2 mb-1">Antwortoptionen</div>
+        <div data-choices-container></div>
+        <button
+          type="button"
+          class="btn btn-sm btn-outline-secondary mt-1"
+          data-add-choice
+        >
+          <i class="bi bi-plus-circle"></i> Antwortoption hinzufügen
+        </button>
+      </div>
+    </template>
+
+    <template id="subtask-card-template">
+      <div class="card mb-2" data-subtask-card>
+        <div
+          class="card-header d-flex justify-content-between align-items-center py-1"
+        >
+          <span class="small fw-bold" data-subtask-label></span>
+          <button
+            type="button"
+            class="btn btn-sm btn-outline-danger"
+            data-remove-subtask
+          >
+            <i class="bi bi-x-circle"></i>
+          </button>
+        </div>
+        <div class="card-body" data-subtask-body></div>
+      </div>
+    </template>
+
+    <template id="task-wrapper-template">
+      <div class="row mt-4 worksheet-task-wrapper">
+        <div class="col-md-8">
+          <label class="form-label"
+            >Aufgabe <span class="task-number"></span
+          ></label>
+          <input
+            type="text"
+            class="form-control mb-2"
+            data-task-title
+            placeholder="Aufgabentitel"
+          />
+          <textarea
+            class="form-control mb-3"
+            data-task-description
+            rows="3"
+            placeholder="Aufgabenbeschreibung (optional, HTML erlaubt)"
+          ></textarea>
+          <div data-subtasks-container></div>
+          <div class="input-group mt-3">
+            <select class="form-select worksheet-subtask-type">
+              <option value="text" selected>Freitext</option>
+              <option value="textShort">Freitext (kurz)</option>
+              <option value="textLong">Freitext (lang)</option>
+              <option value="code">Code</option>
+              <option value="textShortCheckable">
+                Freitext (kurz) überprüfbar
+              </option>
+              <option value="multipleChoice">Multiple Choice</option>
+              <option value="none">keine Antwort</option>
+            </select>
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              data-add-subtask
+            >
+              Unteraufgabe einfügen
+            </button>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Weitere Erklärungen</label><br />
+          <div class="card mb-2" data-task-helper-card>
+            <div class="card-body">
+              <input
+                type="text"
+                class="form-control mb-2"
+                data-task-helper-title
+                placeholder="Titel für Erklärung"
+              />
+              <textarea
+                class="form-control mb-2"
+                data-task-helper-content
+                rows="3"
+                placeholder="Erklärungstext"
+              ></textarea>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="btn btn-outline-secondary mb-2 worksheet-task-add-explanation"
+          >
+            <i class="bi bi-plus-circle"></i> Erklärung hinzufügen
+          </button>
+          <div class="worksheet-task-explanations"></div>
+          <button
+            type="button"
+            class="btn btn-outline-danger btn-sm mt-3 btn-remove-task"
+          >
+            <i class="bi bi-x-circle"></i> Aufgabe entfernen
+          </button>
+        </div>
+        <hr class="mt-4" />
+      </div>
+    </template>
+
+    <script src="create-worksheet.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="../lib/bootstrap/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

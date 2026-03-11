@@ -22,6 +22,8 @@ Worksheets are currently stored in JavaScript files to provide functionality on 
 
 The file itself needs to be included using the `source` tag in the file `index.html`.
 
+An empty template providing the basic structure of the worksheet file can be found in [00_template.js](content/examples/00_template.js).
+
 ### General Worksheet Data
 
 The following attributes need to be provided for each worksheet:
